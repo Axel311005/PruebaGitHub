@@ -251,6 +251,7 @@
             Controls.Add(txtCantidad);
             Controls.Add(lvDetalle);
             Name = "RegresionLineal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegresionLineal";
             ResumeLayout(false);
             PerformLayout();
