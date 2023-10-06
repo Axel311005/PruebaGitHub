@@ -46,7 +46,7 @@ namespace Inventarios
 
 
             }
-            else if (cboInventario.SelectedItem=="PEPS")
+            else if (cboInventario.SelectedItem == "PEPS")
             {
 
                 if (cboMovimiento.SelectedItem == "Entrada")

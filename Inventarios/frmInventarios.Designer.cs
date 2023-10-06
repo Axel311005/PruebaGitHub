@@ -61,27 +61,30 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(44, 101);
+            label8.Location = new Point(24, 47);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(209, 32);
+            label8.Size = new Size(102, 15);
             label8.TabIndex = 38;
             label8.Text = "Tipo de Inventario";
             // 
             // cboInventario
             // 
             cboInventario.FormattingEnabled = true;
-            cboInventario.Location = new Point(20, 159);
+            cboInventario.Location = new Point(11, 75);
+            cboInventario.Margin = new Padding(2, 1, 2, 1);
             cboInventario.Name = "cboInventario";
-            cboInventario.Size = new Size(242, 40);
+            cboInventario.Size = new Size(132, 23);
             cboInventario.TabIndex = 37;
             // 
             // lvFecha
             // 
             lvFecha.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             lvFecha.GridLines = true;
-            lvFecha.Location = new Point(20, 324);
+            lvFecha.Location = new Point(11, 152);
+            lvFecha.Margin = new Padding(2, 1, 2, 1);
             lvFecha.Name = "lvFecha";
-            lvFecha.Size = new Size(123, 455);
+            lvFecha.Size = new Size(68, 215);
             lvFecha.TabIndex = 36;
             lvFecha.UseCompatibleStateImageBehavior = false;
             lvFecha.View = View.Details;
@@ -94,18 +97,20 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(1392, 274);
+            label7.Location = new Point(750, 128);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(101, 32);
+            label7.Size = new Size(50, 15);
             label7.TabIndex = 35;
             label7.Text = "SALDOS";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(849, 274);
+            label6.Location = new Point(457, 128);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(103, 32);
+            label6.Size = new Size(52, 15);
             label6.TabIndex = 34;
             label6.Text = "SALIDAS";
             // 
@@ -113,9 +118,10 @@
             // 
             lvSaldos.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10 });
             lvSaldos.GridLines = true;
-            lvSaldos.Location = new Point(1155, 324);
+            lvSaldos.Location = new Point(622, 152);
+            lvSaldos.Margin = new Padding(2, 1, 2, 1);
             lvSaldos.Name = "lvSaldos";
-            lvSaldos.Size = new Size(529, 455);
+            lvSaldos.Size = new Size(287, 215);
             lvSaldos.TabIndex = 33;
             lvSaldos.UseCompatibleStateImageBehavior = false;
             lvSaldos.View = View.Details;
@@ -139,9 +145,10 @@
             // 
             lvSalidas.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
             lvSalidas.GridLines = true;
-            lvSalidas.Location = new Point(653, 324);
+            lvSalidas.Location = new Point(352, 152);
+            lvSalidas.Margin = new Padding(2, 1, 2, 1);
             lvSalidas.Name = "lvSalidas";
-            lvSalidas.Size = new Size(496, 455);
+            lvSalidas.Size = new Size(269, 215);
             lvSalidas.TabIndex = 32;
             lvSalidas.UseCompatibleStateImageBehavior = false;
             lvSalidas.View = View.Details;
@@ -163,9 +170,10 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(1263, 153);
+            btnAgregar.Location = new Point(680, 72);
+            btnAgregar.Margin = new Padding(2, 1, 2, 1);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(150, 46);
+            btnAgregar.Size = new Size(81, 22);
             btnAgregar.TabIndex = 31;
             btnAgregar.Text = "AGREGAR";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -173,9 +181,10 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(1498, 786);
+            btnSalir.Location = new Point(807, 368);
+            btnSalir.Margin = new Padding(2, 1, 2, 1);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(150, 46);
+            btnSalir.Size = new Size(81, 22);
             btnSalir.TabIndex = 30;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = true;
@@ -183,68 +192,76 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(336, 274);
+            label5.Location = new Point(181, 128);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(130, 32);
+            label5.Size = new Size(65, 15);
             label5.TabIndex = 29;
             label5.Text = "ENTRADAS";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(906, 101);
+            label4.Location = new Point(488, 47);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(158, 32);
+            label4.Size = new Size(78, 15);
             label4.TabIndex = 28;
             label4.Text = "Valor Unitario";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(688, 101);
+            label3.Location = new Point(370, 47);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(109, 32);
+            label3.Size = new Size(55, 15);
             label3.TabIndex = 27;
             label3.Text = "Cantidad";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(391, 101);
+            label2.Location = new Point(211, 47);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(144, 32);
+            label2.Size = new Size(72, 15);
             label2.TabIndex = 26;
             label2.Text = "Movimiento";
             // 
             // txtValorUnit
             // 
-            txtValorUnit.Location = new Point(906, 159);
+            txtValorUnit.Location = new Point(488, 75);
+            txtValorUnit.Margin = new Padding(2, 1, 2, 1);
             txtValorUnit.Name = "txtValorUnit";
-            txtValorUnit.Size = new Size(167, 39);
+            txtValorUnit.Size = new Size(92, 23);
             txtValorUnit.TabIndex = 25;
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(653, 160);
+            txtCantidad.Location = new Point(352, 75);
+            txtCantidad.Margin = new Padding(2, 1, 2, 1);
             txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(171, 39);
+            txtCantidad.Size = new Size(94, 23);
             txtCantidad.TabIndex = 24;
             // 
             // cboMovimiento
             // 
             cboMovimiento.FormattingEnabled = true;
-            cboMovimiento.Location = new Point(336, 157);
+            cboMovimiento.Location = new Point(181, 74);
+            cboMovimiento.Margin = new Padding(2, 1, 2, 1);
             cboMovimiento.Name = "cboMovimiento";
-            cboMovimiento.Size = new Size(242, 40);
+            cboMovimiento.Size = new Size(132, 23);
             cboMovimiento.TabIndex = 23;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.Location = new Point(636, 22);
+            label1.Location = new Point(342, 10);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(370, 39);
+            label1.Size = new Size(188, 19);
             label1.TabIndex = 22;
             label1.Text = "METODOS DE INVENTARIO";
             // 
@@ -252,9 +269,10 @@
             // 
             lvEntradas.Columns.AddRange(new ColumnHeader[] { columnHeader2, columnHeader3, columnHeader4 });
             lvEntradas.GridLines = true;
-            lvEntradas.Location = new Point(149, 324);
+            lvEntradas.Location = new Point(80, 152);
+            lvEntradas.Margin = new Padding(2, 1, 2, 1);
             lvEntradas.Name = "lvEntradas";
-            lvEntradas.Size = new Size(498, 455);
+            lvEntradas.Size = new Size(270, 215);
             lvEntradas.TabIndex = 21;
             lvEntradas.UseCompatibleStateImageBehavior = false;
             lvEntradas.View = View.Details;
@@ -276,9 +294,9 @@
             // 
             // frmInventarios
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1704, 855);
+            ClientSize = new Size(912, 414);
             Controls.Add(label8);
             Controls.Add(cboInventario);
             Controls.Add(lvFecha);
@@ -297,6 +315,7 @@
             Controls.Add(cboMovimiento);
             Controls.Add(label1);
             Controls.Add(lvEntradas);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "frmInventarios";
             Text = "frmInventarios";
             Load += frmInventarios_Load;
