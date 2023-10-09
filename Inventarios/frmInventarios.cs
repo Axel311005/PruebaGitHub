@@ -22,8 +22,11 @@ namespace Inventarios
         string[] Movimiento = { "Entrada", "Salida" };
         Stack cantidadSaldos = new Stack();
         Stack ValorSaldos = new Stack();
+        List<double> LsCantidad = new List<double>();
+        List<double> LsValorUnidad = new List<double>();
 
-        
+
+
 
         private void frmInventarios_Load(object sender, EventArgs e)
         {
@@ -36,8 +39,8 @@ namespace Inventarios
         private void btnAgregar_Click(object sender, EventArgs e)
         {
 
-           
-            
+
+
 
             if (cboInventario.SelectedItem == "UEPS")
             {
@@ -82,7 +85,7 @@ namespace Inventarios
                     CopiaValor = (Stack)ValorSaldos.Clone();
 
 
-                    
+
                     string converCantidad1 = CopiaCantidad.Pop().ToString();
                     double conver11 = double.Parse(converCantidad1);
 
@@ -126,15 +129,15 @@ namespace Inventarios
 
 
                     }
-                     
-                    
+
+
                     if (double.Parse(txtCantidad.Text) > conver11)
                     {
 
 
                         double SumaDosUlltimos = conver11 + conver2;
 
-                        
+
 
                         if (double.Parse(txtCantidad.Text) < SumaDosUlltimos)
                         {
@@ -184,7 +187,7 @@ namespace Inventarios
                             ListViewItem time = new ListViewItem(fecha.ToString());
                             lvFecha.Items.Add(time);
 
-                           
+
 
                             ListViewItem time2 = new ListViewItem("-------");
                             lvFecha.Items.Add(time2);
@@ -199,16 +202,17 @@ namespace Inventarios
                 }
 
 
-                    
 
 
-          
+
+
             }
-            else if (cboInventario.SelectedItem=="PEPS")
+            else if (cboInventario.SelectedItem == "PEPS")
             {
 
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
+
 
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
@@ -224,12 +228,77 @@ namespace Inventarios
 
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
+                    LsCantidad.Add(double.Parse(txtCantidad.Text));
+                    LsValorUnidad.Add(double.Parse(txtValorUnit.Text));
+                    ListViewItem Cantidad = new ListViewItem(txtCantidad.Text);
+                    Cantidad.SubItems.Add(txtValorUnit.Text);
+
+                    double result;
+                    
+                    result= double.Parse(txtCantidad.Text) * double.Parse(txtValorUnit.Text);
+
+                    Cantidad.SubItems.Add(result.ToString());
+
+                    lvEntradas.Items.Add(Cantidad);
+                    DateTime fecha = DateTime.Now;
+
+                    ListViewItem time = new ListViewItem(fecha.ToString());
+                    lvFecha.Items.Add(time);
+
+                    ListViewItem entrada = new ListViewItem("--------");
+                    entrada.SubItems.Add("--------");
+                    entrada.SubItems.Add("--------");
+                    lvSalidas.Items.Add(entrada);
+
+                    double result1 = 0;
+                    double result2= 0;
+
+                    for (int i = 0; i < lvEntradas.Items.Count; i++)
+                    {
+                        result1 += double.Parse(lvEntradas.Items[i].SubItems[0].Text);
+                        result2 += double.Parse(lvEntradas.Items[i].SubItems[2].Text);
+
+                    }
+
+                    if (lvEntradas.Items.Count == 1)
+                    {
+                        ListViewItem saldo = new ListViewItem(txtCantidad.Text);
+                        saldo.SubItems.Add(txtValorUnit.Text);
+                        
+                        saldo.SubItems.Add(result.ToString());
+                        lvSaldos.Items.Add(saldo);
+
+                    }
+                    else
+                    {
+                        double result3;
+                        result3 = result2 / result1;
+
+                        ListViewItem Saldo2 = new ListViewItem(result1.ToString());
+                        Saldo2.SubItems.Add(result3.ToString("0.00"));
+
+                        Saldo2.SubItems.Add(result2.ToString());
+                        lvSaldos.Items.Add(Saldo2);
+
+                       
+                         
+
+                    }
+
 
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
 
+
                 }
+                
+
+
+                // ....................................................................
+
+
+
 
 
 
