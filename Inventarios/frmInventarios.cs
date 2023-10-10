@@ -84,10 +84,10 @@ namespace Inventarios
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
 
-                    if (cantidadSaldos.Count > 0)
+                    if (cantidadSaldos.Count > 0 && ValorSaldos.Count > 0)
                     {
-                        if (cantidadSaldos.Count > 0)
-                        {
+                        if (cantidadSaldos.Count >= 2 && ValorSaldos.Count >= 2)
+                        { 
                             Queue<double> copiaCantidad = new Queue<double>(cantidadSaldos);
                             Queue<double> copiaValor = new Queue<double>(ValorSaldos);
 
