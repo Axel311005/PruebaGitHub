@@ -24,6 +24,7 @@ namespace Inventarios
         Stack ValorSaldos = new Stack();
         List<double> LsCantidad = new List<double>();
         List<double> LsValorUnidad = new List<double>();
+        List<double> lsTotal = new List<double>();
 
 
 
@@ -228,6 +229,7 @@ namespace Inventarios
 
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
+                    
                     LsCantidad.Add(double.Parse(txtCantidad.Text));
                     LsValorUnidad.Add(double.Parse(txtValorUnit.Text));
                     ListViewItem Cantidad = new ListViewItem(txtCantidad.Text);
@@ -236,6 +238,7 @@ namespace Inventarios
                     double result;
                     
                     result= double.Parse(txtCantidad.Text) * double.Parse(txtValorUnit.Text);
+                    lsTotal.Add(result);
 
                     Cantidad.SubItems.Add(result.ToString());
 
@@ -252,43 +255,70 @@ namespace Inventarios
 
                     double result1 = 0;
                     double result2= 0;
+                    result1 = LsCantidad.Sum();
+                    result2 = lsTotal.Sum();
 
-                    for (int i = 0; i < lvEntradas.Items.Count; i++)
+                    double Result3 = 0;
+                    Result3 = result2 / result1;
+
+
+
+                    if (cantidadSaldos.Count == 1)
                     {
-                        result1 += double.Parse(lvEntradas.Items[i].SubItems[0].Text);
-                        result2 += double.Parse(lvEntradas.Items[i].SubItems[2].Text);
 
-                    }
-
-                    if (lvEntradas.Items.Count == 1)
-                    {
-                        ListViewItem saldo = new ListViewItem(txtCantidad.Text);
-                        saldo.SubItems.Add(txtValorUnit.Text);
-                        
-                        saldo.SubItems.Add(result.ToString());
-                        lvSaldos.Items.Add(saldo);
-
+                        ListViewItem Saldo = new ListViewItem(txtCantidad.Text);
+                        Saldo.SubItems.Add(txtValorUnit.Text);
+                        Saldo.SubItems.Add(result.ToString());
+                        lvSaldos.Items.Add(Saldo);
                     }
                     else
                     {
-                        double result3;
-                        result3 = result2 / result1;
-
-                        ListViewItem Saldo2 = new ListViewItem(result1.ToString());
-                        Saldo2.SubItems.Add(result3.ToString("0.00"));
-
-                        Saldo2.SubItems.Add(result2.ToString());
-                        lvSaldos.Items.Add(Saldo2);
-
-                       
-                         
-
+                        ListViewItem saldo2 = new ListViewItem(result1.ToString());
+                        saldo2.SubItems.Add(Result3.ToString("0.00"));
+                        saldo2.SubItems.Add(result2.ToString());
+                        lvSaldos.Items.Add(saldo2); 
+                        
+                        
                     }
+
+                    
 
 
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
+                   ListViewItem Salida = new ListViewItem(txtCantidad.Text);
+                    double result1 = 0;
+                    double result2 = 0;
+                    result1 = LsCantidad.Sum();
+                    result2 = lsTotal.Sum();
+
+                    double Result3 = 0;
+                    
+                    Result3 = result2 / result1;
+
+                    double Result4 = 0;
+                    Result4 = Result3 * double.Parse(txtCantidad.Text);
+
+                    
+                    Salida.SubItems.Add(Result3.ToString("0.00"));
+                    Salida.SubItems.Add(Result4.ToString("0.00"));
+                    lvSalidas.Items.Add(Salida);
+
+
+                    double result5 = result1 - double.Parse(txtCantidad.Text);
+                    ListViewItem Saldo3 = new ListViewItem(result5.ToString());
+                    Saldo3.SubItems.Add(Result3.ToString("0.00"));
+
+                    double result6 = result5 * Result3;
+                    Saldo3.SubItems.Add(result6.ToString("0.00"));
+                    lvSaldos.Items.Add(Saldo3);
+
+                    ListViewItem Entrada = new ListViewItem("--------------");
+                    Entrada.SubItems.Add("-----------");
+                    Entrada.SubItems.Add("-----------");
+                    lvEntradas.Items.Add(Entrada);
+
 
 
                 }
