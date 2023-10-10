@@ -15,6 +15,7 @@ namespace RegresionLineal
         public RegresionLineal()
         {
             InitializeComponent();
+            btnExportar.Enabled = false;
         }
 
         int n = 0;
@@ -159,6 +160,7 @@ namespace RegresionLineal
                 txtA.Text = ValorA().ToString();
                 txtB.Text = ValorB().ToString();
                 txtY.Text = Resultado().ToString();
+                btnExportar.Enabled = true;
             }
             else
             {
