@@ -160,6 +160,6 @@ namespace RegresionLineal
             }
         }
 
-        
+
     }
 }

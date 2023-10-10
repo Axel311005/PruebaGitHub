@@ -46,10 +46,12 @@
             label8 = new Label();
             btnSalir = new Button();
             dataGridView1 = new DataGridView();
-            btnExportar = new Button();
             colCantidad = new DataGridViewTextBoxColumn();
             ColCosto = new DataGridViewTextBoxColumn();
+            btnExportar = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txtCantidad
@@ -96,7 +98,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.Location = new Point(112, 9);
+            label1.Location = new Point(131, 9);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(164, 21);
@@ -227,11 +229,25 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colCantidad, ColCosto });
-            dataGridView1.Location = new Point(79, 125);
+            dataGridView1.Location = new Point(6, 125);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(244, 138);
+            dataGridView1.Size = new Size(369, 138);
             dataGridView1.TabIndex = 18;
+            // 
+            // colCantidad
+            // 
+            colCantidad.HeaderText = "Cantidad";
+            colCantidad.Name = "colCantidad";
+            colCantidad.Resizable = DataGridViewTriState.False;
+            colCantidad.Width = 150;
+            // 
+            // ColCosto
+            // 
+            ColCosto.HeaderText = "Costo";
+            ColCosto.Name = "ColCosto";
+            ColCosto.Resizable = DataGridViewTriState.False;
+            ColCosto.Width = 180;
             // 
             // btnExportar
             // 
@@ -243,15 +259,14 @@
             btnExportar.UseVisualStyleBackColor = true;
             btnExportar.Click += btnExportar_Click;
             // 
-            // colCantidad
+            // pictureBox1
             // 
-            colCantidad.HeaderText = "Cantidad";
-            colCantidad.Name = "colCantidad";
-            // 
-            // ColCosto
-            // 
-            ColCosto.HeaderText = "Costo";
-            ColCosto.Name = "ColCosto";
+            pictureBox1.Image = Properties.Resources.sigma__1_;
+            pictureBox1.Location = new Point(87, 9);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(39, 31);
+            pictureBox1.TabIndex = 20;
+            pictureBox1.TabStop = false;
             // 
             // RegresionLineal
             // 
@@ -259,6 +274,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
             ClientSize = new Size(479, 414);
+            Controls.Add(pictureBox1);
             Controls.Add(btnExportar);
             Controls.Add(dataGridView1);
             Controls.Add(btnSalir);
@@ -283,6 +299,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegresionLineal";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -309,5 +326,6 @@
         private Button btnExportar;
         private DataGridViewTextBoxColumn colCantidad;
         private DataGridViewTextBoxColumn ColCosto;
+        private PictureBox pictureBox1;
     }
 }

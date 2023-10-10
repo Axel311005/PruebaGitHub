@@ -46,10 +46,7 @@ namespace RegresionLineal
             string cantidad = txtCantidad.Text;
             string costo = txtCostos.Text;
 
-            // Agrega los datos al DataGridView
             dataGridView1.Rows.Add(cantidad, costo);
-
-            // Agrega los datos a la lista de registros
             registros.Add(new Registro { Cantidad = cantidad, Costo = costo });
         }
 
@@ -246,7 +243,7 @@ namespace RegresionLineal
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Archivo de Excel (*.xlsx)|*.xlsx";
             saveFileDialog.Title = "Guardar archivo de Excel";
-            saveFileDialog.FileName = "ExcelPrueba.xlsx"; 
+            saveFileDialog.FileName = "ExcelPrueba.xlsx";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -280,5 +277,5 @@ namespace RegresionLineal
                 MessageBox.Show("Datos exportados exitosamente a Excel en: " + filePath, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        }
+    }
 }
