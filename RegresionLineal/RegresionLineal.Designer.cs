@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lvDetalle = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
             txtCantidad = new TextBox();
             txtCostos = new TextBox();
             btnAgregar = new Button();
@@ -48,30 +45,12 @@
             txtQ = new TextBox();
             label8 = new Label();
             btnSalir = new Button();
+            dataGridView1 = new DataGridView();
+            btnExportar = new Button();
+            colCantidad = new DataGridViewTextBoxColumn();
+            ColCosto = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // lvDetalle
-            // 
-            lvDetalle.BackColor = SystemColors.InactiveCaption;
-            lvDetalle.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            lvDetalle.GridLines = true;
-            lvDetalle.Location = new Point(6, 117);
-            lvDetalle.Margin = new Padding(2, 1, 2, 1);
-            lvDetalle.Name = "lvDetalle";
-            lvDetalle.Size = new Size(377, 162);
-            lvDetalle.TabIndex = 0;
-            lvDetalle.UseCompatibleStateImageBehavior = false;
-            lvDetalle.View = View.Details;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Cantidad";
-            columnHeader1.Width = 330;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Costos";
-            columnHeader2.Width = 330;
             // 
             // txtCantidad
             // 
@@ -244,12 +223,44 @@
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colCantidad, ColCosto });
+            dataGridView1.Location = new Point(79, 125);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(244, 138);
+            dataGridView1.TabIndex = 18;
+            // 
+            // btnExportar
+            // 
+            btnExportar.Location = new Point(387, 197);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(75, 23);
+            btnExportar.TabIndex = 19;
+            btnExportar.Text = "EXPORTAR";
+            btnExportar.UseVisualStyleBackColor = true;
+            btnExportar.Click += btnExportar_Click;
+            // 
+            // colCantidad
+            // 
+            colCantidad.HeaderText = "Cantidad";
+            colCantidad.Name = "colCantidad";
+            // 
+            // ColCosto
+            // 
+            ColCosto.HeaderText = "Costo";
+            ColCosto.Name = "ColCosto";
+            // 
             // RegresionLineal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
             ClientSize = new Size(479, 414);
+            Controls.Add(btnExportar);
+            Controls.Add(dataGridView1);
             Controls.Add(btnSalir);
             Controls.Add(label8);
             Controls.Add(txtQ);
@@ -267,18 +278,16 @@
             Controls.Add(btnAgregar);
             Controls.Add(txtCostos);
             Controls.Add(txtCantidad);
-            Controls.Add(lvDetalle);
             Margin = new Padding(2, 1, 2, 1);
             Name = "RegresionLineal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegresionLineal";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ListView lvDetalle;
         private TextBox txtCantidad;
         private TextBox txtCostos;
         private Button btnAgregar;
@@ -293,10 +302,12 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
         private TextBox txtQ;
         private Label label8;
         private Button btnSalir;
+        private DataGridView dataGridView1;
+        private Button btnExportar;
+        private DataGridViewTextBoxColumn colCantidad;
+        private DataGridViewTextBoxColumn ColCosto;
     }
 }

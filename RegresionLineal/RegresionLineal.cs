@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using objExcel = Microsoft.Office.Interop.Excel;
 
 namespace RegresionLineal
 {
     public partial class RegresionLineal : Form
     {
+        private List<Registro> registros = new List<Registro>();
+
         public RegresionLineal()
         {
             InitializeComponent();
@@ -19,51 +19,50 @@ namespace RegresionLineal
 
         int n = 0;
 
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
             if (Validar() == "")
             {
-
                 Agregar();
 
                 Limpiar();
                 n++;
-
             }
             else
             {
                 MessageBox.Show(Validar(), "Advertencia", MessageBoxButtons.OK);
             }
-
-
         }
 
         private void Limpiar()
         {
             txtCostos.Clear();
             txtCantidad.Clear();
-
         }
 
         private void Agregar()
         {
-            ListViewItem fila = new ListViewItem(txtCantidad.Text);
-            fila.SubItems.Add(txtCostos.Text);
-            lvDetalle.Items.Add(fila);
+            string cantidad = txtCantidad.Text;
+            string costo = txtCostos.Text;
+
+            // Agrega los datos al DataGridView
+            dataGridView1.Rows.Add(cantidad, costo);
+
+            // Agrega los datos a la lista de registros
+            registros.Add(new Registro { Cantidad = cantidad, Costo = costo });
         }
 
         private string Validar()
         {
-            if (txtCantidad.Text.Trim().Length == 0)
+            if (string.IsNullOrWhiteSpace(txtCantidad.Text))
             {
-                return "No puede dejar espacios en blanco";
+                return "No puede dejar espacios en blanco en Cantidad";
             }
-            else if (txtCostos.Text.Trim().Length == 0)
+            else if (string.IsNullOrWhiteSpace(txtCostos.Text))
             {
-                return "No puede dejar espacios en blanco";
+                return "No puede dejar espacios en blanco en Costos";
             }
-
 
             return "";
         }
@@ -72,13 +71,13 @@ namespace RegresionLineal
         {
             double sumatoriax = 0;
 
-            for (int i = 0; i < lvDetalle.Items.Count; i++)
+            foreach (var registro in registros)
             {
-
-                sumatoriax += double.Parse(lvDetalle.Items[i].SubItems[0].Text);
-
+                if (double.TryParse(registro.Cantidad, out double valorX))
+                {
+                    sumatoriax += valorX;
+                }
             }
-
 
             return sumatoriax;
         }
@@ -87,34 +86,29 @@ namespace RegresionLineal
         {
             double sumatoriay = 0;
 
-            for (int i = 0; i < lvDetalle.Items.Count; i++)
+            foreach (var registro in registros)
             {
-
-                sumatoriay += double.Parse(lvDetalle.Items[i].SubItems[1].Text);
-
+                if (double.TryParse(registro.Costo, out double valorY))
+                {
+                    sumatoriay += valorY;
+                }
             }
-
 
             return sumatoriay;
         }
 
         private double SumatoriaXY()
         {
-            double valorx = 0;
-            double valory = 0;
             double producto = 0;
 
-            for (int i = 0; i < lvDetalle.Items.Count; i++)
+            foreach (var registro in registros)
             {
-
-                valorx = double.Parse(lvDetalle.Items[i].SubItems[0].Text);
-                valory = double.Parse(lvDetalle.Items[i].SubItems[1].Text);
-
-
-                producto += valorx * valory;
-
+                if (double.TryParse(registro.Cantidad, out double valorX) &&
+                    double.TryParse(registro.Costo, out double valorY))
+                {
+                    producto += valorX * valorY;
+                }
             }
-
 
             return producto;
         }
@@ -129,12 +123,12 @@ namespace RegresionLineal
         {
             double valorx = 0;
 
-            for (int i = 0; i < lvDetalle.Items.Count; i++)
+            foreach (var registro in registros)
             {
-
-                valorx += Math.Pow(double.Parse(lvDetalle.Items[i].SubItems[0].Text), 2);
-
-
+                if (double.TryParse(registro.Cantidad, out double valorX))
+                {
+                    valorx += Math.Pow(valorX, 2);
+                }
             }
 
             return valorx;
@@ -142,14 +136,11 @@ namespace RegresionLineal
 
         private double ValorA()
         {
-
             return ((SumatoriaY() * SumatoriadeXCuadrada()) - (SumatoriaX() * SumatoriaXY()))
                 / ((n * SumatoriadeXCuadrada()) - SumatoriaXAlCuadrado());
-
         }
 
-
-        public double ValorB()
+        private double ValorB()
         {
             return ((n * SumatoriaXY()) - (SumatoriaX() * SumatoriaY()))
                 / ((n * SumatoriadeXCuadrada()) - (SumatoriaXAlCuadrado()));
@@ -157,9 +148,11 @@ namespace RegresionLineal
 
         private double Resultado()
         {
-            double Q = double.Parse(txtQ.Text);
-
-            return ValorA() + (ValorB() * Q);
+            if (double.TryParse(txtQ.Text, out double Q))
+            {
+                return ValorA() + (ValorB() * Q);
+            }
+            return 0;
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -174,16 +167,18 @@ namespace RegresionLineal
             {
                 ValidacionQ();
             }
-
-
         }
-
 
         private string ValidacionQ()
         {
-            if (txtQ.Text.Trim().Length == 0)
+            if (string.IsNullOrWhiteSpace(txtQ.Text))
             {
-                return MessageBox.Show("No puede dejar espacios en blanco", "Advertencia", MessageBoxButtons.OK).ToString();
+                return "No puede dejar espacios en blanco en Q";
+            }
+
+            if (!double.TryParse(txtQ.Text, out _))
+            {
+                return "Q debe ser un número válido.";
             }
 
             return "";
@@ -191,13 +186,11 @@ namespace RegresionLineal
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            DialogResult r = MessageBox.Show("¿Está seguro de salir?", "Regresion Lineal",
+            DialogResult r = MessageBox.Show("¿Está seguro de salir?", "Regresión Lineal",
                                         MessageBoxButtons.YesNo,
                                         MessageBoxIcon.Information);
             if (r == DialogResult.Yes)
                 this.Close();
-
-
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
@@ -241,5 +234,51 @@ namespace RegresionLineal
                 e.Handled = true;
             }
         }
-    }
+
+        private class Registro
+        {
+            public string Cantidad { get; set; }
+            public string Costo { get; set; }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivo de Excel (*.xlsx)|*.xlsx";
+            saveFileDialog.Title = "Guardar archivo de Excel";
+            saveFileDialog.FileName = "ExcelPrueba.xlsx"; 
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                objExcel.Application objAplicacion = new objExcel.Application();
+                Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+                Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+                objAplicacion.Visible = false;
+                foreach (DataGridViewColumn columna in dataGridView1.Columns)
+                {
+                    objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                    foreach (DataGridViewRow fila in dataGridView1.Rows)
+                    {
+                        objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+                    }
+                }
+                objHoja.Cells[dataGridView1.Rows.Count + 3, 1] = "Valor de A:";
+                objHoja.Cells[dataGridView1.Rows.Count + 3, 2] = txtA.Text;
+
+                objHoja.Cells[dataGridView1.Rows.Count + 4, 1] = "Valor de B:";
+                objHoja.Cells[dataGridView1.Rows.Count + 4, 2] = txtB.Text;
+
+                objHoja.Cells[dataGridView1.Rows.Count + 5, 1] = "Valor de Y:";
+                objHoja.Cells[dataGridView1.Rows.Count + 5, 2] = txtY.Text;
+
+                objLibro.SaveAs2(filePath);
+                objAplicacion.Quit();
+
+                MessageBox.Show("Datos exportados exitosamente a Excel en: " + filePath, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        }
 }
