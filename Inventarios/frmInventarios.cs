@@ -20,10 +20,12 @@ namespace Inventarios
 
         string[] tipoInv = { "UEPS", "PEPS", "Promedio" };
         string[] Movimiento = { "Entrada", "Salida" };
-        Queue<double> cantidadSaldos = new Queue<double>();
-        Queue<double> ValorSaldos = new Queue<double>();
+        Queue<double> QcantidadSaldos = new Queue<double>();
+        Queue<double> QValorSaldos = new Queue<double>();
         List<double> LsCantidad = new List<double>();
         List<double> LsValorUnidad = new List<double>();
+        Stack cantidadSaldos = new Stack();
+        Stack ValorSaldos = new Stack();
 
         private void frmInventarios_Load(object sender, EventArgs e)
         {
@@ -58,8 +60,8 @@ namespace Inventarios
                 {
                     double total = double.Parse(txtValorUnit.Text) * double.Parse(txtCantidad.Text);
 
-                    ValorSaldos.Enqueue(double.Parse(txtValorUnit.Text));
-                    cantidadSaldos.Enqueue(double.Parse(txtCantidad.Text));
+                    QValorSaldos.Enqueue(double.Parse(txtValorUnit.Text));
+                    QcantidadSaldos.Enqueue(double.Parse(txtCantidad.Text));
 
                     ListViewItem entrada = new ListViewItem(txtCantidad.Text);
                     entrada.SubItems.Add(txtValorUnit.Text);
@@ -84,15 +86,15 @@ namespace Inventarios
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
 
-                    Queue<double> copiaCantidad = new Queue<double>(cantidadSaldos);
-                    Queue<double> copiaValor = new Queue<double>(ValorSaldos);
+                    Queue<double> copiaCantidad = new Queue<double>(QcantidadSaldos);
+                    Queue<double> copiaValor = new Queue<double>(QValorSaldos);
 
 
                     string converValor1 = copiaValor.Dequeue().ToString();
                     double conver22 = double.Parse(converValor1);
 
 
-                    string valor1 = cantidadSaldos.Dequeue().ToString();
+                    string valor1 = QcantidadSaldos.Dequeue().ToString();
                     double valor11 = double.Parse(valor1);
 
 
@@ -114,13 +116,13 @@ namespace Inventarios
                         salida.SubItems.Add(aux3.ToString());
                         lvSalidas.Items.Add(salida);
 
-                        cantidadSaldos.Clear();
+                        QcantidadSaldos.Clear();
 
-                        cantidadSaldos.Enqueue(aux1);
+                        QcantidadSaldos.Enqueue(aux1);
 
-                        ValorSaldos.Clear();
+                        QValorSaldos.Clear();
 
-                        ValorSaldos.Enqueue(conver22);
+                        QValorSaldos.Enqueue(conver22);
 
 
 
@@ -142,7 +144,7 @@ namespace Inventarios
 
  
 
-                        string converCantidad2 = cantidadSaldos.Dequeue().ToString();
+                        string converCantidad2 = QcantidadSaldos.Dequeue().ToString();
                         double conver2 = double.Parse(converCantidad2);
 
                         string converValor2 = copiaValor.Dequeue().ToString();
@@ -185,13 +187,13 @@ namespace Inventarios
                         saldo2.SubItems.Add((aux2*convervalor2).ToString());
                         lvSaldos.Items.Add(saldo2);
 
-                        cantidadSaldos.Clear();
+                        QcantidadSaldos.Clear();
 
-                        cantidadSaldos.Enqueue(aux2);
+                        QcantidadSaldos.Enqueue(aux2);
 
-                        ValorSaldos.Clear();
+                        QValorSaldos.Clear();
 
-                        ValorSaldos.Enqueue(convervalor2);
+                        QValorSaldos.Enqueue(convervalor2);
 
                     }
 
