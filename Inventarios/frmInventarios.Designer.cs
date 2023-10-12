@@ -76,6 +76,7 @@
             cboInventario.Name = "cboInventario";
             cboInventario.Size = new Size(132, 23);
             cboInventario.TabIndex = 37;
+            cboInventario.Text = "Seleccione";
             // 
             // lvFecha
             // 
@@ -170,7 +171,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(680, 72);
+            btnAgregar.Location = new Point(623, 73);
             btnAgregar.Margin = new Padding(2, 1, 2, 1);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(81, 22);
@@ -181,13 +182,14 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(807, 368);
+            btnSalir.Location = new Point(807, 378);
             btnSalir.Margin = new Padding(2, 1, 2, 1);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(81, 22);
             btnSalir.TabIndex = 30;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // label5
             // 
@@ -231,11 +233,13 @@
             // 
             // txtValorUnit
             // 
+            txtValorUnit.AllowDrop = true;
             txtValorUnit.Location = new Point(488, 75);
             txtValorUnit.Margin = new Padding(2, 1, 2, 1);
             txtValorUnit.Name = "txtValorUnit";
             txtValorUnit.Size = new Size(92, 23);
             txtValorUnit.TabIndex = 25;
+            txtValorUnit.KeyPress += txtValorUnit_KeyPress;
             // 
             // txtCantidad
             // 
@@ -244,6 +248,7 @@
             txtCantidad.Name = "txtCantidad";
             txtCantidad.Size = new Size(94, 23);
             txtCantidad.TabIndex = 24;
+            txtCantidad.KeyPress += txtCantidad_KeyPress;
             // 
             // cboMovimiento
             // 
@@ -253,6 +258,7 @@
             cboMovimiento.Name = "cboMovimiento";
             cboMovimiento.Size = new Size(132, 23);
             cboMovimiento.TabIndex = 23;
+            cboMovimiento.Text = "Escoja";
             // 
             // label1
             // 
