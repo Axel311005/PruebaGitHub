@@ -45,12 +45,11 @@
             txtQ = new TextBox();
             label8 = new Label();
             btnSalir = new Button();
-            dataGridView1 = new DataGridView();
-            colCantidad = new DataGridViewTextBoxColumn();
-            ColCosto = new DataGridViewTextBoxColumn();
             btnExportar = new Button();
             pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            lvDetalle = new ListView();
+            colCosto = new ColumnHeader();
+            colCantidad = new ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -225,30 +224,6 @@
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colCantidad, ColCosto });
-            dataGridView1.Location = new Point(6, 125);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(369, 138);
-            dataGridView1.TabIndex = 18;
-            // 
-            // colCantidad
-            // 
-            colCantidad.HeaderText = "Cantidad";
-            colCantidad.Name = "colCantidad";
-            colCantidad.Resizable = DataGridViewTriState.False;
-            colCantidad.Width = 150;
-            // 
-            // ColCosto
-            // 
-            ColCosto.HeaderText = "Costo";
-            ColCosto.Name = "ColCosto";
-            ColCosto.Resizable = DataGridViewTriState.False;
-            ColCosto.Width = 180;
-            // 
             // btnExportar
             // 
             btnExportar.Location = new Point(387, 197);
@@ -268,15 +243,37 @@
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
             // 
+            // lvDetalle
+            // 
+            lvDetalle.Columns.AddRange(new ColumnHeader[] { colCosto, colCantidad });
+            lvDetalle.GridLines = true;
+            lvDetalle.Location = new Point(15, 135);
+            lvDetalle.Name = "lvDetalle";
+            lvDetalle.Size = new Size(354, 132);
+            lvDetalle.TabIndex = 21;
+            lvDetalle.UseCompatibleStateImageBehavior = false;
+            lvDetalle.View = View.Details;
+            // 
+            // colCosto
+            // 
+            colCosto.Text = "Costo";
+            colCosto.Width = 180;
+            // 
+            // colCantidad
+            // 
+            colCantidad.Text = "Cantidad";
+            colCantidad.TextAlign = HorizontalAlignment.Center;
+            colCantidad.Width = 170;
+            // 
             // RegresionLineal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
             ClientSize = new Size(479, 414);
+            Controls.Add(lvDetalle);
             Controls.Add(pictureBox1);
             Controls.Add(btnExportar);
-            Controls.Add(dataGridView1);
             Controls.Add(btnSalir);
             Controls.Add(label8);
             Controls.Add(txtQ);
@@ -298,7 +295,6 @@
             Name = "RegresionLineal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegresionLineal";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -322,10 +318,10 @@
         private TextBox txtQ;
         private Label label8;
         private Button btnSalir;
-        private DataGridView dataGridView1;
         private Button btnExportar;
-        private DataGridViewTextBoxColumn colCantidad;
-        private DataGridViewTextBoxColumn ColCosto;
         private PictureBox pictureBox1;
+        private ListView lvDetalle;
+        private ColumnHeader colCosto;
+        private ColumnHeader colCantidad;
     }
 }
