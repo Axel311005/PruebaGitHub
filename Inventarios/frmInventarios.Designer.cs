@@ -56,6 +56,7 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
+            btnExportar = new Button();
             SuspendLayout();
             // 
             // label8
@@ -298,11 +299,22 @@
             columnHeader4.Text = "Total";
             columnHeader4.Width = 170;
             // 
+            // btnExportar
+            // 
+            btnExportar.Location = new Point(725, 72);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(75, 23);
+            btnExportar.TabIndex = 39;
+            btnExportar.Text = "EXPORTAR";
+            btnExportar.UseVisualStyleBackColor = true;
+            btnExportar.Click += btnExportar_Click;
+            // 
             // frmInventarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1613, 401);
+            Controls.Add(btnExportar);
             Controls.Add(label8);
             Controls.Add(cboInventario);
             Controls.Add(lvFecha);
@@ -359,5 +371,6 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
+        private Button btnExportar;
     }
 }

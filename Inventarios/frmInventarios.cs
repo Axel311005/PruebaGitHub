@@ -8,6 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using objExcel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Microsoft.VisualBasic;
+using DocumentFormat.OpenXml.Spreadsheet;
+using Worksheet = Microsoft.Office.Interop.Excel.Worksheet;
 
 namespace Inventarios
 {
@@ -510,7 +516,7 @@ namespace Inventarios
 
         private void txtValorUnit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(cboMovimiento.SelectedItem == "Salida")
+            if (cboMovimiento.SelectedItem == "Salida")
             {
 
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
@@ -539,5 +545,61 @@ namespace Inventarios
                 }
             }
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivo de Excel (*.xlsx)|*.xlsx";
+            saveFileDialog.Title = "Guardar archivo de Excel";
+            saveFileDialog.FileName = "ExcelPrueba.xlsx";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                Microsoft.Office.Interop.Excel.Application objAplicacion = new Microsoft.Office.Interop.Excel.Application();
+                Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+
+                string seleccion = cboInventario.SelectedItem.ToString();
+                Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+                objHoja.Name = seleccion;
+
+                objAplicacion.Visible = false;
+
+                AgregarEncabezados(objHoja, seleccion);
+                ExportarListViewAExcel(lvFecha, lvEntradas, lvSalidas, lvSaldos, objHoja, 4, 1);
+                objLibro.SaveAs2(filePath);
+                objAplicacion.Quit();
+
+                MessageBox.Show("Datos exportados exitosamente a Excel en: " + filePath, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ExportarListViewAExcel(System.Windows.Forms.ListView fechaListView, System.Windows.Forms.ListView entradasListView, System.Windows.Forms.ListView salidasListView, System.Windows.Forms.ListView saldosListView, Worksheet objHoja, int inicioRow, int inicioColumn)
+        {
+            objHoja.Cells[inicioRow, inicioColumn].Value = "Fechas";
+            objHoja.Cells[inicioRow, inicioColumn + 3].Value = "Entradas";
+            objHoja.Cells[inicioRow, inicioColumn + 6].Value = "Salidas";
+            objHoja.Cells[inicioRow, inicioColumn + 9].Value = "Saldos";
+            int rowActual = inicioRow + 1;
+
+            for (int i = 0; i < fechaListView.Items.Count; i++)
+            {
+                objHoja.Cells[rowActual, inicioColumn].Value = fechaListView.Items[i].Text;
+
+                for (int col = 0; col < 3; col++)
+                {
+                    objHoja.Cells[rowActual, inicioColumn + 2 + col].Value = entradasListView.Items[i].SubItems[col].Text;
+                    objHoja.Cells[rowActual, inicioColumn + 5 + col].Value = salidasListView.Items[i].SubItems[col].Text;
+                    objHoja.Cells[rowActual, inicioColumn + 8 + col].Value = saldosListView.Items[i].SubItems[col].Text;
+                }
+
+                rowActual++;
+            }
+        }
+        private void AgregarEncabezados(Worksheet objHoja, string metodo)
+        {
+            objHoja.Cells[1, 1].Value = "Método: " + metodo;
+        }
+
     }
 }
