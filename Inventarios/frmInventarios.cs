@@ -574,24 +574,21 @@ namespace Inventarios
 
         private void ExportarListViewAExcel(System.Windows.Forms.ListView fechaListView, System.Windows.Forms.ListView entradasListView, System.Windows.Forms.ListView salidasListView, System.Windows.Forms.ListView saldosListView, Worksheet objHoja, int inicioRow, int inicioColumn)
         {
-            objHoja.Cells[inicioRow, inicioColumn].Value = "Fechas";
-            objHoja.Cells[inicioRow, inicioColumn + 2].Value = "Entradas";
-            objHoja.Cells[inicioRow, inicioColumn + 1].Value = "";
-            objHoja.Cells[inicioRow, inicioColumn + 4].Value = "Salidas";
-            objHoja.Cells[inicioRow, inicioColumn + 1].Value = "";
-            objHoja.Cells[inicioRow, inicioColumn + 6].Value = "Saldos";
-
+            objHoja.Cells[inicioRow, inicioColumn].Value = "Fechas"; 
+            objHoja.Cells[inicioRow, inicioColumn + 3].Value = "Entradas"; 
+            objHoja.Cells[inicioRow, inicioColumn + 6].Value = "Salidas";
+            objHoja.Cells[inicioRow, inicioColumn + 9].Value = "Saldos"; 
             int rowActual = inicioRow + 1;
 
             for (int i = 0; i < fechaListView.Items.Count; i++)
             {
                 objHoja.Cells[rowActual, inicioColumn].Value = fechaListView.Items[i].Text;
 
-                for (int j = 0; j < entradasListView.Columns.Count; j++)
+                for (int col = 0; col < 3; col++)
                 {
-                    objHoja.Cells[rowActual, inicioColumn + 1 + j].Value = entradasListView.Items[i].SubItems[j].Text;
-                    objHoja.Cells[rowActual, inicioColumn + 3 + j].Value = salidasListView.Items[i].SubItems[j].Text;
-                    objHoja.Cells[rowActual, inicioColumn + 5 + j].Value = saldosListView.Items[i].SubItems[j].Text;
+                    objHoja.Cells[rowActual, inicioColumn + 2 + col].Value = entradasListView.Items[i].SubItems[col].Text;
+                    objHoja.Cells[rowActual, inicioColumn + 5 + col].Value = salidasListView.Items[i].SubItems[col].Text;
+                    objHoja.Cells[rowActual, inicioColumn + 8 + col].Value = saldosListView.Items[i].SubItems[col].Text;
                 }
 
                 rowActual++;
@@ -600,7 +597,6 @@ namespace Inventarios
             private void AgregarEncabezados(Worksheet objHoja, string metodo)
             {
                 objHoja.Cells[1, 1].Value = "Método: " + metodo;
-            }
-
-        }
+             }
     }
+}
