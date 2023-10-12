@@ -50,6 +50,7 @@ namespace Inventarios
 
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
+
                     double total = double.Parse(txtValorUnit.Text) * double.Parse(txtCantidad.Text);
 
                     ValorSaldos.Push(double.Parse(txtValorUnit.Text));
@@ -80,6 +81,8 @@ namespace Inventarios
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
+
+
 
                     Stack CopiaCantidad = new Stack();
                     Stack CopiaValor = new Stack();
@@ -215,6 +218,8 @@ namespace Inventarios
 
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
+
+                    txtValorUnit.Enabled = true;
                     double total = double.Parse(txtValorUnit.Text) * double.Parse(txtCantidad.Text);
 
                     QValorSaldos.Enqueue(double.Parse(txtValorUnit.Text));
@@ -243,6 +248,8 @@ namespace Inventarios
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
+                    txtValorUnit.Enabled = false;
+
                     Queue<double> copiaCantidad = new Queue<double>(QcantidadSaldos);
                     Queue<double> copiaValor = new Queue<double>(QValorSaldos);
 
@@ -361,15 +368,16 @@ namespace Inventarios
 
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
-                    
+                    txtValorUnit.Enabled = true;
+
                     LsCantidad.Add(double.Parse(txtCantidad.Text));
                     LsValorUnidad.Add(double.Parse(txtValorUnit.Text));
                     ListViewItem Cantidad = new ListViewItem(txtCantidad.Text);
                     Cantidad.SubItems.Add(txtValorUnit.Text);
 
                     double result;
-                    
-                    result= double.Parse(txtCantidad.Text) * double.Parse(txtValorUnit.Text);
+
+                    result = double.Parse(txtCantidad.Text) * double.Parse(txtValorUnit.Text);
                     lsTotal.Add(result);
 
                     Cantidad.SubItems.Add(result.ToString());
@@ -386,7 +394,7 @@ namespace Inventarios
                     lvSalidas.Items.Add(entrada);
 
                     double result1 = 0;
-                    double result2= 0;
+                    double result2 = 0;
                     result1 = LsCantidad.Sum();
                     result2 = lsTotal.Sum();
 
@@ -408,31 +416,33 @@ namespace Inventarios
                         ListViewItem saldo2 = new ListViewItem(result1.ToString());
                         saldo2.SubItems.Add(Result3.ToString("0.00"));
                         saldo2.SubItems.Add(result2.ToString("0.00"));
-                        lvSaldos.Items.Add(saldo2); 
-                        
-                        
+                        lvSaldos.Items.Add(saldo2);
+
+
                     }
 
-                    
+
 
 
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
-                   ListViewItem Salida = new ListViewItem(txtCantidad.Text);
+                    txtValorUnit.Enabled = false;
+
+                    ListViewItem Salida = new ListViewItem(txtCantidad.Text);
                     double SumaCant = 0;
                     double SumaTotal = 0;
                     SumaCant = LsCantidad.Sum();
                     SumaTotal = lsTotal.Sum();
 
                     double ValorUnit = 0;
-                    
+
                     ValorUnit = SumaTotal / SumaCant;
 
                     double Total = 0;
                     Total = ValorUnit * double.Parse(txtCantidad.Text);
 
-                    
+
                     Salida.SubItems.Add(ValorUnit.ToString("0.00"));
                     Salida.SubItems.Add(Total.ToString("0.00"));
                     lvSalidas.Items.Add(Salida);
@@ -459,18 +469,75 @@ namespace Inventarios
 
 
 
-               }
-
-                
-                    // ....................................................................
-
-
-
-
-
-
                 }
 
+
+
+                // ....................................................................
+
+
+
+
+
+
+            }
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("¿Quieres salir del programa?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 8;
+
+            if (txtCantidad.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtValorUnit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(cboMovimiento.SelectedItem == "Salida")
+            {
+
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+                {
+                    e.Handled = true;
+                }
+                int maxLength = 0;
+
+                if (txtValorUnit.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+                {
+                    e.Handled = true;
+                }
+
+            }
+            else
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+                {
+                    e.Handled = true;
+                }
+                int maxLength = 6;
+
+                if (txtValorUnit.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }
