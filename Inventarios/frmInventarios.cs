@@ -12,8 +12,6 @@ using objExcel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Worksheet = Microsoft.Office.Interop.Excel.Worksheet;
 
 namespace Inventarios
 {
