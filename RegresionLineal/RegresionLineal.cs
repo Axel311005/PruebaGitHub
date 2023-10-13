@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using objExcel = Microsoft.Office.Interop.Excel;
+
 
 namespace RegresionLineal
 {
@@ -241,5 +244,47 @@ namespace RegresionLineal
                 e.Handled = true;
             }
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivo de Excel (*.xlsx)|*.xlsx";
+            saveFileDialog.Title = "Guardar archivo de Excel";
+            saveFileDialog.FileName = "ExcelPrueba.xlsx";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                objExcel.Application objAplicacion = new objExcel.Application();
+                Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+                Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+                objAplicacion.Visible = false;
+                for (int i = 1; i <= lvDetalle.Columns.Count; i++)
+                {
+                    objHoja.Cells[1, i].Value = lvDetalle.Columns[i - 1].Text;
+                }
+                for (int i = 0; i < lvDetalle.Items.Count; i++)
+                {
+                    for (int j = 0; j < lvDetalle.Columns.Count; j++)
+                    {
+                        objHoja.Cells[i + 2, j + 1].Value = lvDetalle.Items[i].SubItems[j].Text;
+                    }
+                }
+                int rowIndex = lvDetalle.Items.Count + 3;
+                objHoja.Cells[rowIndex, 1].Value = "Valor de A:";
+                objHoja.Cells[rowIndex, 2].Value = txtA.Text;
+                objHoja.Cells[rowIndex + 1, 1].Value = "Valor de B:";
+                objHoja.Cells[rowIndex + 1, 2].Value = txtB.Text;
+                objHoja.Cells[rowIndex + 2, 1].Value = "Valor de Y:";
+                objHoja.Cells[rowIndex + 2, 2].Value = txtY.Text;
+                objLibro.SaveAs2(filePath);
+                objAplicacion.Quit();
+
+                MessageBox.Show("Datos exportados exitosamente a Excel en: " + filePath, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
-}
+ }
+ 

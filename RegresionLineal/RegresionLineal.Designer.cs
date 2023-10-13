@@ -48,6 +48,7 @@
             txtQ = new TextBox();
             label8 = new Label();
             btnSalir = new Button();
+            btnExportar = new Button();
             SuspendLayout();
             // 
             // lvDetalle
@@ -55,9 +56,10 @@
             lvDetalle.BackColor = SystemColors.InactiveCaption;
             lvDetalle.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
             lvDetalle.GridLines = true;
-            lvDetalle.Location = new Point(12, 250);
+            lvDetalle.Location = new Point(6, 117);
+            lvDetalle.Margin = new Padding(2, 1, 2, 1);
             lvDetalle.Name = "lvDetalle";
-            lvDetalle.Size = new Size(668, 341);
+            lvDetalle.Size = new Size(362, 162);
             lvDetalle.TabIndex = 0;
             lvDetalle.UseCompatibleStateImageBehavior = false;
             lvDetalle.View = View.Details;
@@ -74,25 +76,28 @@
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(12, 178);
+            txtCantidad.Location = new Point(6, 83);
+            txtCantidad.Margin = new Padding(2, 1, 2, 1);
             txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(151, 39);
+            txtCantidad.Size = new Size(83, 23);
             txtCantidad.TabIndex = 1;
             txtCantidad.KeyPress += txtCantidad_KeyPress;
             // 
             // txtCostos
             // 
-            txtCostos.Location = new Point(198, 178);
+            txtCostos.Location = new Point(107, 83);
+            txtCostos.Margin = new Padding(2, 1, 2, 1);
             txtCostos.Name = "txtCostos";
-            txtCostos.Size = new Size(157, 39);
+            txtCostos.Size = new Size(86, 23);
             txtCostos.TabIndex = 2;
             txtCostos.KeyPress += txtCostos_KeyPress;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(718, 266);
+            btnAgregar.Location = new Point(387, 125);
+            btnAgregar.Margin = new Padding(2, 1, 2, 1);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(150, 46);
+            btnAgregar.Size = new Size(81, 22);
             btnAgregar.TabIndex = 3;
             btnAgregar.Text = "AGREGAR";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -100,9 +105,10 @@
             // 
             // btnCalcular
             // 
-            btnCalcular.Location = new Point(718, 339);
+            btnCalcular.Location = new Point(387, 159);
+            btnCalcular.Margin = new Padding(2, 1, 2, 1);
             btnCalcular.Name = "btnCalcular";
-            btnCalcular.Size = new Size(150, 46);
+            btnCalcular.Size = new Size(81, 22);
             btnCalcular.TabIndex = 4;
             btnCalcular.Text = "CALCULAR";
             btnCalcular.UseVisualStyleBackColor = true;
@@ -112,51 +118,57 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.Location = new Point(208, 20);
+            label1.Location = new Point(112, 9);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(324, 45);
+            label1.Size = new Size(164, 21);
             label1.TabIndex = 5;
             label1.Text = "REGRESION LINEAL";
             // 
             // txtA
             // 
             txtA.Enabled = false;
-            txtA.Location = new Point(59, 655);
+            txtA.Location = new Point(32, 307);
+            txtA.Margin = new Padding(2, 1, 2, 1);
             txtA.Name = "txtA";
-            txtA.Size = new Size(200, 39);
+            txtA.Size = new Size(110, 23);
             txtA.TabIndex = 6;
             // 
             // txtB
             // 
             txtB.Enabled = false;
-            txtB.Location = new Point(343, 655);
+            txtB.Location = new Point(185, 307);
+            txtB.Margin = new Padding(2, 1, 2, 1);
             txtB.Name = "txtB";
-            txtB.Size = new Size(200, 39);
+            txtB.Size = new Size(110, 23);
             txtB.TabIndex = 7;
             // 
             // txtY
             // 
             txtY.Enabled = false;
-            txtY.Location = new Point(198, 771);
+            txtY.Location = new Point(107, 361);
+            txtY.Margin = new Padding(2, 1, 2, 1);
             txtY.Name = "txtY";
-            txtY.Size = new Size(200, 39);
+            txtY.Size = new Size(110, 23);
             txtY.TabIndex = 8;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(69, 607);
+            label2.Location = new Point(37, 285);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(149, 32);
+            label2.Size = new Size(73, 15);
             label2.TabIndex = 9;
             label2.Text = "El valor de a:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(370, 607);
+            label3.Location = new Point(199, 285);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(151, 32);
+            label3.Size = new Size(74, 15);
             label3.TabIndex = 10;
             label3.Text = "El valor de b:";
             // 
@@ -164,9 +176,10 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = SystemColors.ButtonHighlight;
-            label4.Location = new Point(22, 108);
+            label4.Location = new Point(12, 51);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(129, 32);
+            label4.Size = new Size(65, 15);
             label4.TabIndex = 11;
             label4.Text = "CANTIDAD";
             // 
@@ -174,35 +187,39 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(223, 108);
+            label5.Location = new Point(120, 51);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(102, 32);
+            label5.Size = new Size(50, 15);
             label5.TabIndex = 12;
             label5.Text = "COSTOS";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(234, 721);
+            label6.Location = new Point(126, 338);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(144, 32);
+            label6.Size = new Size(70, 15);
             label6.TabIndex = 13;
             label6.Text = "El valor de y";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(608, 185);
+            label7.Location = new Point(327, 87);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(95, 32);
+            label7.Size = new Size(48, 15);
             label7.TabIndex = 14;
             label7.Text = "y=a+bx";
             // 
             // txtQ
             // 
-            txtQ.Location = new Point(390, 178);
+            txtQ.Location = new Point(210, 83);
+            txtQ.Margin = new Padding(2, 1, 2, 1);
             txtQ.Name = "txtQ";
-            txtQ.Size = new Size(142, 39);
+            txtQ.Size = new Size(78, 23);
             txtQ.TabIndex = 15;
             txtQ.KeyPress += txtQ_KeyPress;
             // 
@@ -210,28 +227,41 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = SystemColors.ButtonHighlight;
-            label8.Location = new Point(395, 108);
+            label8.Location = new Point(213, 51);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(126, 32);
+            label8.Size = new Size(61, 15);
             label8.TabIndex = 16;
             label8.Text = "Valor de Q";
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(685, 764);
+            btnSalir.Location = new Point(369, 358);
+            btnSalir.Margin = new Padding(2, 1, 2, 1);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(150, 46);
+            btnSalir.Size = new Size(81, 22);
             btnSalir.TabIndex = 17;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
+            // btnExportar
+            // 
+            btnExportar.Location = new Point(387, 185);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(81, 23);
+            btnExportar.TabIndex = 18;
+            btnExportar.Text = "EXPORTAR";
+            btnExportar.UseVisualStyleBackColor = true;
+            btnExportar.Click += btnExportar_Click;
+            // 
             // RegresionLineal
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
-            ClientSize = new Size(889, 849);
+            ClientSize = new Size(479, 398);
+            Controls.Add(btnExportar);
             Controls.Add(btnSalir);
             Controls.Add(label8);
             Controls.Add(txtQ);
@@ -250,6 +280,7 @@
             Controls.Add(txtCostos);
             Controls.Add(txtCantidad);
             Controls.Add(lvDetalle);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "RegresionLineal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegresionLineal";
@@ -279,5 +310,6 @@
         private TextBox txtQ;
         private Label label8;
         private Button btnSalir;
+        private Button btnExportar;
     }
 }

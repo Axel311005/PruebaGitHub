@@ -54,10 +54,10 @@
             lvDetalle.BackColor = Color.MistyRose;
             lvDetalle.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
             lvDetalle.GridLines = true;
-            lvDetalle.Location = new Point(26, 201);
-            lvDetalle.Margin = new Padding(4, 2, 4, 2);
+            lvDetalle.Location = new Point(14, 94);
+            lvDetalle.Margin = new Padding(2, 1, 2, 1);
             lvDetalle.Name = "lvDetalle";
-            lvDetalle.Size = new Size(669, 452);
+            lvDetalle.Size = new Size(441, 214);
             lvDetalle.TabIndex = 0;
             lvDetalle.UseCompatibleStateImageBehavior = false;
             lvDetalle.View = View.Details;
@@ -74,19 +74,19 @@
             // 
             // txtCostos
             // 
-            txtCostos.Location = new Point(26, 124);
-            txtCostos.Margin = new Padding(4, 2, 4, 2);
+            txtCostos.Location = new Point(14, 58);
+            txtCostos.Margin = new Padding(2, 1, 2, 1);
             txtCostos.Name = "txtCostos";
-            txtCostos.Size = new Size(201, 39);
+            txtCostos.Size = new Size(110, 23);
             txtCostos.TabIndex = 1;
             txtCostos.KeyPress += txtCostos_KeyPress;
             // 
             // txtHoras
             // 
-            txtHoras.Location = new Point(301, 124);
-            txtHoras.Margin = new Padding(4, 2, 4, 2);
+            txtHoras.Location = new Point(162, 58);
+            txtHoras.Margin = new Padding(2, 1, 2, 1);
             txtHoras.Name = "txtHoras";
-            txtHoras.Size = new Size(201, 39);
+            txtHoras.Size = new Size(110, 23);
             txtHoras.TabIndex = 2;
             txtHoras.KeyPress += txtHoras_KeyPress;
             // 
@@ -94,39 +94,39 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.Location = new Point(123, 9);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(66, 4);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(445, 45);
+            label1.Size = new Size(224, 21);
             label1.TabIndex = 3;
             label1.Text = "PUNTO ALTO PUNTO BAJO";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(80, 73);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(43, 34);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(102, 32);
+            label2.Size = new Size(50, 15);
             label2.TabIndex = 4;
             label2.Text = "COSTOS";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(329, 73);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(177, 34);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(157, 32);
+            label3.Size = new Size(79, 15);
             label3.TabIndex = 5;
             label3.Text = "HORAS/UNID";
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(555, 73);
-            btnAgregar.Margin = new Padding(4, 2, 4, 2);
+            btnAgregar.Location = new Point(384, 57);
+            btnAgregar.Margin = new Padding(2, 1, 2, 1);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(150, 47);
+            btnAgregar.Size = new Size(81, 22);
             btnAgregar.TabIndex = 6;
             btnAgregar.Text = "AGREGAR";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -134,10 +134,10 @@
             // 
             // btnCalcular
             // 
-            btnCalcular.Location = new Point(555, 137);
-            btnCalcular.Margin = new Padding(4, 2, 4, 2);
+            btnCalcular.Location = new Point(299, 57);
+            btnCalcular.Margin = new Padding(2, 1, 2, 1);
             btnCalcular.Name = "btnCalcular";
-            btnCalcular.Size = new Size(150, 47);
+            btnCalcular.Size = new Size(81, 22);
             btnCalcular.TabIndex = 7;
             btnCalcular.Text = "CALCULAR";
             btnCalcular.UseVisualStyleBackColor = true;
@@ -145,10 +145,10 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(569, 683);
-            btnSalir.Margin = new Padding(4, 2, 4, 2);
+            btnSalir.Location = new Point(299, 347);
+            btnSalir.Margin = new Padding(2, 1, 2, 1);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(150, 47);
+            btnSalir.Size = new Size(81, 22);
             btnSalir.TabIndex = 8;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = true;
@@ -157,86 +157,86 @@
             // CT
             // 
             CT.AutoSize = true;
-            CT.Location = new Point(69, 698);
-            CT.Margin = new Padding(4, 0, 4, 0);
+            CT.Location = new Point(37, 327);
+            CT.Margin = new Padding(2, 0, 2, 0);
             CT.Name = "CT";
-            CT.Size = new Size(42, 32);
+            CT.Size = new Size(21, 15);
             CT.TabIndex = 9;
             CT.Text = "CT";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(249, 698);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(134, 327);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(54, 32);
+            label5.Size = new Size(27, 15);
             label5.TabIndex = 10;
             label5.Text = "CFT";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(444, 698);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(239, 327);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(57, 32);
+            label6.Size = new Size(28, 15);
             label6.TabIndex = 11;
             label6.Text = "CVT";
             // 
             // txtCostosTotales
             // 
             txtCostosTotales.Enabled = false;
-            txtCostosTotales.Location = new Point(26, 745);
-            txtCostosTotales.Margin = new Padding(4, 2, 4, 2);
+            txtCostosTotales.Location = new Point(14, 349);
+            txtCostosTotales.Margin = new Padding(2, 1, 2, 1);
             txtCostosTotales.Name = "txtCostosTotales";
-            txtCostosTotales.Size = new Size(138, 39);
+            txtCostosTotales.Size = new Size(76, 23);
             txtCostosTotales.TabIndex = 12;
             // 
             // txtCostosFijos
             // 
             txtCostosFijos.Enabled = false;
-            txtCostosFijos.Location = new Point(217, 745);
-            txtCostosFijos.Margin = new Padding(4, 2, 4, 2);
+            txtCostosFijos.Location = new Point(117, 349);
+            txtCostosFijos.Margin = new Padding(2, 1, 2, 1);
             txtCostosFijos.Name = "txtCostosFijos";
-            txtCostosFijos.Size = new Size(130, 39);
+            txtCostosFijos.Size = new Size(72, 23);
             txtCostosFijos.TabIndex = 13;
             // 
             // txtCostosVariables
             // 
             txtCostosVariables.Enabled = false;
-            txtCostosVariables.Location = new Point(409, 740);
-            txtCostosVariables.Margin = new Padding(4, 2, 4, 2);
+            txtCostosVariables.Location = new Point(220, 347);
+            txtCostosVariables.Margin = new Padding(2, 1, 2, 1);
             txtCostosVariables.Name = "txtCostosVariables";
-            txtCostosVariables.Size = new Size(123, 39);
+            txtCostosVariables.Size = new Size(68, 23);
             txtCostosVariables.TabIndex = 14;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(171, 745);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(92, 349);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(30, 32);
+            label4.Size = new Size(15, 15);
             label4.TabIndex = 15;
             label4.Text = "=";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(362, 749);
-            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Location = new Point(195, 351);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(30, 32);
+            label7.Size = new Size(15, 15);
             label7.TabIndex = 16;
             label7.Text = "+";
             // 
             // PuntoAltoPuntoBajo
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(750, 853);
+            ClientSize = new Size(466, 400);
             Controls.Add(label7);
             Controls.Add(label4);
             Controls.Add(txtCostosVariables);
@@ -254,7 +254,7 @@
             Controls.Add(txtHoras);
             Controls.Add(txtCostos);
             Controls.Add(lvDetalle);
-            Margin = new Padding(4, 2, 4, 2);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "PuntoAltoPuntoBajo";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PuntoAltoPuntoBajo";

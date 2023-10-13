@@ -223,7 +223,7 @@ namespace Inventarios
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
 
-                    txtValorUnit.Enabled = true;
+                    
                     double total = double.Parse(txtValorUnit.Text) * double.Parse(txtCantidad.Text);
 
                     QValorSaldos.Enqueue(double.Parse(txtValorUnit.Text));
@@ -252,7 +252,7 @@ namespace Inventarios
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
-                    txtValorUnit.Enabled = false;
+                    
 
                     Queue<double> copiaCantidad = new Queue<double>(QcantidadSaldos);
                     Queue<double> copiaValor = new Queue<double>(QValorSaldos);
@@ -372,7 +372,7 @@ namespace Inventarios
 
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
-                    txtValorUnit.Enabled = true;
+                   
 
                     LsCantidad.Add(double.Parse(txtCantidad.Text));
                     LsValorUnidad.Add(double.Parse(txtValorUnit.Text));
@@ -431,7 +431,7 @@ namespace Inventarios
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
-                    txtValorUnit.Enabled = false;
+                   
 
                     ListViewItem Salida = new ListViewItem(txtCantidad.Text);
                     double SumaCant = 0;
