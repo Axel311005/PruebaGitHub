@@ -66,6 +66,7 @@ namespace Inventarios
                     lvEntradas.Items.Add(entrada);
 
 
+
                     ListViewItem saldos = new ListViewItem(txtCantidad.Text);
                     saldos.SubItems.Add(txtValorUnit.Text);
                     saldos.SubItems.Add(total.ToString());
@@ -96,117 +97,110 @@ namespace Inventarios
 
 
 
-                    string converCantidad1 = CopiaCantidad.Pop().ToString();
-                    double conver11 = double.Parse(converCantidad1);
-
-                    string converCantidad2 = CopiaCantidad.Pop().ToString();
-                    double conver2 = double.Parse(converCantidad2);
-
-                    string converValor1 = CopiaValor.Pop().ToString();
+                    string converValor1 = ValorSaldos.Pop().ToString();
                     double conver22 = double.Parse(converValor1);
 
-                    string ConverValor2 = CopiaValor.Pop().ToString();
-                    double convervalor2 = double.Parse(ConverValor2);
+                    string PrimerValorString = cantidadSaldos.Pop().ToString();
+                    double PrimerValor = double.Parse(PrimerValorString);
 
 
-                    if (double.Parse(txtCantidad.Text) <= conver11)
+                    if (double.Parse(txtCantidad.Text) < PrimerValor)
                     {
 
-                        double op1 = conver11 - double.Parse(txtCantidad.Text);
-                        double op3 = double.Parse(txtCantidad.Text) * conver22;
+                        double Cantidad = PrimerValor - double.Parse(txtCantidad.Text);
+                        double total = Cantidad * conver22;
+
+                        ListViewItem Saldos = new ListViewItem(Cantidad.ToString());
+                        Saldos.SubItems.Add(conver22.ToString());
+                        Saldos.SubItems.Add(total.ToString());
+                        lvSaldos.Items.Add(Saldos);
 
                         ListViewItem salida = new ListViewItem(txtCantidad.Text);
                         salida.SubItems.Add(conver22.ToString());
-                        salida.SubItems.Add(op3.ToString());
+                        salida.SubItems.Add((double.Parse(txtCantidad.Text) * conver22).ToString());
                         lvSalidas.Items.Add(salida);
 
-                        double totalSaldo1 = conver22 * op1;
-
-                        ListViewItem saldos = new ListViewItem(op1.ToString());
-                        saldos.SubItems.Add(conver22.ToString());
-                        saldos.SubItems.Add(totalSaldo1.ToString());
-                        lvSaldos.Items.Add(saldos);
-
-                        ListViewItem entrada = new ListViewItem("-------");
-                        entrada.SubItems.Add("-------");
-                        entrada.SubItems.Add("-------");
+                        ListViewItem entrada = new ListViewItem("---------");
+                        entrada.SubItems.Add("--------");
+                        entrada.SubItems.Add("--------");
                         lvEntradas.Items.Add(entrada);
+
+
+
+
+                    }
+                    else if (double.Parse(txtCantidad.Text) > PrimerValor)
+                    {
+
+
+                        string Cantidad2 = cantidadSaldos.Pop().ToString();
+                        double cantidad2 = double.Parse(Cantidad2);
+
+                        string Valor2 = ValorSaldos.Pop().ToString();
+                        double valor2 = double.Parse(Valor2);
+
+
+
+
+                        ListViewItem salida = new ListViewItem(PrimerValor.ToString());
+                        salida.SubItems.Add(conver22.ToString());
+                        salida.SubItems.Add((PrimerValor * conver22).ToString());
+                        lvSalidas.Items.Add(salida);
+
+                        double CantidadSalida2 = double.Parse(txtCantidad.Text) - PrimerValor;
+                        double totalSalida2 = CantidadSalida2 * valor2;
+
+                        ListViewItem salida2 = new ListViewItem(CantidadSalida2.ToString());
+                        salida2.SubItems.Add(valor2.ToString());
+                        salida2.SubItems.Add(totalSalida2.ToString());
+                        lvSalidas.Items.Add(salida2);
+
+                        ListViewItem saldo = new ListViewItem("---------");
+                        saldo.SubItems.Add("--------");
+                        saldo.SubItems.Add("---------");
+                        lvSaldos.Items.Add(saldo);
+
+
+                        double CantidadSaldos2 = (cantidad2 + PrimerValor) - double.Parse(txtCantidad.Text);
+                        double totalSaldos2 = CantidadSaldos2 * valor2;
+
+                        ListViewItem saldo1 = new ListViewItem(CantidadSaldos2.ToString());
+                        saldo1.SubItems.Add(valor2.ToString());
+                        saldo1.SubItems.Add(totalSaldos2.ToString());
+                        lvSaldos.Items.Add(saldo1);
+
+                        cantidadSaldos.Clear();
+                        cantidadSaldos.Push(CantidadSaldos2);
+
+                        ValorSaldos.Clear();
+                        ValorSaldos.Push(valor2);
+
+                        ListViewItem entrada = new ListViewItem("---------");
+                        entrada.SubItems.Add("--------");
+                        entrada.SubItems.Add("--------");
+                        lvEntradas.Items.Add(entrada);
+
+                        ListViewItem entrada2 = new ListViewItem("---------");
+                        entrada2.SubItems.Add("--------");
+                        entrada2.SubItems.Add("--------");
+                        lvEntradas.Items.Add(entrada2);
 
                         DateTime fecha = DateTime.Now;
 
                         ListViewItem time = new ListViewItem(fecha.ToString());
                         lvFecha.Items.Add(time);
 
-
-                    }
-
-
-                    if (double.Parse(txtCantidad.Text) > conver11)
-                    {
-
-
-                        double SumaDosUlltimos = conver11 + conver2;
-
-
-
-                        if (double.Parse(txtCantidad.Text) < SumaDosUlltimos)
-                        {
-
-                            double Total1 = conver11 * conver22;
-
-                            ListViewItem salida = new ListViewItem(conver11.ToString());
-                            salida.SubItems.Add(conver22.ToString());
-                            salida.SubItems.Add(Total1.ToString());
-                            lvSalidas.Items.Add(salida);
-
-                            double aux1 = double.Parse(txtCantidad.Text) - conver11;
-                            double aux2 = aux1 * convervalor2;
-
-                            ListViewItem salida2 = new ListViewItem(aux1.ToString());
-                            salida2.SubItems.Add(convervalor2.ToString());
-                            salida2.SubItems.Add(aux2.ToString());
-                            lvSalidas.Items.Add(salida2);
-
-                            ListViewItem saldos = new ListViewItem("-------");
-                            saldos.SubItems.Add("-------");
-                            saldos.SubItems.Add("-------");
-                            lvSaldos.Items.Add(saldos);
-
-                            double cantidad2 = SumaDosUlltimos - double.Parse(txtCantidad.Text);
-
-                            double aux3 = convervalor2 * cantidad2;
-
-                            ListViewItem saldos2 = new ListViewItem(cantidad2.ToString());
-                            saldos2.SubItems.Add(convervalor2.ToString());
-                            saldos2.SubItems.Add(aux3.ToString());
-                            lvSaldos.Items.Add(saldos2);
-
-                            ListViewItem entrada = new ListViewItem("-------");
-                            entrada.SubItems.Add("-------");
-                            entrada.SubItems.Add("-------");
-                            lvEntradas.Items.Add(entrada);
-
-
-                            ListViewItem entrada2 = new ListViewItem("-------");
-                            entrada2.SubItems.Add("-------");
-                            entrada2.SubItems.Add("-------");
-                            lvEntradas.Items.Add(entrada2);
-
-                            DateTime fecha = DateTime.Now;
-
-                            ListViewItem time = new ListViewItem(fecha.ToString());
-                            lvFecha.Items.Add(time);
-
-
-
-                            ListViewItem time2 = new ListViewItem("-------");
-                            lvFecha.Items.Add(time2);
-
-                        }
+                        ListViewItem time2 = new ListViewItem("-----------" +
+                            "");
+                        lvFecha.Items.Add(time2);
 
 
 
                     }
+
+
+
+
 
 
                 }
@@ -223,7 +217,7 @@ namespace Inventarios
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
 
-                    
+
                     double total = double.Parse(txtValorUnit.Text) * double.Parse(txtCantidad.Text);
 
                     QValorSaldos.Enqueue(double.Parse(txtValorUnit.Text));
@@ -252,7 +246,7 @@ namespace Inventarios
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
-                    
+
 
                     Queue<double> copiaCantidad = new Queue<double>(QcantidadSaldos);
                     Queue<double> copiaValor = new Queue<double>(QValorSaldos);
@@ -372,7 +366,7 @@ namespace Inventarios
 
                 if (cboMovimiento.SelectedItem == "Entrada")
                 {
-                   
+
 
                     LsCantidad.Add(double.Parse(txtCantidad.Text));
                     LsValorUnidad.Add(double.Parse(txtValorUnit.Text));
@@ -431,7 +425,7 @@ namespace Inventarios
                 }
                 else if (cboMovimiento.SelectedItem == "Salida")
                 {
-                   
+
 
                     ListViewItem Salida = new ListViewItem(txtCantidad.Text);
                     double SumaCant = 0;
