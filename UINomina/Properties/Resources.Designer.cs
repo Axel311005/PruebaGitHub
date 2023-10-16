@@ -93,6 +93,16 @@ namespace UINomina.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nominas_de_excel {
+            get {
+                object obj = ResourceManager.GetObject("nominas-de-excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salir_de_pantalla_completa {
             get {
                 object obj = ResourceManager.GetObject("salir-de-pantalla-completa", resourceCulture);

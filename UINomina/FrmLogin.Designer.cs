@@ -39,11 +39,13 @@
             linkRegistro = new LinkLabel();
             PBCerrar = new PictureBox();
             PBMinimizar = new PictureBox();
+            pictureBox4 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBMinimizar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -169,12 +171,23 @@
             PBMinimizar.TabStop = false;
             PBMinimizar.Click += PBMinimizar_Click;
             // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = Properties.Resources.nominas_de_excel;
+            pictureBox4.Location = new Point(1, 7);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(45, 47);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 10;
+            pictureBox4.TabStop = false;
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(744, 348);
+            Controls.Add(pictureBox4);
             Controls.Add(PBMinimizar);
             Controls.Add(PBCerrar);
             Controls.Add(linkRegistro);
@@ -186,6 +199,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmLogin";
@@ -195,6 +209,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBCerrar).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBMinimizar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -211,5 +226,6 @@
         private LinkLabel linkRegistro;
         private PictureBox PBCerrar;
         private PictureBox PBMinimizar;
+        private PictureBox pictureBox4;
     }
 }
