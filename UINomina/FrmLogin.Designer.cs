@@ -150,6 +150,7 @@
             linkRegistro.TabStop = true;
             linkRegistro.Text = "¿Aún no te has registrado? Click Aquí";
             linkRegistro.VisitedLinkColor = Color.White;
+            linkRegistro.LinkClicked += linkRegistro_LinkClicked;
             // 
             // PBCerrar
             // 

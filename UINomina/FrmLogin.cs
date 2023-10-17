@@ -88,5 +88,11 @@ namespace UINomina
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+
+        private void linkRegistro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmRegister frmregist = new FrmRegister();     
+            frmregist.ShowDialog();
+        }
     }
 }
