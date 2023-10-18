@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Modelo;
+using Controladores;
 
 namespace UINomina
 {
@@ -190,11 +192,82 @@ namespace UINomina
 
         private void txtConfirmPass_Leave(object sender, EventArgs e)
         {
-             if (txtConfirmPass.Text == "")
+            if (txtConfirmPass.Text == "")
             {
                 txtConfirmPass.Text = "Repetir contraseña";
                 txtConfirmPass.ForeColor = Color.WhiteSmoke;
             }
+        }
+        private void btnRegsitrar_Click(object sender, EventArgs e)
+        {
+            Usuario nuevoUsuario = ObtenerDatosDeFormulario();
+            UsuarioController usuarioController = new();
+            List<string> errores = UsuarioValidation.ValidarUsuario(nuevoUsuario);
+            if (cmbRango.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un rol antes de registrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
+            if (errores.Count == 0)
+            {
+                if (usuarioController.UsuarioExiste(nuevoUsuario.NombreUsuario))
+                {
+                    MessageBox.Show("El nombre de usuario ya existe. Por favor, elija otro nombre de usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    usuarioController.InsertarUsuario(nuevoUsuario);
+                    MessageBox.Show("Usuario insertado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al insertar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                string mensajeErrores = string.Join(Environment.NewLine, errores);
+                MessageBox.Show("Errores de validación:" + Environment.NewLine + mensajeErrores, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Usuario ObtenerDatosDeFormulario()
+        {
+            Usuario usuario = new Usuario();
+            usuario.Nombre = txtPrimerNombre.Text;
+            usuario.SegundoNombre = txtSegundoNombre.Text;
+            usuario.PrimerApellido = txtPrimerApellido.Text;
+            usuario.SegundoApellido = txtSegundoApellido.Text;
+            usuario.NombreUsuario = txtUserRegist.Text;
+            if (txtConfirmPass.Text == txtPass.Text)
+                usuario.Password = txtConfirmPass.Text;
+            else
+                MessageBox.Show("Las contraseñas no coinciden, por favor ingrese de nuevo la confirmacion de contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            usuario.CorreoElectronico = txtCorreo.Text;
+            usuario.FechaNac = dtpFechaNac.Value;
+            usuario.IdRol = GetRol();
+            return usuario;
+        }
+
+        private int GetRol()
+        {
+            if (cmbRango.SelectedItem != null)
+            {
+                string seleccion = cmbRango.SelectedItem.ToString();
+
+                if (seleccion == "Administrador")
+                    return 1;
+                if (seleccion == "Gerente")
+                    return 2;
+                if (seleccion == "Contador General")
+                    return 3;
+                if (seleccion == "Asistente Contable")
+                    return 4;
+            }
+
+            return 4;
         }
     }
 }

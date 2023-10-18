@@ -32,7 +32,7 @@
             PBCerrar = new PictureBox();
             PBMinimizar = new PictureBox();
             label1 = new Label();
-            button1 = new Button();
+            btnRegsitrar = new Button();
             cmbRango = new ComboBox();
             txtPrimerNombre = new TextBox();
             pictureBox3 = new PictureBox();
@@ -100,16 +100,17 @@
             label1.TabIndex = 2;
             label1.Text = "Registro de Usuario";
             // 
-            // button1
+            // btnRegsitrar
             // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.boton_agregar;
-            button1.Location = new Point(372, 347);
-            button1.Name = "button1";
-            button1.Size = new Size(73, 36);
-            button1.TabIndex = 0;
-            button1.UseVisualStyleBackColor = true;
+            btnRegsitrar.FlatAppearance.BorderSize = 0;
+            btnRegsitrar.FlatStyle = FlatStyle.Flat;
+            btnRegsitrar.Image = Properties.Resources.boton_agregar;
+            btnRegsitrar.Location = new Point(372, 347);
+            btnRegsitrar.Name = "btnRegsitrar";
+            btnRegsitrar.Size = new Size(73, 36);
+            btnRegsitrar.TabIndex = 0;
+            btnRegsitrar.UseVisualStyleBackColor = true;
+            btnRegsitrar.Click += btnRegsitrar_Click;
             // 
             // cmbRango
             // 
@@ -373,7 +374,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(txtSegundoNombre);
             Controls.Add(pictureBox1);
-            Controls.Add(button1);
+            Controls.Add(btnRegsitrar);
             Controls.Add(pictureBox3);
             Controls.Add(cmbRango);
             Controls.Add(label1);
@@ -408,7 +409,7 @@
         private PictureBox pictureBox3;
         private TextBox txtPrimerNombre;
         private ComboBox cmbRango;
-        private Button button1;
+        private Button btnRegsitrar;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private TextBox txtSegundoNombre;
