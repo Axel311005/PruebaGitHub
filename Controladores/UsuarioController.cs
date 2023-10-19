@@ -13,6 +13,7 @@ namespace Controladores
     {
         private string conexion = "Data Source=DESKTOP-PBRTD4G\\DYLANSQL;Initial Catalog = nomina; User ID = sa; Password=dylanaraica123";
 
+
         public void InsertarUsuario(Usuario usuario)
         {
                 using (SqlConnection conection = new SqlConnection(conexion))
@@ -35,6 +36,47 @@ namespace Controladores
                         command.ExecuteNonQuery();
                     }
                 }
+        }
+
+        public bool Login(Usuario user)
+        {
+            string query = "SELECT * FROM usuario WHERE nombre_usuario = @nombre_usuario AND password = @password";
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nombre_usuario", user.NombreUsuario);
+                    command.Parameters.AddWithValue("@password", user.Password);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public void ActualizarUltimoAcceso(Usuario user)
+        {
+            string query = "UPDATE usuario SET ultimo_acceso = GETDATE() WHERE nombre_usuario = @nombre_usuario";
+            using(SqlConnection conecction = new SqlConnection(conexion))
+            {
+                conecction.Open();
+                
+                using(SqlCommand command = new SqlCommand(query,conecction)) 
+                {
+                    command.Parameters.AddWithValue("@nombre_usuario", user.NombreUsuario);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public bool UsuarioExiste(string nombreUser)

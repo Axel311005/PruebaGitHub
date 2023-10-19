@@ -69,5 +69,6 @@ namespace Modelo
 
         [Required(ErrorMessage = "El ID de rol es requerido.")]
         public int IdRol { get; set; }
+
     }
 }

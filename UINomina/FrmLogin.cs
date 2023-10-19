@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Modelo;
+using Controladores;
 
 namespace UINomina
 {
     public partial class FrmLogin : Form
     {
+        private int intentosFallidos = 0;
         public FrmLogin()
         {
             InitializeComponent();
@@ -91,8 +94,35 @@ namespace UINomina
 
         private void linkRegistro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FrmRegister frmregist = new FrmRegister();     
+            FrmRegister frmregist = new FrmRegister();
             frmregist.ShowDialog();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Usuario user = new Usuario();
+            UsuarioController userControl = new();
+            UsuarioValidation userVal = new();
+            user.NombreUsuario = txtUser.Text;
+            user.Password = txtPass.Text;
+
+            if (userControl.Login(user))
+            {
+                userControl.ActualizarUltimoAcceso(user);
+                FrmAdministrador frmAdmin = new FrmAdministrador();
+                frmAdmin.Show();
+                this.Hide();
+            }
+            else
+            {
+                intentosFallidos++;
+                MessageBox.Show("Nombre usuario o contraseña incorrecta, intente de nuevo", "Error al iniciar session", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (userVal.ContadorIntentos(intentosFallidos))
+                {
+                    MessageBox.Show("Has excedido el numero maximo de intentos. El programa se cerrara.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                }
+            }
         }
     }
 }

@@ -258,16 +258,17 @@ namespace UINomina
                 string seleccion = cmbRango.SelectedItem.ToString();
 
                 if (seleccion == "Administrador")
-                    return 1;
+                    return (int)Rol.IdAdministrador;
                 if (seleccion == "Gerente")
-                    return 2;
+                    return (int)Rol.IdGerente;
                 if (seleccion == "Contador General")
-                    return 3;
+                    return (int)Rol.IdContadorGeneral;
                 if (seleccion == "Asistente Contable")
-                    return 4;
+                    return (int)Rol.IdAsistenteContable;
             }
 
-            return 4;
+            return 0;
         }
+      
     }
 }

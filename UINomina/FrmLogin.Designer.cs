@@ -135,6 +135,7 @@
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Acceder";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // linkRegistro
             // 
