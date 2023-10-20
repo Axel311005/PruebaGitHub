@@ -99,7 +99,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(1362, 128);
+            label7.Location = new Point(1251, 128);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(50, 15);
@@ -109,7 +109,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(807, 128);
+            label6.Location = new Point(772, 128);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(52, 15);
@@ -120,7 +120,7 @@
             // 
             lvSaldos.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10 });
             lvSaldos.GridLines = true;
-            lvSaldos.Location = new Point(1106, 152);
+            lvSaldos.Location = new Point(990, 152);
             lvSaldos.Margin = new Padding(2, 1, 2, 1);
             lvSaldos.Name = "lvSaldos";
             lvSaldos.Size = new Size(496, 215);
@@ -147,7 +147,7 @@
             // 
             lvSalidas.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
             lvSalidas.GridLines = true;
-            lvSalidas.Location = new Point(613, 152);
+            lvSalidas.Location = new Point(561, 152);
             lvSalidas.Margin = new Padding(2, 1, 2, 1);
             lvSalidas.Name = "lvSalidas";
             lvSalidas.Size = new Size(425, 215);
@@ -195,7 +195,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(360, 128);
+            label5.Location = new Point(321, 128);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(65, 15);
@@ -276,7 +276,7 @@
             // 
             lvEntradas.Columns.AddRange(new ColumnHeader[] { columnHeader2, columnHeader3, columnHeader4 });
             lvEntradas.GridLines = true;
-            lvEntradas.Location = new Point(181, 152);
+            lvEntradas.Location = new Point(147, 152);
             lvEntradas.Margin = new Padding(2, 1, 2, 1);
             lvEntradas.Name = "lvEntradas";
             lvEntradas.Size = new Size(410, 215);
@@ -313,7 +313,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1613, 401);
+            ClientSize = new Size(1499, 401);
             Controls.Add(btnExportar);
             Controls.Add(label8);
             Controls.Add(cboInventario);
