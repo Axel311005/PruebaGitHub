@@ -1,6 +1,6 @@
 ﻿namespace UINomina
 {
-    partial class FrmAdministrador
+    partial class FrmPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             SuspendLayout();
             // 
-            // button1
-            // 
-            button1.Location = new Point(269, 233);
-            button1.Name = "button1";
-            button1.Size = new Size(178, 98);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // FrmAdministrador
+            // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button1);
-            Name = "FrmAdministrador";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmAdministrador";
+            ClientSize = new Size(868, 461);
+            Name = "FrmPrincipal";
+            Text = "FrmPrincipal";
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button button1;
     }
 }

@@ -109,8 +109,8 @@ namespace UINomina
             if (userControl.Login(user))
             {
                 userControl.ActualizarUltimoAcceso(user);
-                FrmAdministrador frmAdmin = new FrmAdministrador();
-                frmAdmin.Show();
+                FrmPrincipal frmMain = new();
+                frmMain.Show();
                 this.Hide();
             }
             else
