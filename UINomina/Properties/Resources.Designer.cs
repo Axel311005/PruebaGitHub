@@ -103,6 +103,26 @@ namespace UINomina.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap editar {
+            get {
+                object obj = ResourceManager.GetObject("editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Full_Colour {
+            get {
+                object obj = ResourceManager.GetObject("Full Colour", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Loading {
             get {
                 object obj = ResourceManager.GetObject("Loading", resourceCulture);
@@ -126,6 +146,16 @@ namespace UINomina.Properties {
         internal static System.Drawing.Bitmap nominas_de_excel {
             get {
                 object obj = ResourceManager.GetObject("nominas-de-excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Power_Off {
+            get {
+                object obj = ResourceManager.GetObject("Power Off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +196,16 @@ namespace UINomina.Properties {
         internal static System.Drawing.Bitmap usuario_de_perfil__1_ {
             get {
                 object obj = ResourceManager.GetObject("usuario-de-perfil (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ver {
+            get {
+                object obj = ResourceManager.GetObject("ver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

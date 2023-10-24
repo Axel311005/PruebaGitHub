@@ -175,11 +175,10 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.nominas_de_excel;
-            pictureBox4.Location = new Point(1, 7);
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(12, 7);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(45, 47);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.Size = new Size(34, 41);
             pictureBox4.TabIndex = 10;
             pictureBox4.TabStop = false;
             // 

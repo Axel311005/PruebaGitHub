@@ -108,10 +108,12 @@ namespace UINomina
 
             if (userControl.Login(user))
             {
+                Usuario usuarioAutenticado = userControl.SelectUserPorNombreUsuario(user.NombreUsuario);
                 userControl.ActualizarUltimoAcceso(user);
                 FrmPrincipal frmMain = new();
                 frmMain.Show();
-                this.Hide();
+                UsuarioAutentificado.id = usuarioAutenticado.ID;
+                this.Hide(); 
             }
             else
             {

@@ -33,7 +33,6 @@
             PBMinimizar = new PictureBox();
             label1 = new Label();
             btnRegsitrar = new Button();
-            cmbRango = new ComboBox();
             txtPrimerNombre = new TextBox();
             pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
@@ -53,7 +52,8 @@
             pictureBox9 = new PictureBox();
             txtConfirmPass = new TextBox();
             label2 = new Label();
-            label3 = new Label();
+            pictureBox10 = new PictureBox();
+            txtTelefono = new TextBox();
             ((System.ComponentModel.ISupportInitialize)PBCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBMinimizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -65,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             SuspendLayout();
             // 
             // PBCerrar
@@ -111,19 +112,6 @@
             btnRegsitrar.TabIndex = 0;
             btnRegsitrar.UseVisualStyleBackColor = true;
             btnRegsitrar.Click += btnRegsitrar_Click;
-            // 
-            // cmbRango
-            // 
-            cmbRango.BackColor = Color.White;
-            cmbRango.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbRango.FlatStyle = FlatStyle.Flat;
-            cmbRango.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            cmbRango.FormattingEnabled = true;
-            cmbRango.Items.AddRange(new object[] { "Administrador", "Gerente", "Contador General", "Asistente Contable" });
-            cmbRango.Location = new Point(238, 280);
-            cmbRango.Name = "cmbRango";
-            cmbRango.Size = new Size(147, 25);
-            cmbRango.TabIndex = 10;
             // 
             // txtPrimerNombre
             // 
@@ -338,16 +326,26 @@
             label2.TabIndex = 28;
             label2.Text = "Fecha de nacimiento";
             // 
-            // label3
+            // pictureBox10
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(238, 257);
-            label3.Name = "label3";
-            label3.Size = new Size(46, 17);
-            label3.TabIndex = 29;
-            label3.Text = "Rango";
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(247, 287);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(173, 10);
+            pictureBox10.TabIndex = 30;
+            pictureBox10.TabStop = false;
+            // 
+            // txtTelefono
+            // 
+            txtTelefono.BackColor = Color.FromArgb(33, 72, 193);
+            txtTelefono.BorderStyle = BorderStyle.None;
+            txtTelefono.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTelefono.ForeColor = SystemColors.ButtonHighlight;
+            txtTelefono.Location = new Point(247, 258);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(147, 16);
+            txtTelefono.TabIndex = 29;
+            txtTelefono.Text = "Telefono";
             // 
             // FrmRegister
             // 
@@ -356,7 +354,8 @@
             BackColor = Color.FromArgb(33, 72, 193);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(807, 406);
-            Controls.Add(label3);
+            Controls.Add(pictureBox10);
+            Controls.Add(txtTelefono);
             Controls.Add(label2);
             Controls.Add(pictureBox9);
             Controls.Add(txtConfirmPass);
@@ -376,12 +375,12 @@
             Controls.Add(pictureBox1);
             Controls.Add(btnRegsitrar);
             Controls.Add(pictureBox3);
-            Controls.Add(cmbRango);
             Controls.Add(label1);
             Controls.Add(PBMinimizar);
             Controls.Add(PBCerrar);
             Controls.Add(txtPrimerNombre);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmRegister";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmRegister";
@@ -397,6 +396,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -408,7 +408,6 @@
         private Label label1;
         private PictureBox pictureBox3;
         private TextBox txtPrimerNombre;
-        private ComboBox cmbRango;
         private Button btnRegsitrar;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
@@ -427,6 +426,7 @@
         private PictureBox pictureBox9;
         private TextBox txtConfirmPass;
         private Label label2;
-        private Label label3;
+        private PictureBox pictureBox10;
+        private TextBox txtTelefono;
     }
 }

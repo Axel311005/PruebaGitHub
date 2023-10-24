@@ -17,6 +17,7 @@ namespace Modelo
         private string nombre_usuario;
         private string password;
         private string correo_electronico;
+        private string telefono;
         private DateTime fechaNac;
         private DateTime fechaRegistro;
         private DateTime ultimoAcceso;
@@ -69,6 +70,10 @@ namespace Modelo
 
         [Required(ErrorMessage = "El ID de rol es requerido.")]
         public int IdRol { get; set; }
+
+        [Required(ErrorMessage = "El telefono es requerido")]
+        [RegularExpression(@"^\d{8}$", ErrorMessage = "El telefono debe tener solo 8 dígitos.")]
+        public string Telefono { get; set; }
 
     }
 }

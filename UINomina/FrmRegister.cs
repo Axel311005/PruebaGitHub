@@ -28,7 +28,7 @@ namespace UINomina
 
         private void PBCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
         }
 
         private void PBMinimizar_Click(object sender, EventArgs e)
@@ -203,11 +203,6 @@ namespace UINomina
             Usuario nuevoUsuario = ObtenerDatosDeFormulario();
             UsuarioController usuarioController = new();
             List<string> errores = UsuarioValidation.ValidarUsuario(nuevoUsuario);
-            if (cmbRango.SelectedItem == null)
-            {
-                MessageBox.Show("Por favor, seleccione un rol antes de registrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
-            }
             if (errores.Count == 0)
             {
                 if (usuarioController.UsuarioExiste(nuevoUsuario.NombreUsuario))
@@ -247,28 +242,12 @@ namespace UINomina
 
             usuario.CorreoElectronico = txtCorreo.Text;
             usuario.FechaNac = dtpFechaNac.Value;
-            usuario.IdRol = GetRol();
+            usuario.IdRol = (int)Rol.IdAsistenteContable;
+            usuario.Telefono = txtTelefono.Text;
             return usuario;
         }
 
-        private int GetRol()
-        {
-            if (cmbRango.SelectedItem != null)
-            {
-                string seleccion = cmbRango.SelectedItem.ToString();
 
-                if (seleccion == "Administrador")
-                    return (int)Rol.IdAdministrador;
-                if (seleccion == "Gerente")
-                    return (int)Rol.IdGerente;
-                if (seleccion == "Contador General")
-                    return (int)Rol.IdContadorGeneral;
-                if (seleccion == "Asistente Contable")
-                    return (int)Rol.IdAsistenteContable;
-            }
 
-            return 0;
-        }
-      
     }
 }

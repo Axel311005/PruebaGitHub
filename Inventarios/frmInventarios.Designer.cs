@@ -57,6 +57,7 @@
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             btnExportar = new Button();
+            DTPfechas = new DateTimePicker();
             SuspendLayout();
             // 
             // label8
@@ -83,7 +84,7 @@
             // 
             lvFecha.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             lvFecha.GridLines = true;
-            lvFecha.Location = new Point(28, 152);
+            lvFecha.Location = new Point(11, 152);
             lvFecha.Margin = new Padding(2, 1, 2, 1);
             lvFecha.Name = "lvFecha";
             lvFecha.Size = new Size(115, 215);
@@ -120,10 +121,10 @@
             // 
             lvSaldos.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10 });
             lvSaldos.GridLines = true;
-            lvSaldos.Location = new Point(990, 152);
+            lvSaldos.Location = new Point(958, 152);
             lvSaldos.Margin = new Padding(2, 1, 2, 1);
             lvSaldos.Name = "lvSaldos";
-            lvSaldos.Size = new Size(496, 215);
+            lvSaldos.Size = new Size(421, 215);
             lvSaldos.TabIndex = 33;
             lvSaldos.UseCompatibleStateImageBehavior = false;
             lvSaldos.View = View.Details;
@@ -131,26 +132,26 @@
             // columnHeader8
             // 
             columnHeader8.Text = "Cantidad";
-            columnHeader8.Width = 160;
+            columnHeader8.Width = 140;
             // 
             // columnHeader9
             // 
             columnHeader9.Text = "Valor Unit";
-            columnHeader9.Width = 160;
+            columnHeader9.Width = 140;
             // 
             // columnHeader10
             // 
             columnHeader10.Text = "Total";
-            columnHeader10.Width = 170;
+            columnHeader10.Width = 140;
             // 
             // lvSalidas
             // 
             lvSalidas.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7 });
             lvSalidas.GridLines = true;
-            lvSalidas.Location = new Point(561, 152);
+            lvSalidas.Location = new Point(544, 152);
             lvSalidas.Margin = new Padding(2, 1, 2, 1);
             lvSalidas.Name = "lvSalidas";
-            lvSalidas.Size = new Size(425, 215);
+            lvSalidas.Size = new Size(410, 215);
             lvSalidas.TabIndex = 32;
             lvSalidas.UseCompatibleStateImageBehavior = false;
             lvSalidas.View = View.Details;
@@ -158,17 +159,17 @@
             // columnHeader5
             // 
             columnHeader5.Text = "Cantidad";
-            columnHeader5.Width = 160;
+            columnHeader5.Width = 140;
             // 
             // columnHeader6
             // 
             columnHeader6.Text = "Valor Unit";
-            columnHeader6.Width = 160;
+            columnHeader6.Width = 140;
             // 
             // columnHeader7
             // 
             columnHeader7.Text = "Total";
-            columnHeader7.Width = 170;
+            columnHeader7.Width = 140;
             // 
             // btnAgregar
             // 
@@ -260,6 +261,7 @@
             cboMovimiento.Size = new Size(132, 23);
             cboMovimiento.TabIndex = 23;
             cboMovimiento.Text = "Escoja";
+            cboMovimiento.SelectedIndexChanged += cboMovimiento_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -276,7 +278,7 @@
             // 
             lvEntradas.Columns.AddRange(new ColumnHeader[] { columnHeader2, columnHeader3, columnHeader4 });
             lvEntradas.GridLines = true;
-            lvEntradas.Location = new Point(147, 152);
+            lvEntradas.Location = new Point(130, 152);
             lvEntradas.Margin = new Padding(2, 1, 2, 1);
             lvEntradas.Name = "lvEntradas";
             lvEntradas.Size = new Size(410, 215);
@@ -287,17 +289,17 @@
             // columnHeader2
             // 
             columnHeader2.Text = "Cantidad";
-            columnHeader2.Width = 160;
+            columnHeader2.Width = 140;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Valor Unit";
-            columnHeader3.Width = 160;
+            columnHeader3.Width = 140;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Total";
-            columnHeader4.Width = 170;
+            columnHeader4.Width = 140;
             // 
             // btnExportar
             // 
@@ -309,11 +311,19 @@
             btnExportar.UseVisualStyleBackColor = true;
             btnExportar.Click += btnExportar_Click;
             // 
+            // DTPfechas
+            // 
+            DTPfechas.Location = new Point(730, 71);
+            DTPfechas.Name = "DTPfechas";
+            DTPfechas.Size = new Size(200, 23);
+            DTPfechas.TabIndex = 40;
+            // 
             // frmInventarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1499, 401);
+            ClientSize = new Size(1370, 401);
+            Controls.Add(DTPfechas);
             Controls.Add(btnExportar);
             Controls.Add(label8);
             Controls.Add(cboInventario);
@@ -335,6 +345,7 @@
             Controls.Add(lvEntradas);
             Margin = new Padding(2, 1, 2, 1);
             Name = "frmInventarios";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmInventarios";
             Load += frmInventarios_Load;
             ResumeLayout(false);
@@ -372,5 +383,6 @@
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private Button btnExportar;
+        private DateTimePicker DTPfechas;
     }
 }
