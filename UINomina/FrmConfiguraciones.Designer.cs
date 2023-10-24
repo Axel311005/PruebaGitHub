@@ -54,8 +54,21 @@
             txtNombre = new TextBox();
             label2 = new Label();
             lstUsuarios = new ListView();
-            button1 = new Button();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            columnHeader7 = new ColumnHeader();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
+            columnHeader11 = new ColumnHeader();
+            btnEditarUsuarios = new Button();
             pbEditar = new PictureBox();
+            lbTituloEdit = new Label();
+            columnHeader12 = new ColumnHeader();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Esconder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Ver).BeginInit();
@@ -66,7 +79,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(452, 9);
+            label1.Location = new Point(452, 18);
             label1.Name = "label1";
             label1.Size = new Size(179, 25);
             label1.TabIndex = 0;
@@ -308,20 +321,91 @@
             // 
             // lstUsuarios
             // 
+            lstUsuarios.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
+            lstUsuarios.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lstUsuarios.GridLines = true;
             lstUsuarios.Location = new Point(12, 358);
             lstUsuarios.Name = "lstUsuarios";
-            lstUsuarios.Size = new Size(1063, 276);
+            lstUsuarios.Size = new Size(1102, 276);
             lstUsuarios.TabIndex = 3;
             lstUsuarios.UseCompatibleStateImageBehavior = false;
+            lstUsuarios.View = View.Details;
+            lstUsuarios.Visible = false;
             // 
-            // button1
+            // columnHeader1
             // 
-            button1.Location = new Point(452, 646);
-            button1.Name = "button1";
-            button1.Size = new Size(109, 25);
-            button1.TabIndex = 4;
-            button1.Text = "Editar";
-            button1.UseVisualStyleBackColor = true;
+            columnHeader1.Text = "ID";
+            columnHeader1.Width = 80;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Nombre";
+            columnHeader2.TextAlign = HorizontalAlignment.Center;
+            columnHeader2.Width = 120;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Segundo Nombre";
+            columnHeader3.TextAlign = HorizontalAlignment.Center;
+            columnHeader3.Width = 120;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Primer Apellido";
+            columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = 120;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Segundo Apellido";
+            columnHeader5.TextAlign = HorizontalAlignment.Center;
+            columnHeader5.Width = 120;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Usuario";
+            columnHeader6.TextAlign = HorizontalAlignment.Center;
+            columnHeader6.Width = 120;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Correo Electronico";
+            columnHeader7.TextAlign = HorizontalAlignment.Center;
+            columnHeader7.Width = 160;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Fecha Nacimiento";
+            columnHeader8.TextAlign = HorizontalAlignment.Center;
+            columnHeader8.Width = 120;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Fecha de Registro";
+            columnHeader9.TextAlign = HorizontalAlignment.Center;
+            columnHeader9.Width = 120;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Ultimo Acceso";
+            columnHeader10.TextAlign = HorizontalAlignment.Center;
+            columnHeader10.Width = 150;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "Rol";
+            columnHeader11.TextAlign = HorizontalAlignment.Center;
+            columnHeader11.Width = 140;
+            // 
+            // btnEditarUsuarios
+            // 
+            btnEditarUsuarios.Location = new Point(452, 646);
+            btnEditarUsuarios.Name = "btnEditarUsuarios";
+            btnEditarUsuarios.Size = new Size(109, 25);
+            btnEditarUsuarios.TabIndex = 4;
+            btnEditarUsuarios.Text = "Editar";
+            btnEditarUsuarios.UseVisualStyleBackColor = true;
+            btnEditarUsuarios.Visible = false;
             // 
             // pbEditar
             // 
@@ -334,14 +418,32 @@
             pbEditar.TabStop = false;
             pbEditar.Click += pbEditar_Click;
             // 
+            // lbTituloEdit
+            // 
+            lbTituloEdit.AutoSize = true;
+            lbTituloEdit.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbTituloEdit.Location = new Point(452, 298);
+            lbTituloEdit.Name = "lbTituloEdit";
+            lbTituloEdit.Size = new Size(159, 25);
+            lbTituloEdit.TabIndex = 11;
+            lbTituloEdit.Text = "Editar Usuarios";
+            lbTituloEdit.Visible = false;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Telefono";
+            columnHeader12.TextAlign = HorizontalAlignment.Center;
+            columnHeader12.Width = 80;
+            // 
             // FrmConfiguraciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1115, 683);
+            Controls.Add(lbTituloEdit);
             Controls.Add(pbEditar);
-            Controls.Add(button1);
+            Controls.Add(btnEditarUsuarios);
             Controls.Add(lstUsuarios);
             Controls.Add(groupBox1);
             Controls.Add(label1);
@@ -349,7 +451,6 @@
             Name = "FrmConfiguraciones";
             Text = "FrmConfiguraciones";
             Load += FrmConfiguraciones_Load;
-            MouseDown += FrmConfiguraciones_MouseDown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Esconder).EndInit();
@@ -366,7 +467,7 @@
         private ListView lstUsuarios;
         private TextBox txtNombre;
         private Label label2;
-        private Button button1;
+        private Button btnEditarUsuarios;
         private TextBox txtSegundoApellido;
         private Label label5;
         private TextBox txtApellido;
@@ -388,5 +489,18 @@
         private PictureBox Esconder;
         private PictureBox Ver;
         private PictureBox pbEditar;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader7;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
+        private Label lbTituloEdit;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
     }
 }

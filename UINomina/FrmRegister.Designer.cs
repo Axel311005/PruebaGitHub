@@ -346,6 +346,8 @@
             txtTelefono.Size = new Size(147, 16);
             txtTelefono.TabIndex = 29;
             txtTelefono.Text = "Telefono";
+            txtTelefono.Enter += txtTelefono_Enter;
+            txtTelefono.Leave += txtTelefono_Leave;
             // 
             // FrmRegister
             // 
@@ -384,6 +386,7 @@
             Name = "FrmRegister";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmRegister";
+            Load += FrmRegister_Load;
             MouseDown += FrmRegister_MouseDown;
             ((System.ComponentModel.ISupportInitialize)PBCerrar).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBMinimizar).EndInit();

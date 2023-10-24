@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
@@ -103,7 +104,7 @@ namespace Controladores
                 conection.Open();
 
                 string query = "SELECT nombre, segundoNombre, primerApellido, segundoApellido, nombre_usuario, password," +
-                    "correo_electronico, fecha_nac, idRol FROM usuario WHERE id = @id";
+                    "correo_electronico, fecha_nac, idRol, telefono FROM usuario WHERE id = @id";
 
                 using (SqlCommand comando = new SqlCommand(query, conection))
                 {
@@ -123,6 +124,7 @@ namespace Controladores
                             usuario.CorreoElectronico = lector.GetString(6);
                             usuario.FechaNac = lector.GetDateTime(7);
                             usuario.IdRol = lector.GetInt32(8);
+                            usuario.Telefono = lector.GetString(9);
                             return usuario;
                         }
                     }
@@ -136,7 +138,7 @@ namespace Controladores
             {
                 connection.Open();
                 string query = "SELECT id, nombre, segundoNombre, primerApellido, segundoApellido, password," +
-                    "correo_electronico, fecha_nac, idRol FROM usuario WHERE nombre_usuario = @nombre_usuario";
+                    "correo_electronico, fecha_nac, idRol, telefono FROM usuario WHERE nombre_usuario = @nombre_usuario";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -156,6 +158,7 @@ namespace Controladores
                             usuario.CorreoElectronico = reader.GetString(6);
                             usuario.FechaNac = reader.GetDateTime(7);
                             usuario.IdRol = reader.GetInt32(8);
+                            usuario.Telefono = reader.GetString(9);
                             return usuario;
                         }
                     }
@@ -167,7 +170,7 @@ namespace Controladores
         public void ActualizarUsuario(Usuario user)
         {
             string query = "UPDATE usuario SET nombre = @nuevoNombre,  segundoNombre = @nuevoSegundoNombre, primerApellido = @nuevoPrimerApellido, " +
-                "segundoApellido = @nuevoSegundoApellido, password = @nuevapassword, correo_electronico = @nuevoCorreoElectronico, fecha_nac = @nuevaFechaNacimiento WHERE id = @id;";
+                "segundoApellido = @nuevoSegundoApellido, password = @nuevapassword, correo_electronico = @nuevoCorreoElectronico, fecha_nac = @nuevaFechaNacimiento, telefono = @nuevoTelefono WHERE id = @id;";
             using (SqlConnection conecction = new SqlConnection(conexion))
             {
                 conecction.Open();
@@ -179,13 +182,57 @@ namespace Controladores
                     command.Parameters.AddWithValue("@nuevoPrimerApellido", user.PrimerApellido);
                     command.Parameters.AddWithValue("@nuevoSegundoApellido", user.SegundoApellido);
                     command.Parameters.AddWithValue("@nuevapassword", user.Password);
-                    
-
+                    command.Parameters.AddWithValue("@nuevoCorreoElectronico", user.CorreoElectronico);
+                    command.Parameters.AddWithValue("@nuevaFechaNacimiento", user.FechaNac);
+                    command.Parameters.AddWithValue("@nuevoTelefono", user.Telefono);
+                    command.Parameters.AddWithValue("@id", user.ID);
 
                     command.ExecuteNonQuery();
                 }
             }
         }
 
+        public List<Usuario> TraerUsuarios()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                connection.Open();
+
+                string query = "SELECT id, nombre, segundoNombre, primerApellido, segundoApellido, nombre_usuario, " +
+                               "correo_electronico, fecha_nac, fecha_registro, ultimo_acceso, idRol, telefono FROM usuario";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Usuario usuario = new Usuario
+                            {
+                                ID = reader.IsDBNull(reader.GetOrdinal("id")) ? 0 : reader.GetInt32(reader.GetOrdinal("id")),
+                                Nombre = reader.IsDBNull(reader.GetOrdinal("nombre")) ? string.Empty : reader.GetString(reader.GetOrdinal("nombre")),
+                                SegundoNombre = reader.IsDBNull(reader.GetOrdinal("segundoNombre")) ? string.Empty : reader.GetString(reader.GetOrdinal("segundoNombre")),
+                                PrimerApellido = reader.IsDBNull(reader.GetOrdinal("primerApellido")) ? string.Empty : reader.GetString(reader.GetOrdinal("primerApellido")),
+                                SegundoApellido = reader.IsDBNull(reader.GetOrdinal("segundoApellido")) ? string.Empty : reader.GetString(reader.GetOrdinal("segundoApellido")),
+                                NombreUsuario = reader.IsDBNull(reader.GetOrdinal("nombre_usuario")) ? string.Empty : reader.GetString(reader.GetOrdinal("nombre_usuario")),
+                                CorreoElectronico = reader.IsDBNull(reader.GetOrdinal("correo_electronico")) ? string.Empty : reader.GetString(reader.GetOrdinal("correo_electronico")),
+                                FechaNac = reader.IsDBNull(reader.GetOrdinal("fecha_nac")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("fecha_nac")),
+                                FechaRegistro = reader.IsDBNull(reader.GetOrdinal("fecha_registro")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("fecha_registro")),
+                                UltimoAcceso = reader.IsDBNull(reader.GetOrdinal("ultimo_acceso")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("ultimo_acceso")),
+                                IdRol = reader.IsDBNull(reader.GetOrdinal("idRol")) ? 0 : reader.GetInt32(reader.GetOrdinal("idRol")),
+                                Telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? string.Empty : reader.GetString(reader.GetOrdinal("telefono"))
+                            };
+
+                            usuarios.Add(usuario);
+                        }
+                    }
+                }
+            }
+
+            return usuarios;
+        }
     }
 }
+

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace UINomina
 {
@@ -20,11 +21,23 @@ namespace UINomina
         {
             InitializeComponent();
         }
+        [DllImport("user32.dll")]
+        private static extern int ReleaseCapture();
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hwnd, int msg, int wParam, int lParam);
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HT_CAPTION = 0x2;
 
         private void FrmEditarUsuario_Load(object sender, EventArgs e)
         {
             Usuario user = new();
             UsuarioController US = new();
+            dtFecha.Format = DateTimePickerFormat.Custom;
+            dtFecha.CustomFormat = "dd/MM/yyyy";
+            dtFecha.ShowUpDown = true;
+            cmbRol.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
             user = US.SelectUserPorID(ID);
             if (user != null)
             {
@@ -39,13 +52,31 @@ namespace UINomina
                 dtFecha.Value = user.FechaNac;
                 txtTelefono.Text = user.Telefono;
                 if (user.IdRol == (int)Rol.IdAdministrador)
+                {
+                    cmbRol.SelectedItem = "Administrador";
                     txtRol.Text = "Administrador";
+                }
                 else if (user.IdRol == (int)Rol.IdGerente)
+                {
+                    cmbRol.SelectedItem = "Gerente";
                     txtRol.Text = "Gerente";
+                }
                 else if (user.IdRol == (int)Rol.IdContadorGeneral)
+                {
+                    cmbRol.SelectedItem = "Contador General";
                     txtRol.Text = "Contador General";
+                }
                 else if (user.IdRol == (int)Rol.IdAsistenteContable)
+                {
+                    cmbRol.SelectedItem = "Asistente Contable";
                     txtRol.Text = "Asistente Contable";
+                }
+
+                if (user.IdRol == (int)Rol.IdAdministrador || user.IdRol == (int)Rol.IdGerente)
+                {
+                    cmbRol.Visible = true;
+                    txtRol.Visible = false;
+                }
             }
             else
                 MessageBox.Show("Usuario nulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -92,6 +123,7 @@ namespace UINomina
             usuario.SegundoNombre = txtSegundoNombre.Text;
             usuario.PrimerApellido = txtApellido.Text;
             usuario.SegundoApellido = txtSegundoApellido.Text;
+            usuario.NombreUsuario = txtUser.Text;
             if (txtConfirmPass.Text == txtContraseña.Text)
                 usuario.Password = txtConfirmPass.Text;
             else
@@ -101,7 +133,35 @@ namespace UINomina
             usuario.FechaNac = dtFecha.Value;
             usuario.Telefono = txtTelefono.Text;
             usuario.CorreoElectronico = txtCorreo.Text;
+            if (cmbRol.SelectedItem == "Administrador")
+                usuario.IdRol = (int)Rol.IdAdministrador;
+            else if (cmbRol.SelectedItem == "Gerente")
+                usuario.IdRol = (int)Rol.IdGerente;
+            else if (cmbRol.SelectedItem == "Contador General")
+                usuario.IdRol = (int)Rol.IdContadorGeneral;
+            else if (cmbRol.SelectedItem == "Asistente Contable")
+                usuario.IdRol = (int)Rol.IdAsistenteContable;
+
             return usuario;
+        }
+
+        private void FrmEditarUsuario_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void txtRol_Click(object sender, EventArgs e)
+        {
+            Usuario user = new();
+            UsuarioController US = new();
+            user = US.SelectUserPorID(ID);
+
+            if (user.IdRol != (int)Rol.IdAdministrador || user.IdRol != (int)Rol.IdGerente)
+                MessageBox.Show("Para editar el rol, debe tener mayor rango", "No puede editar rol", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -198,6 +198,23 @@ namespace UINomina
                 txtConfirmPass.ForeColor = Color.WhiteSmoke;
             }
         }
+        private void txtTelefono_Enter(object sender, EventArgs e)
+        {
+            if (txtTelefono.Text == "Telefono")
+            {
+                txtTelefono.Text = "";
+                txtTelefono.ForeColor = Color.White;
+            }
+        }
+
+        private void txtTelefono_Leave(object sender, EventArgs e)
+        {
+            if (txtTelefono.Text == "")
+            {
+                txtTelefono.Text = "Telefono";
+                txtTelefono.ForeColor = Color.WhiteSmoke;
+            }
+        }
         private void btnRegsitrar_Click(object sender, EventArgs e)
         {
             Usuario nuevoUsuario = ObtenerDatosDeFormulario();
@@ -247,7 +264,13 @@ namespace UINomina
             return usuario;
         }
 
+        private void FrmRegister_Load(object sender, EventArgs e)
+        {
+            dtpFechaNac.Format = DateTimePickerFormat.Custom;
+            dtpFechaNac.CustomFormat = "dd/MM/yyyy";
+            dtpFechaNac.ShowUpDown = true;
 
+        }
 
     }
 }

@@ -20,12 +20,6 @@ namespace UINomina
             InitializeComponent();
         }
 
-
-        private void FrmConfiguraciones_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void Esconder_Click(object sender, EventArgs e)
         {
             Esconder.Visible = false;
@@ -46,6 +40,38 @@ namespace UINomina
             UsuarioController US = new();
             int ID = (int)UsuarioAutentificado.id;
             user = US.SelectUserPorID(ID);
+            List<Usuario> ListaUsuarios = US.TraerUsuarios();
+            if (ListaUsuarios != null)
+            {
+                foreach (Usuario usuario in ListaUsuarios)
+                {
+                    ListViewItem item = new ListViewItem(usuario.ID.ToString());
+
+                    item.SubItems.Add(usuario.Nombre);
+                    item.SubItems.Add(usuario.SegundoNombre);
+                    item.SubItems.Add(usuario.PrimerApellido);
+                    item.SubItems.Add(usuario.SegundoApellido);
+                    item.SubItems.Add(usuario.NombreUsuario);
+                    item.SubItems.Add(usuario.CorreoElectronico);
+                    item.SubItems.Add(usuario.FechaNac.ToString("dd/MM/yyyy"));
+                    item.SubItems.Add(usuario.FechaRegistro.ToString("dd/MM/yyyy"));
+                    item.SubItems.Add(usuario.UltimoAcceso.ToString());
+                    if (usuario.IdRol == (int)Rol.IdAdministrador)
+                        item.SubItems.Add("Administrador");
+                    else if (usuario.IdRol == (int)Rol.IdGerente)
+                        item.SubItems.Add("Gerente");
+                    else if (usuario.IdRol == (int)Rol.IdContadorGeneral)
+                        item.SubItems.Add("Contador General");
+                    else if (usuario.IdRol == (int)Rol.IdAsistenteContable)
+                        item.SubItems.Add("Asistente Contable");
+                    else
+                        item.SubItems.Add("Otro Rol");
+
+                    item.SubItems.Add(usuario.Telefono);
+
+                    lstUsuarios.Items.Add(item);
+                }
+            }
             if (user != null)
             {
                 txtNombre.Text = user.Nombre;
@@ -67,9 +93,19 @@ namespace UINomina
                     txtRol.Text = "Contador General";
                 else if (user.IdRol == (int)Rol.IdAsistenteContable)
                     txtRol.Text = "Asistente Contable";
+
+                if (user.IdRol == (int)Rol.IdAdministrador || user.IdRol == (int)Rol.IdGerente)
+                {
+                    lstUsuarios.Visible = true;
+                    btnEditarUsuarios.Visible = true;
+                    lbTituloEdit.Visible = true;
+                }
             }
             else
+            {
                 MessageBox.Show("Usuario nulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
 
         }
