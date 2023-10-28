@@ -41,6 +41,7 @@ namespace UINomina
             int ID = (int)UsuarioAutentificado.id;
             user = US.SelectUserPorID(ID);
             List<Usuario> ListaUsuarios = US.TraerUsuarios();
+
             if (ListaUsuarios != null)
             {
                 foreach (Usuario usuario in ListaUsuarios)
@@ -99,6 +100,8 @@ namespace UINomina
                     lstUsuarios.Visible = true;
                     btnEditarUsuarios.Visible = true;
                     lbTituloEdit.Visible = true;
+                    lstUsuarios.MultiSelect = false;
+                    lstUsuarios.FullRowSelect = true;
                 }
             }
             else
@@ -106,14 +109,35 @@ namespace UINomina
                 MessageBox.Show("Usuario nulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
         }
 
         private void pbEditar_Click(object sender, EventArgs e)
         {
-            FrmEditarUsuario ediUser = new();
+            FrmEditarUsuario ediUser = new(false);
             ediUser.ShowDialog();
+        }
+
+        private void btnEditarUsuarios_Click(object sender, EventArgs e)
+        {
+            if (lstUsuarios.SelectedItems.Count > 0)
+            {
+                if (int.TryParse(lstUsuarios.SelectedItems[0].SubItems[0].Text, out int userId))
+                {
+                    Usuario user = new();
+                    UsuarioController US = new();
+                    UsuarioAutentificado.idEdit = userId;
+                    user = US.SelectUserPorID(UsuarioAutentificado.idEdit);
+                    FrmEditarUsuario ediUser = new(true);
+                    ediUser.ShowDialog();
+
+
+                }
+                else
+                    MessageBox.Show("El ID seleccionado no es un número válido.");
+            }
+            else
+                MessageBox.Show("Por favor, selecciona una fila antes de editar.", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
     }
 }

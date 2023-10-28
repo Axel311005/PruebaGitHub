@@ -113,7 +113,7 @@ namespace UINomina
                 FrmPrincipal frmMain = new();
                 frmMain.Show();
                 UsuarioAutentificado.id = usuarioAutenticado.ID;
-                this.Hide(); 
+                this.Hide();
             }
             else
             {

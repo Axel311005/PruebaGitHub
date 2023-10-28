@@ -105,7 +105,7 @@
             txtRol.Location = new Point(497, 115);
             txtRol.Name = "txtRol";
             txtRol.ReadOnly = true;
-            txtRol.Size = new Size(143, 22);
+            txtRol.Size = new Size(149, 22);
             txtRol.TabIndex = 29;
             txtRol.Click += txtRol_Click;
             // 
@@ -116,7 +116,7 @@
             cmbRol.Items.AddRange(new object[] { "Administrador", "Gerente", "Contador General", "Asistente Contable" });
             cmbRol.Location = new Point(497, 112);
             cmbRol.Name = "cmbRol";
-            cmbRol.Size = new Size(121, 25);
+            cmbRol.Size = new Size(149, 25);
             cmbRol.TabIndex = 28;
             cmbRol.Visible = false;
             // 
@@ -127,7 +127,7 @@
             dtFecha.Location = new Point(652, 51);
             dtFecha.Name = "dtFecha";
             dtFecha.Size = new Size(170, 22);
-            dtFecha.TabIndex = 27;
+            dtFecha.TabIndex = 5;
             // 
             // txtConfirmPass
             // 
@@ -135,7 +135,7 @@
             txtConfirmPass.Location = new Point(186, 169);
             txtConfirmPass.Name = "txtConfirmPass";
             txtConfirmPass.Size = new Size(143, 22);
-            txtConfirmPass.TabIndex = 26;
+            txtConfirmPass.TabIndex = 10;
             // 
             // label1
             // 
@@ -163,7 +163,7 @@
             txtTelefono.Location = new Point(348, 113);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(143, 22);
-            txtTelefono.TabIndex = 22;
+            txtTelefono.TabIndex = 8;
             // 
             // label10
             // 
@@ -191,7 +191,7 @@
             txtCorreo.Location = new Point(186, 113);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(143, 22);
-            txtCorreo.TabIndex = 18;
+            txtCorreo.TabIndex = 7;
             // 
             // label8
             // 
@@ -209,7 +209,7 @@
             txtContraseña.Location = new Point(15, 169);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(143, 22);
-            txtContraseña.TabIndex = 16;
+            txtContraseña.TabIndex = 9;
             // 
             // label7
             // 
@@ -228,7 +228,7 @@
             txtUser.Name = "txtUser";
             txtUser.ReadOnly = true;
             txtUser.Size = new Size(143, 22);
-            txtUser.TabIndex = 14;
+            txtUser.TabIndex = 6;
             // 
             // label6
             // 
@@ -246,7 +246,7 @@
             txtSegundoApellido.Location = new Point(503, 51);
             txtSegundoApellido.Name = "txtSegundoApellido";
             txtSegundoApellido.Size = new Size(143, 22);
-            txtSegundoApellido.TabIndex = 12;
+            txtSegundoApellido.TabIndex = 4;
             // 
             // label5
             // 
@@ -264,7 +264,7 @@
             txtApellido.Location = new Point(346, 51);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(143, 22);
-            txtApellido.TabIndex = 10;
+            txtApellido.TabIndex = 3;
             // 
             // label4
             // 
@@ -282,7 +282,7 @@
             txtSegundoNombre.Location = new Point(186, 51);
             txtSegundoNombre.Name = "txtSegundoNombre";
             txtSegundoNombre.Size = new Size(143, 22);
-            txtSegundoNombre.TabIndex = 8;
+            txtSegundoNombre.TabIndex = 2;
             // 
             // label3
             // 
@@ -300,7 +300,7 @@
             txtNombre.Location = new Point(15, 51);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(143, 22);
-            txtNombre.TabIndex = 6;
+            txtNombre.TabIndex = 1;
             // 
             // label2
             // 
@@ -320,7 +320,7 @@
             label12.Location = new Point(367, 9);
             label12.Name = "label12";
             label12.Size = new Size(136, 23);
-            label12.TabIndex = 8;
+            label12.TabIndex = 0;
             label12.Text = "Editar Usuario";
             // 
             // pbEditar

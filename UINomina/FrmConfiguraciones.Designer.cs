@@ -65,25 +65,27 @@
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
             columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
             btnEditarUsuarios = new Button();
             pbEditar = new PictureBox();
             lbTituloEdit = new Label();
-            columnHeader12 = new ColumnHeader();
+            pictureBox1 = new PictureBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Esconder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Ver).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbEditar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(452, 18);
+            label1.Location = new Point(501, 22);
             label1.Name = "label1";
-            label1.Size = new Size(179, 25);
+            label1.Size = new Size(60, 25);
             label1.TabIndex = 0;
-            label1.Text = "Configuraciones";
+            label1.Text = "Perfil";
             // 
             // groupBox1
             // 
@@ -109,7 +111,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtNombre);
             groupBox1.Controls.Add(label2);
-            groupBox1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox1.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.Location = new Point(24, 87);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(842, 177);
@@ -120,7 +122,7 @@
             // Esconder
             // 
             Esconder.Image = (Image)resources.GetObject("Esconder.Image");
-            Esconder.Location = new Point(335, 112);
+            Esconder.Location = new Point(335, 113);
             Esconder.Name = "Esconder";
             Esconder.Size = new Size(27, 23);
             Esconder.TabIndex = 26;
@@ -143,7 +145,7 @@
             txtRol.Location = new Point(679, 113);
             txtRol.Name = "txtRol";
             txtRol.ReadOnly = true;
-            txtRol.Size = new Size(143, 22);
+            txtRol.Size = new Size(143, 23);
             txtRol.TabIndex = 24;
             // 
             // label11
@@ -161,7 +163,7 @@
             txtTelefono.Location = new Point(530, 113);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.ReadOnly = true;
-            txtTelefono.Size = new Size(143, 22);
+            txtTelefono.Size = new Size(143, 23);
             txtTelefono.TabIndex = 22;
             // 
             // label10
@@ -179,7 +181,7 @@
             txtFechaNacimiento.Location = new Point(670, 51);
             txtFechaNacimiento.Name = "txtFechaNacimiento";
             txtFechaNacimiento.ReadOnly = true;
-            txtFechaNacimiento.Size = new Size(143, 22);
+            txtFechaNacimiento.Size = new Size(143, 23);
             txtFechaNacimiento.TabIndex = 20;
             // 
             // label9
@@ -197,7 +199,7 @@
             txtCorreo.Location = new Point(368, 113);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.ReadOnly = true;
-            txtCorreo.Size = new Size(143, 22);
+            txtCorreo.Size = new Size(143, 23);
             txtCorreo.TabIndex = 18;
             // 
             // label8
@@ -215,7 +217,7 @@
             txtContraseña.Location = new Point(186, 113);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.ReadOnly = true;
-            txtContraseña.Size = new Size(143, 22);
+            txtContraseña.Size = new Size(143, 23);
             txtContraseña.TabIndex = 16;
             txtContraseña.UseSystemPasswordChar = true;
             // 
@@ -234,7 +236,7 @@
             txtUser.Location = new Point(15, 113);
             txtUser.Name = "txtUser";
             txtUser.ReadOnly = true;
-            txtUser.Size = new Size(143, 22);
+            txtUser.Size = new Size(143, 23);
             txtUser.TabIndex = 14;
             // 
             // label6
@@ -252,7 +254,7 @@
             txtSegundoApellido.Location = new Point(503, 51);
             txtSegundoApellido.Name = "txtSegundoApellido";
             txtSegundoApellido.ReadOnly = true;
-            txtSegundoApellido.Size = new Size(143, 22);
+            txtSegundoApellido.Size = new Size(143, 23);
             txtSegundoApellido.TabIndex = 12;
             // 
             // label5
@@ -270,7 +272,7 @@
             txtApellido.Location = new Point(346, 51);
             txtApellido.Name = "txtApellido";
             txtApellido.ReadOnly = true;
-            txtApellido.Size = new Size(143, 22);
+            txtApellido.Size = new Size(143, 23);
             txtApellido.TabIndex = 10;
             // 
             // label4
@@ -288,7 +290,7 @@
             txtSegundoNombre.Location = new Point(186, 51);
             txtSegundoNombre.Name = "txtSegundoNombre";
             txtSegundoNombre.ReadOnly = true;
-            txtSegundoNombre.Size = new Size(143, 22);
+            txtSegundoNombre.Size = new Size(143, 23);
             txtSegundoNombre.TabIndex = 8;
             // 
             // label3
@@ -306,7 +308,7 @@
             txtNombre.Location = new Point(15, 51);
             txtNombre.Name = "txtNombre";
             txtNombre.ReadOnly = true;
-            txtNombre.Size = new Size(143, 22);
+            txtNombre.Size = new Size(143, 23);
             txtNombre.TabIndex = 6;
             // 
             // label2
@@ -322,7 +324,7 @@
             // lstUsuarios
             // 
             lstUsuarios.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
-            lstUsuarios.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lstUsuarios.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lstUsuarios.GridLines = true;
             lstUsuarios.Location = new Point(12, 358);
             lstUsuarios.Name = "lstUsuarios";
@@ -335,7 +337,6 @@
             // columnHeader1
             // 
             columnHeader1.Text = "ID";
-            columnHeader1.Width = 80;
             // 
             // columnHeader2
             // 
@@ -371,7 +372,7 @@
             // 
             columnHeader7.Text = "Correo Electronico";
             columnHeader7.TextAlign = HorizontalAlignment.Center;
-            columnHeader7.Width = 160;
+            columnHeader7.Width = 180;
             // 
             // columnHeader8
             // 
@@ -389,13 +390,19 @@
             // 
             columnHeader10.Text = "Ultimo Acceso";
             columnHeader10.TextAlign = HorizontalAlignment.Center;
-            columnHeader10.Width = 150;
+            columnHeader10.Width = 180;
             // 
             // columnHeader11
             // 
             columnHeader11.Text = "Rol";
             columnHeader11.TextAlign = HorizontalAlignment.Center;
             columnHeader11.Width = 140;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Telefono";
+            columnHeader12.TextAlign = HorizontalAlignment.Center;
+            columnHeader12.Width = 80;
             // 
             // btnEditarUsuarios
             // 
@@ -406,6 +413,7 @@
             btnEditarUsuarios.Text = "Editar";
             btnEditarUsuarios.UseVisualStyleBackColor = true;
             btnEditarUsuarios.Visible = false;
+            btnEditarUsuarios.Click += btnEditarUsuarios_Click;
             // 
             // pbEditar
             // 
@@ -422,18 +430,21 @@
             // 
             lbTituloEdit.AutoSize = true;
             lbTituloEdit.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbTituloEdit.Location = new Point(452, 298);
+            lbTituloEdit.Location = new Point(461, 311);
             lbTituloEdit.Name = "lbTituloEdit";
             lbTituloEdit.Size = new Size(159, 25);
             lbTituloEdit.TabIndex = 11;
             lbTituloEdit.Text = "Editar Usuarios";
             lbTituloEdit.Visible = false;
             // 
-            // columnHeader12
+            // pictureBox1
             // 
-            columnHeader12.Text = "Telefono";
-            columnHeader12.TextAlign = HorizontalAlignment.Center;
-            columnHeader12.Width = 80;
+            pictureBox1.Image = Properties.Resources.usuario__3_;
+            pictureBox1.Location = new Point(39, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(72, 64);
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
             // 
             // FrmConfiguraciones
             // 
@@ -441,6 +452,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1115, 683);
+            Controls.Add(pictureBox1);
             Controls.Add(lbTituloEdit);
             Controls.Add(pbEditar);
             Controls.Add(btnEditarUsuarios);
@@ -456,6 +468,7 @@
             ((System.ComponentModel.ISupportInitialize)Esconder).EndInit();
             ((System.ComponentModel.ISupportInitialize)Ver).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbEditar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -502,5 +515,6 @@
         private Label lbTituloEdit;
         private ColumnHeader columnHeader11;
         private ColumnHeader columnHeader12;
+        private PictureBox pictureBox1;
     }
 }

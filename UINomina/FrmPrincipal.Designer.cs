@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             panel1 = new Panel();
-            button1 = new Button();
+            btnHome = new Button();
             btnPlanilla = new Button();
             btnEmpleados = new Button();
             btnConfig = new Button();
@@ -51,7 +51,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(31, 38, 62);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnHome);
             panel1.Controls.Add(btnPlanilla);
             panel1.Controls.Add(btnEmpleados);
             panel1.Controls.Add(btnConfig);
@@ -65,23 +65,24 @@
             panel1.TabIndex = 0;
             panel1.MouseDown += panel1_MouseDown;
             // 
-            // button1
+            // btnHome
             // 
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(3, 129);
-            button1.Name = "button1";
-            button1.Padding = new Padding(1, 0, 1, 1);
-            button1.Size = new Size(149, 27);
-            button1.TabIndex = 7;
-            button1.Text = "Home";
-            button1.UseVisualStyleBackColor = true;
+            btnHome.BackgroundImage = (Image)resources.GetObject("btnHome.BackgroundImage");
+            btnHome.BackgroundImageLayout = ImageLayout.None;
+            btnHome.FlatAppearance.BorderSize = 0;
+            btnHome.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
+            btnHome.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnHome.ForeColor = Color.White;
+            btnHome.Location = new Point(3, 129);
+            btnHome.Name = "btnHome";
+            btnHome.Padding = new Padding(1, 0, 1, 1);
+            btnHome.Size = new Size(149, 27);
+            btnHome.TabIndex = 7;
+            btnHome.Text = "Home";
+            btnHome.UseVisualStyleBackColor = true;
+            btnHome.Click += btnHome_Click;
             // 
             // btnPlanilla
             // 
@@ -257,6 +258,6 @@
         private Panel panelContenedor;
         private PictureBox PBMinimizar;
         private PictureBox PBCerrar;
-        private Button button1;
+        private Button btnHome;
     }
 }

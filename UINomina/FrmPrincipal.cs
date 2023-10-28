@@ -16,6 +16,7 @@ namespace UINomina
         public FrmPrincipal()
         {
             InitializeComponent();
+
         }
         [DllImport("user32.dll")]
         private static extern int ReleaseCapture();
@@ -37,7 +38,7 @@ namespace UINomina
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
+            AbrirFormHija(new FrmHome());   
         }
 
         private void FrmPrincipal_MouseDown(object sender, MouseEventArgs e)
@@ -73,28 +74,22 @@ namespace UINomina
             login.Show();
             this.Hide();
         }
-        private void AbrirFormHija(object form)
+        private Form formActual = null;
+        private void AbrirFormHija(Form frm)
         {
-            if (this.panelContenedor != null && this.panelContenedor.Controls.Count > 0)
-            {
-                var existingForm = this.panelContenedor.Controls[0] as Form;
-                if (existingForm != null)
-                {
-                    existingForm.Close();
-                    existingForm.MouseDown -= FrmPrincipal_MouseDown; 
-                }
+            if (formActual != null)
+            { 
+                formActual.Close();
+                formActual.MouseDown -= FrmPrincipal_MouseDown;
             }
 
-            Form frm = form as Form;
-            if (frm != null)
-            {
-                frm.TopLevel = false;
-                frm.Dock = DockStyle.Fill;
-                this.panelContenedor.Controls.Add(frm);
-                this.panelContenedor.Tag = frm;
-                frm.Show();
-                frm.MouseDown += FrmPrincipal_MouseDown; 
-            }
+            formActual = frm;
+            frm.TopLevel = false;
+            frm.Dock = DockStyle.Fill;
+            this.panelContenedor.Controls.Add(frm);
+            this.panelContenedor.Tag = frm;
+            frm.Show();
+            frm.MouseDown += FrmPrincipal_MouseDown;
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
@@ -102,6 +97,11 @@ namespace UINomina
             AbrirFormHija(new FrmConfiguraciones());
         }
 
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FrmHome());
+            
+        }
         private void PBCerrar_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
@@ -111,5 +111,6 @@ namespace UINomina
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
     }
 }

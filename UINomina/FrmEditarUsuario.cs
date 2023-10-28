@@ -16,11 +16,13 @@ namespace UINomina
 {
     public partial class FrmEditarUsuario : Form
     {
-        private int ID = (int)UsuarioAutentificado.id;
-        public FrmEditarUsuario()
+        private int ID;
+        public FrmEditarUsuario(bool openedFromEditarButton)
         {
             InitializeComponent();
+            ID = openedFromEditarButton ? UsuarioAutentificado.idEdit : UsuarioAutentificado.id;
         }
+
         [DllImport("user32.dll")]
         private static extern int ReleaseCapture();
         [DllImport("user32.dll")]
@@ -31,12 +33,13 @@ namespace UINomina
         private void FrmEditarUsuario_Load(object sender, EventArgs e)
         {
             Usuario user = new();
+            Usuario user2 = new();
+            user2.IdRol = UsuarioAutentificado.id;
             UsuarioController US = new();
             dtFecha.Format = DateTimePickerFormat.Custom;
             dtFecha.CustomFormat = "dd/MM/yyyy";
             dtFecha.ShowUpDown = true;
             cmbRol.DropDownStyle = ComboBoxStyle.DropDownList;
-
 
             user = US.SelectUserPorID(ID);
             if (user != null)
@@ -72,7 +75,7 @@ namespace UINomina
                     txtRol.Text = "Asistente Contable";
                 }
 
-                if (user.IdRol == (int)Rol.IdAdministrador || user.IdRol == (int)Rol.IdGerente)
+                if (user2.IdRol == (int)Rol.IdAdministrador || user2.IdRol == (int)Rol.IdGerente)
                 {
                     cmbRol.Visible = true;
                     txtRol.Visible = false;

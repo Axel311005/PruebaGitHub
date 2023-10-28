@@ -9,5 +9,7 @@ namespace Modelo
     public static class UsuarioAutentificado
     {
         public static int id { get; set; }
+
+        public static int idEdit { get;set; }
     }
 }
