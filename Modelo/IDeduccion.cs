@@ -13,9 +13,9 @@ namespace Modelo
         decimal CalcularPrestamos();
         decimal CalcularEmbargos();
         decimal CalcularSalarioNeto();
-        decimal CalcularINSSPatronal();
 
         decimal CalcularTotalDeducciones();
+
     }
 
 }

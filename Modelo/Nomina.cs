@@ -1,16 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace Modelo
-{ 
-    public class Nomina : IDeduccion, IIngresos
+{
+    public class Nomina : IDeduccion, IIngresos, ICargos
     {
         private int idNomina;
         private DateTime fecha;
+        private DateTime fechaFin;
         private decimal ingresoOrdinario;
         private decimal salarioPorDia;
         private decimal horaExtra;
         private decimal totalIngresos;
-        private decimal viatico;
+        private decimal viaticoTransporte;
+        private decimal viaticoAlimentacion;
         private decimal depreciacionVehiculo;
         private decimal riesgoLaboral;
         private decimal comisiones;
@@ -21,18 +23,20 @@ namespace Modelo
         private decimal embargos;
         private decimal salarioNeto;
         private int idEmpleado;
-        public static decimal tarifaHoraExtra { get; set; }
-        public static decimal tarifaComisiones { get; set; }
-        
 
-        private Empleado Empleado { get; set; }
 
-        [Required(ErrorMessage ="El ID es requerido")]
+        [Required(ErrorMessage = "Empleado requerido.")]
+        public Empleado Empleado { get; set; }
+
+        [Required(ErrorMessage = "El ID es requerido")]
         public int IDNomina { get => idNomina; set => idNomina = value; }
 
         [Required(ErrorMessage = "La fecha es requerida")]
         [DataType(DataType.Date)]
         public DateTime Fecha { get => fecha; set => fecha = value; }
+        [Required(ErrorMessage = "La fecha fin de la nomina es requerida")]
+        [DataType(DataType.Date)]
+        public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
 
         [Required(ErrorMessage = "El ingreso ordinario es requerido")]
         [Range(0, Double.MaxValue, ErrorMessage = "El ingreso ordinario debe ser mayor o igual a 0")]
@@ -50,9 +54,12 @@ namespace Modelo
         [Range(0, Double.MaxValue, ErrorMessage = "El total de ingresos debe ser mayor o igual a 0")]
         public decimal TotalIngresos { get => totalIngresos; set => totalIngresos = value; }
 
-        [Required(ErrorMessage = "El viático es requerido")]
-        [Range(0, Double.MaxValue, ErrorMessage = "El viático debe ser mayor o igual a 0")]
-        public decimal Viatico { get => viatico; set => viatico = value; }
+        [Required(ErrorMessage = "El viático de transporte es requerido")]
+        [Range(0, Double.MaxValue, ErrorMessage = "El viático transporte debe ser mayor o igual a 0")]
+        public decimal ViaticoTransporte { get => viaticoTransporte; set => viaticoTransporte = value; }
+        [Required(ErrorMessage = "El viático de alimentacion es requerido")]
+        [Range(0, Double.MaxValue, ErrorMessage = "El viático alimentacion debe ser mayor o igual a 0")]
+        public decimal ViaticoAlimentacion { get => viaticoAlimentacion; set => viaticoAlimentacion = value; }
 
         [Required(ErrorMessage = "La depreciación de vehículo es requerida")]
         [Range(0, Double.MaxValue, ErrorMessage = "La depreciación de vehículo debe ser mayor o igual a 0")]
@@ -93,23 +100,23 @@ namespace Modelo
         [Required(ErrorMessage = "El ID del empleado es requerido")]
         public int IDEmpleado { get => idEmpleado; set => idEmpleado = value; }
 
-        [Required(ErrorMessage = "La cantidad de días de vacaciones tomados es requerida")]
-        [Range(0, Double.MaxValue, ErrorMessage = "La cantidad de días de vacaciones tomados debe ser mayor o igual a 0")]
-        public int DiasVacacionesTomados { get; set; }
+    
+        public int cantidadEmpleados { get; set; }
+  
 
         public decimal CalcularComisiones()
         {
-            return Comisiones * tarifaComisiones;
+            return Comisiones;
         }
 
         public decimal CalcularDepreciacionVehiculo()
         {
-            throw new NotImplementedException();
+            return DepreciacionVehiculo;
         }
 
         public decimal CalcularEmbargos()
         {
-            throw new NotImplementedException();
+            return Embargos;
         }
         public decimal CalcularHoraExtra()
         {
@@ -156,7 +163,7 @@ namespace Modelo
 
         public decimal CalcularIngresoVacaciones()
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public decimal CalcularINSS()
@@ -166,12 +173,23 @@ namespace Modelo
 
         public decimal CalcularPrestamos()
         {
-            throw new NotImplementedException();
+            return Prestamos;
         }
 
-        public decimal CalcularRiesgoLaboral()
+        public decimal CalcularRiesgoLaboral(bool enSubsidio, int diasSubsidio)
         {
-            return SalarioPorDia * 0.02m;
+
+            if (enSubsidio)
+            {
+                decimal porcentajeRiesgoLaboral = 0.04m;
+                RiesgoLaboral = CalcularTotalIngresos() * porcentajeRiesgoLaboral * diasSubsidio;
+            }
+            else
+            {
+                RiesgoLaboral = 0.0m;
+            }
+
+            return RiesgoLaboral;
         }
 
         public decimal CalcularSalarioNeto()
@@ -186,12 +204,12 @@ namespace Modelo
 
         public decimal CalcularTotalIngresos()
         {
-            return IngresoOrdinario + CalcularHoraExtra() + Viatico + Comisiones + CalcularIngresoVacaciones();
+            return Empleado.SalarioOrdinario + CalcularHoraExtra() + CalcularViaticoAlimentacion() + CalcularViaticoTransporte() + CalcularComisiones() + RiesgoLaboral + CalcularNocturnidad();
         }
 
-        public decimal CalcularViatico()
+        public decimal CalcularViaticoAlimentacion()
         {
-            throw new NotImplementedException();
+            return ViaticoAlimentacion;
         }
 
         public decimal CalcularIngresoAnual()
@@ -199,20 +217,10 @@ namespace Modelo
             return (CalcularTotalIngresos()) * 12;
         }
 
-        public decimal CalcularINATEC()
-        {
-            return CalcularTotalIngresos() * 0.02m;
-        }
-
-        public decimal CalcularINSSPatronal()
-        {
-            throw new NotImplementedException();
-        }
 
         public decimal CalcularNocturnidad()
         {
-            decimal nocturnidad = Empleado.SalarioOrdinario * 0.2m;
-            return nocturnidad;
+            return (CalcularSalarioPorHora()/7) * 2;
         }
 
         public decimal CalcularSalarioPorHora()
@@ -222,8 +230,91 @@ namespace Modelo
 
         public decimal CalcularTotalDeducciones()
         {
-            decimal totalDeducciones = INSS + ImpuestoRenta + Prestamos + Embargos;
-            return totalDeducciones;
+            return CalcularINSS() + CalcularImpuestoRenta()  + CalcularPrestamos() + CalcularEmbargos();
         }
+
+        public decimal CalcularViaticoTransporte()
+        {
+            return ViaticoTransporte;
+        }
+
+        public decimal CalcularINATEC()
+        {
+            return CalcularTotalIngresos() * 0.02M;
+        }
+
+        public decimal CalcularINSSPatronal()
+        {
+            if (cantidadEmpleados > 50)
+                return CalcularTotalIngresos() * 0.225M;
+            else
+                return CalcularTotalIngresos() * 0.215M;
+        }
+
+        public decimal MostrarVacacionesAcumuladas()
+        {
+            decimal tasaAcumulacionPorQuincena = 1.25m;
+
+            // Calcula la cantidad de días trabajados
+            int diasTrabajados = CalcularDiasEntreFechas(Empleado.FechaContratacion, FechaFin);
+
+            int quincenasTrabajadas = diasTrabajados / 15; 
+
+            decimal vacacionesAcumuladas = quincenasTrabajadas * tasaAcumulacionPorQuincena;
+
+            return vacacionesAcumuladas;
+        }
+
+        public decimal MostrarAguinaldoAcmulado()
+        {
+            decimal tasaAcumulacionPorDia = 0.083m;
+
+            // Calcula la cantidad de días trabajados desde la fecha de contratación hasta el final del período de pago
+            int diasTrabajados = CalcularDiasEntreFechas(Empleado.FechaContratacion, fechaFin);
+
+            // Calcula el aguinaldo acumulado
+            decimal aguinaldoAcumulado = diasTrabajados * tasaAcumulacionPorDia;
+
+            return aguinaldoAcumulado;
+        }
+
+        public decimal calcularPagoIndenmizacion()
+        {
+            decimal salarioMes = Empleado.SalarioOrdinario / 30;
+            int añosTrabajados = CalcularAñosTrabajados(Empleado.FechaContratacion, Empleado.FechaCierreContrato);
+
+            // Reglas de cálculo de la indemnización
+            decimal indemnizacion = 0.0m;
+            if (añosTrabajados <= 3)
+            {
+                indemnizacion = salarioMes * añosTrabajados;
+            }
+            else if (añosTrabajados <= 5)
+            {
+                indemnizacion = salarioMes * 3 + (salarioMes * 20 * (añosTrabajados - 3));
+            }
+            else
+            {
+                indemnizacion = salarioMes * 3 + (salarioMes * 20 * 2);
+            }
+
+            return indemnizacion;
+        }
+
+        private int CalcularAñosTrabajados(DateTime fechaContratacion, DateTime fechaFIn)
+        {
+            TimeSpan diferencia = fechaFIn - fechaContratacion;
+            int añosTrabajados = diferencia.Days / 365; // Asumiendo un año de 365 días
+            return añosTrabajados;
+        }
+
+        public int CalcularDiasEntreFechas(DateTime fechaInicio, DateTime fechaFin)
+        {
+            TimeSpan diferencia = fechaFin - fechaInicio;
+            int dias = Math.Abs(diferencia.Days);
+
+            return dias;
+        }
+
     }
 }

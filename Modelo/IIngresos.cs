@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 namespace Modelo
 {
     public interface IIngresos
-    {
-        decimal CalcularSalarioPorHora();
+    {     
+
         decimal CalcularSalarioPorDia();
         decimal CalcularHoraExtra();
+        decimal CalcularSalarioPorHora();
         decimal CalcularTotalIngresos();
-        decimal CalcularViatico();
+        decimal CalcularViaticoAlimentacion();
+        decimal CalcularViaticoTransporte();
         decimal CalcularDepreciacionVehiculo();
-        decimal CalcularRiesgoLaboral();
+        decimal CalcularRiesgoLaboral(bool enSubsidio, int diasSubsidio);
+        decimal CalcularNocturnidad();
         decimal CalcularComisiones();
         decimal CalcularIngresoVacaciones();
         decimal CalcularIngresoAnual();
-        decimal CalcularINATEC();
-        decimal CalcularNocturnidad();
+        
     }
 }

@@ -21,7 +21,7 @@ namespace Modelo
         private DateTime fechaContratacion { get; set; }
         private DateTime fechaCierreContrato { get; set; }
         private decimal salarioOrdinario { get; set; }
-        private bool estado { get; set; }
+        private bool activo{ get; set; }
         private List<Nomina> Nominas { get; set; }
 
         [Required(ErrorMessage = "El ID del empleado es requerido")]
@@ -32,6 +32,7 @@ namespace Modelo
         public string NumeroCedula { get => numeroCedula; set => numeroCedula = value; }
 
         [Required(ErrorMessage = "El numero INSS es requerido")]
+        [RegularExpression(@"^\d{7}-\d{1}$", ErrorMessage = "El formato del numero INSS no es válido.")]
         public string NumeroINSS { get => numeroINSS;set => numeroINSS = value; }
 
         [Required(ErrorMessage = "El numero RUC es requerido")]
@@ -94,7 +95,7 @@ namespace Modelo
         public decimal SalarioOrdinario { get => salarioOrdinario; set => salarioOrdinario = value; }
 
         [Required(ErrorMessage = "El estado es requerido")]
-        public bool Estado { get => estado; set => estado = value; }
+        public bool Activo { get => activo; set => activo = value; }
 
     }
 }
