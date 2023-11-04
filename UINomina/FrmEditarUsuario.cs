@@ -99,7 +99,7 @@ namespace UINomina
         {
             UsuarioController usuarioController = new();
             Usuario nuevoUsuario = ObtenerDatosEditados();
-            List<string> errores = UsuarioValidation.ValidarUsuario(nuevoUsuario);
+            List<string> errores = Validation.ValidarUsuario(nuevoUsuario);
             if (errores.Count == 0)
             {
                 try
@@ -136,6 +136,7 @@ namespace UINomina
             usuario.FechaNac = dtFecha.Value;
             usuario.Telefono = txtTelefono.Text;
             usuario.CorreoElectronico = txtCorreo.Text;
+      
             if (cmbRol.SelectedItem == "Administrador")
                 usuario.IdRol = (int)Rol.IdAdministrador;
             else if (cmbRol.SelectedItem == "Gerente")

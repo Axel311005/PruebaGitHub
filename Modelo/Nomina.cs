@@ -101,7 +101,7 @@ namespace Modelo
         public int IDEmpleado { get => idEmpleado; set => idEmpleado = value; }
 
     
-        public int cantidadEmpleados { get; set; }
+        public static int cantidadEmpleados { get; set; }
   
 
         public decimal CalcularComisiones()
@@ -161,10 +161,7 @@ namespace Modelo
             return IR/2;//De forma quincenal
         }
 
-        public decimal CalcularIngresoVacaciones()
-        {
-            return 0;
-        }
+    
 
         public decimal CalcularINSS()
         {
@@ -176,20 +173,9 @@ namespace Modelo
             return Prestamos;
         }
 
-        public decimal CalcularRiesgoLaboral(bool enSubsidio, int diasSubsidio)
-        {
-
-            if (enSubsidio)
-            {
-                decimal porcentajeRiesgoLaboral = 0.04m;
-                RiesgoLaboral = CalcularTotalIngresos() * porcentajeRiesgoLaboral * diasSubsidio;
-            }
-            else
-            {
-                RiesgoLaboral = 0.0m;
-            }
-
-            return RiesgoLaboral;
+        public decimal CalcularRiesgoLaboral()
+        {        
+            return (Empleado.SalarioOrdinario/2)*0.2M;
         }
 
         public decimal CalcularSalarioNeto()
@@ -204,7 +190,7 @@ namespace Modelo
 
         public decimal CalcularTotalIngresos()
         {
-            return Empleado.SalarioOrdinario + CalcularHoraExtra() + CalcularViaticoAlimentacion() + CalcularViaticoTransporte() + CalcularComisiones() + RiesgoLaboral + CalcularNocturnidad();
+            return (Empleado.SalarioOrdinario/2) + CalcularHoraExtra() + CalcularViaticoAlimentacion() + CalcularViaticoTransporte() + CalcularComisiones() + CalcularRiesgoLaboral() + CalcularNocturnidad();
         }
 
         public decimal CalcularViaticoAlimentacion()
@@ -220,7 +206,7 @@ namespace Modelo
 
         public decimal CalcularNocturnidad()
         {
-            return (CalcularSalarioPorHora()/7) * 2;
+            return (Empleado.SalarioOrdinario / 2) * 0.2M;
         }
 
         public decimal CalcularSalarioPorHora()
@@ -253,68 +239,22 @@ namespace Modelo
 
         public decimal MostrarVacacionesAcumuladas()
         {
-            decimal tasaAcumulacionPorQuincena = 1.25m;
-
-            // Calcula la cantidad de días trabajados
-            int diasTrabajados = CalcularDiasEntreFechas(Empleado.FechaContratacion, FechaFin);
-
-            int quincenasTrabajadas = diasTrabajados / 15; 
-
-            decimal vacacionesAcumuladas = quincenasTrabajadas * tasaAcumulacionPorQuincena;
-
-            return vacacionesAcumuladas;
+            return (Empleado.SalarioOrdinario / 2) * 0.083M;
         }
 
         public decimal MostrarAguinaldoAcmulado()
         {
-            decimal tasaAcumulacionPorDia = 0.083m;
-
-            // Calcula la cantidad de días trabajados desde la fecha de contratación hasta el final del período de pago
-            int diasTrabajados = CalcularDiasEntreFechas(Empleado.FechaContratacion, fechaFin);
-
-            // Calcula el aguinaldo acumulado
-            decimal aguinaldoAcumulado = diasTrabajados * tasaAcumulacionPorDia;
-
-            return aguinaldoAcumulado;
+            return (Empleado.SalarioOrdinario / 2) * 0.083M;
         }
 
         public decimal calcularPagoIndenmizacion()
         {
-            decimal salarioMes = Empleado.SalarioOrdinario / 30;
-            int añosTrabajados = CalcularAñosTrabajados(Empleado.FechaContratacion, Empleado.FechaCierreContrato);
 
-            // Reglas de cálculo de la indemnización
-            decimal indemnizacion = 0.0m;
-            if (añosTrabajados <= 3)
-            {
-                indemnizacion = salarioMes * añosTrabajados;
-            }
-            else if (añosTrabajados <= 5)
-            {
-                indemnizacion = salarioMes * 3 + (salarioMes * 20 * (añosTrabajados - 3));
-            }
-            else
-            {
-                indemnizacion = salarioMes * 3 + (salarioMes * 20 * 2);
-            }
-
-            return indemnizacion;
+            return (Empleado.SalarioOrdinario / 2)*0.083M;
         }
 
-        private int CalcularAñosTrabajados(DateTime fechaContratacion, DateTime fechaFIn)
-        {
-            TimeSpan diferencia = fechaFIn - fechaContratacion;
-            int añosTrabajados = diferencia.Days / 365; // Asumiendo un año de 365 días
-            return añosTrabajados;
-        }
 
-        public int CalcularDiasEntreFechas(DateTime fechaInicio, DateTime fechaFin)
-        {
-            TimeSpan diferencia = fechaFin - fechaInicio;
-            int dias = Math.Abs(diferencia.Days);
-
-            return dias;
-        }
+     
 
     }
 }

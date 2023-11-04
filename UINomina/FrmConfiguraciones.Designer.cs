@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfiguraciones));
-            label1 = new Label();
             groupBox1 = new GroupBox();
             Esconder = new PictureBox();
             Ver = new PictureBox();
@@ -68,24 +67,15 @@
             columnHeader12 = new ColumnHeader();
             btnEditarUsuarios = new Button();
             pbEditar = new PictureBox();
-            lbTituloEdit = new Label();
             pictureBox1 = new PictureBox();
+            label12 = new Label();
+            lbTituloEdit = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Esconder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Ver).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbEditar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(501, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Perfil";
             // 
             // groupBox1
             // 
@@ -426,17 +416,6 @@
             pbEditar.TabStop = false;
             pbEditar.Click += pbEditar_Click;
             // 
-            // lbTituloEdit
-            // 
-            lbTituloEdit.AutoSize = true;
-            lbTituloEdit.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbTituloEdit.Location = new Point(461, 311);
-            lbTituloEdit.Name = "lbTituloEdit";
-            lbTituloEdit.Size = new Size(159, 25);
-            lbTituloEdit.TabIndex = 11;
-            lbTituloEdit.Text = "Editar Usuarios";
-            lbTituloEdit.Visible = false;
-            // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.usuario__3_;
@@ -446,19 +425,40 @@
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(501, 21);
+            label12.Name = "label12";
+            label12.Size = new Size(60, 25);
+            label12.TabIndex = 13;
+            label12.Text = "Perfil";
+            // 
+            // lbTituloEdit
+            // 
+            lbTituloEdit.AutoSize = true;
+            lbTituloEdit.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbTituloEdit.Location = new Point(452, 292);
+            lbTituloEdit.Name = "lbTituloEdit";
+            lbTituloEdit.Size = new Size(159, 25);
+            lbTituloEdit.TabIndex = 14;
+            lbTituloEdit.Text = "Editar Usuarios";
+            lbTituloEdit.Visible = false;
+            // 
             // FrmConfiguraciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1115, 683);
-            Controls.Add(pictureBox1);
             Controls.Add(lbTituloEdit);
+            Controls.Add(label12);
+            Controls.Add(pictureBox1);
             Controls.Add(pbEditar);
             Controls.Add(btnEditarUsuarios);
             Controls.Add(lstUsuarios);
             Controls.Add(groupBox1);
-            Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmConfiguraciones";
             Text = "FrmConfiguraciones";
@@ -474,8 +474,6 @@
         }
 
         #endregion
-
-        private Label label1;
         private GroupBox groupBox1;
         private ListView lstUsuarios;
         private TextBox txtNombre;
@@ -512,9 +510,10 @@
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
-        private Label lbTituloEdit;
         private ColumnHeader columnHeader11;
         private ColumnHeader columnHeader12;
         private PictureBox pictureBox1;
+        private Label label12;
+        private Label lbTituloEdit;
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UINomina
 {
-    public partial class FrmHome : Form
+    public partial class FrmAgregarCargo : Form
     {
-        public FrmHome()
+        public FrmAgregarCargo()
         {
             InitializeComponent();
         }

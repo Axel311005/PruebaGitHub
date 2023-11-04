@@ -8,7 +8,7 @@ namespace Modelo
 {
     internal interface ICargos
     {
-        int cantidadEmpleados { get; set; }
+        static int cantidadEmpleados { get; set; }
         decimal CalcularINATEC();
         decimal CalcularINSSPatronal();
         decimal MostrarVacacionesAcumuladas();

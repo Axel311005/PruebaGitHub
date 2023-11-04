@@ -19,8 +19,8 @@ namespace Controladores
             {
                 conection.Open();
 
-                string query = "INSERT INTO empleado (numeroCedula, numeroINSS, numeroRUC, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, sexo, estadoCivil, direccion, telefono, celular, fechaContratacion, salarioOridinario, activo)" +
-                    "VALUES (@numeroCedula, @numeroINSS, @numeroRUC, @primerNombre,@segundoNombre,@primerApellido, @segundoApellido, @fechaNacimiento,@sexo,@estadoCivil,@direccion,@telefono,@celular, @fechaContratacion, @salarioOrdinario, 1)";
+                string query = "INSERT INTO empleado (numeroCedula, numeroINSS, numeroRUC, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, sexo, estadoCivil, direccion, telefono, celular, fechaContratacion, salarioOridinario, activo, idCargo, idHorario)" +
+                    "VALUES (@numeroCedula, @numeroINSS, @numeroRUC, @primerNombre,@segundoNombre,@primerApellido, @segundoApellido, @fechaNacimiento,@sexo,@estadoCivil,@direccion,@telefono,@celular, @fechaContratacion, @salarioOrdinario, 1, @idCargo, @idHorario)";
 
                 using(SqlCommand comando = new SqlCommand(query, conection))
                 {
@@ -39,9 +39,9 @@ namespace Controladores
                     comando.Parameters.AddWithValue("@celular", empleado.Celular);
                     comando.Parameters.AddWithValue("@fechaContratacion", empleado.FechaContratacion);
                     comando.Parameters.AddWithValue("@salarioOrdinario", empleado.SalarioOrdinario);
-
+                    comando.Parameters.AddWithValue("@idCargo", empleado.IDCargo);
+                    comando.Parameters.AddWithValue("@idHorario", empleado.IDHorario);
                     comando.ExecuteNonQuery();
-
                 }
             }
         }

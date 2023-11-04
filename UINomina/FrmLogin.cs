@@ -102,7 +102,6 @@ namespace UINomina
         {
             Usuario user = new Usuario();
             UsuarioController userControl = new();
-            UsuarioValidation userVal = new();
             user.NombreUsuario = txtUser.Text;
             user.Password = txtPass.Text;
 
@@ -110,7 +109,7 @@ namespace UINomina
             {
                 Usuario usuarioAutenticado = userControl.SelectUserPorNombreUsuario(user.NombreUsuario);
                 userControl.ActualizarUltimoAcceso(user);
-                FrmPrincipal frmMain = new();
+                FrmPrincipal frmMain = new FrmPrincipal(usuarioAutenticado.ID);
                 frmMain.Show();
                 UsuarioAutentificado.id = usuarioAutenticado.ID;
                 this.Hide();
@@ -119,7 +118,7 @@ namespace UINomina
             {
                 intentosFallidos++;
                 MessageBox.Show("Nombre usuario o contraseña incorrecta, intente de nuevo", "Error al iniciar session", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (userVal.ContadorIntentos(intentosFallidos))
+                if (Validation.ContadorIntentos(intentosFallidos))
                 {
                     MessageBox.Show("Has excedido el numero maximo de intentos. El programa se cerrara.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Exit();

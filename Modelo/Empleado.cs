@@ -22,6 +22,8 @@ namespace Modelo
         private DateTime fechaCierreContrato { get; set; }
         private decimal salarioOrdinario { get; set; }
         private bool activo{ get; set; }
+        private int idHorario { get; set; }
+        private int idCargo { get; set; }
         private List<Nomina> Nominas { get; set; }
 
         [Required(ErrorMessage = "El ID del empleado es requerido")]
@@ -96,6 +98,12 @@ namespace Modelo
 
         [Required(ErrorMessage = "El estado es requerido")]
         public bool Activo { get => activo; set => activo = value; }
+
+        [Required(ErrorMessage = "El Horario es requerido")]
+        public int IDHorario { get => idHorario;set => idHorario = value; }
+
+        [Required(ErrorMessage = "El Cargo es requerido")]
+        public int IDCargo { get => idCargo;set => idCargo = value; }
 
     }
 }

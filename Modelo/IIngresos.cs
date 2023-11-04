@@ -16,10 +16,9 @@ namespace Modelo
         decimal CalcularViaticoAlimentacion();
         decimal CalcularViaticoTransporte();
         decimal CalcularDepreciacionVehiculo();
-        decimal CalcularRiesgoLaboral(bool enSubsidio, int diasSubsidio);
+        decimal CalcularRiesgoLaboral();
         decimal CalcularNocturnidad();
         decimal CalcularComisiones();
-        decimal CalcularIngresoVacaciones();
         decimal CalcularIngresoAnual();
         
     }

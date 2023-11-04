@@ -1,6 +1,6 @@
 ﻿namespace UINomina
 {
-    partial class FrmHome
+    partial class FrmAgregarCargo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,39 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
             SuspendLayout();
             // 
-            // label2
+            // FrmAgregarCargo
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(505, 24);
-            label2.Margin = new Padding(6, 0, 6, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(72, 25);
-            label2.TabIndex = 1;
-            label2.Text = "Home";
-            // 
-            // FrmHome
-            // 
-            AutoScaleDimensions = new SizeF(13F, 30F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1115, 683);
-            Controls.Add(label2);
-            Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ClientSize = new Size(1115, 680);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(6);
-            Name = "FrmHome";
-            Text = "FrmHome";
+            Name = "FrmAgregarCargo";
+            Text = "FrmAgregarCargo";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private ListView listView1;
-        private Button button1;
-        private Label label2;
     }
 }
