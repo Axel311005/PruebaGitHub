@@ -158,6 +158,8 @@ namespace UINomina
         private void btnAggCargo_Click(object sender, EventArgs e)
         {
             subMenuEmpleado.Visible = false;
+            FrmAgregarCargo frmAC = new();
+            AbrirFormHija(frmAC);
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)

@@ -124,6 +124,12 @@
   <data name="Power Off" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Power Off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="salir-de-pantalla-completa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salir-de-pantalla-completa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Group 39" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Group 39.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,14 +142,14 @@
   <data name="editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Transaction" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Transaction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usuario (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usuario (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boton-agregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boton-agregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="agregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\agregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Vector (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Vector (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="empleado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\empleado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,8 +157,8 @@
   <data name="usuario (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usuario (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usuario (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usuario (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Transaction" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Transaction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Full Colour" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Full Colour.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,14 +166,11 @@
   <data name="ver" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usuario-de-perfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usuario-de-perfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="nominas-de-excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nominas-de-excel.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Vector (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Vector (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="agregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cerrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cerrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,10 +190,10 @@
   <data name="Dashboard Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dashboard Login.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="salir-de-pantalla-completa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\salir-de-pantalla-completa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usuario-de-perfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usuario-de-perfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Group 39" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Group 39.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Rectangle 43 Copy (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rectangle 43 Copy (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

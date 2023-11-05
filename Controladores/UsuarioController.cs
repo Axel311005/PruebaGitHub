@@ -192,10 +192,8 @@ namespace Controladores
             }
         }
 
-        public List<Usuario> TraerUsuarios()
+        public IEnumerable<Usuario> TraerUsuarios()
         {
-            List<Usuario> usuarios = new List<Usuario>();
-
             using (SqlConnection connection = new SqlConnection(conexion))
             {
                 connection.Open();
@@ -225,14 +223,13 @@ namespace Controladores
                                 Telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? string.Empty : reader.GetString(reader.GetOrdinal("telefono"))
                             };
 
-                            usuarios.Add(usuario);
+                            yield return usuario;
                         }
                     }
                 }
             }
-
-            return usuarios;
         }
+
     }
 }
 

@@ -221,7 +221,7 @@ namespace UINomina
 
             if (cargo != null)
             {
-                return cargo.IDCargo; // Devuelve el ID del cargo encontrado
+                return cargo.IDCargo;
             }
 
             return 0;

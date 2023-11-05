@@ -213,6 +213,16 @@ namespace UINomina.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Rectangle_43_Copy__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Rectangle 43 Copy (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salir_de_pantalla_completa {
             get {
                 object obj = ResourceManager.GetObject("salir-de-pantalla-completa", resourceCulture);

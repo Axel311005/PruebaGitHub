@@ -67,7 +67,7 @@ namespace Controladores
                 }
             }
 
-            return null; 
+            return null; // En caso de que no se encuentre el cargo con el ID especificado
         }
     }
 }

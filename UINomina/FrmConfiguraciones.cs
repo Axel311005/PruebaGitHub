@@ -40,7 +40,7 @@ namespace UINomina
             UsuarioController US = new();
             int ID = (int)UsuarioAutentificado.id;
             user = US.SelectUserPorID(ID);
-            List<Usuario> ListaUsuarios = US.TraerUsuarios();
+            List<Usuario> ListaUsuarios = US.TraerUsuarios().ToList();
 
             if (ListaUsuarios != null)
             {

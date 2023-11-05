@@ -16,5 +16,17 @@ namespace UINomina
         {
             InitializeComponent();
         }
+
+        private void txtCargo_Enter(object sender, EventArgs e)
+        {
+            if (txtCargo.Text == "Nombre de cargo")
+                txtCargo.Text = "";
+        }
+
+        private void txtCargo_Leave(object sender, EventArgs e)
+        {
+            if (txtCargo.Text == "")
+                txtCargo.Text = "Nombre de caro";
+        }
     }
 }
