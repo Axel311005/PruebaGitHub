@@ -44,7 +44,7 @@ namespace UINomina
 
             if (ListaUsuarios != null)
             {
-                foreach (Usuario usuario in ListaUsuarios)
+                foreach (var usuario in ListaUsuarios)
                 {
                     ListViewItem item = new ListViewItem(usuario.ID.ToString());
 
@@ -100,7 +100,6 @@ namespace UINomina
                     lstUsuarios.Visible = true;
                     btnEditarUsuarios.Visible = true;
                     lbTituloEdit.Visible = true;
-                    lstUsuarios.MultiSelect = false;
                     lstUsuarios.FullRowSelect = true;
                 }
             }

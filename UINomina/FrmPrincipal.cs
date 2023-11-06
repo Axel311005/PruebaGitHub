@@ -36,7 +36,6 @@ namespace UINomina
 
                 int verticalPosition = (panel5.Height - lbNombres.Height - lbRol.Height) / 2;
 
-                // Establece las ubicaciones verticales de las etiquetas en el panel
                 lbNombres.Top = verticalPosition;
                 lbRol.Top = lbNombres.Bottom;
 
@@ -164,6 +163,7 @@ namespace UINomina
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            subMenuEmpleado.Visible = false;
             FrmHome frmhome = new FrmHome();
             AbrirFormHija(frmhome);
         }
@@ -176,6 +176,19 @@ namespace UINomina
         private void PBMinimizar_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnEmpleadosNoActivos_Click(object sender, EventArgs e)
+        {
+            subMenuEmpleado.Visible = false;
+        }
+
+        private void btnComisiones_Click(object sender, EventArgs e)
+        {
+            FrmComisiones frmComisiones = new();
+            AbrirFormHija(frmComisiones);
+            PBCerrar.Visible = false;
+            PBMinimizar.Visible = false;
         }
     }
 }

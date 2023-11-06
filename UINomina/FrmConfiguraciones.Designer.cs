@@ -396,11 +396,15 @@
             // 
             // btnEditarUsuarios
             // 
-            btnEditarUsuarios.Location = new Point(452, 646);
+            btnEditarUsuarios.FlatAppearance.BorderSize = 0;
+            btnEditarUsuarios.FlatAppearance.MouseDownBackColor = Color.Silver;
+            btnEditarUsuarios.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btnEditarUsuarios.FlatStyle = FlatStyle.Flat;
+            btnEditarUsuarios.Image = Properties.Resources.editar__1___1_;
+            btnEditarUsuarios.Location = new Point(478, 640);
             btnEditarUsuarios.Name = "btnEditarUsuarios";
-            btnEditarUsuarios.Size = new Size(109, 25);
+            btnEditarUsuarios.Size = new Size(83, 40);
             btnEditarUsuarios.TabIndex = 4;
-            btnEditarUsuarios.Text = "Editar";
             btnEditarUsuarios.UseVisualStyleBackColor = true;
             btnEditarUsuarios.Visible = false;
             btnEditarUsuarios.Click += btnEditarUsuarios_Click;
@@ -408,9 +412,9 @@
             // pbEditar
             // 
             pbEditar.Image = Properties.Resources.editar;
-            pbEditar.Location = new Point(924, 128);
+            pbEditar.Location = new Point(898, 161);
             pbEditar.Name = "pbEditar";
-            pbEditar.Size = new Size(73, 32);
+            pbEditar.Size = new Size(73, 36);
             pbEditar.SizeMode = PictureBoxSizeMode.Zoom;
             pbEditar.TabIndex = 10;
             pbEditar.TabStop = false;

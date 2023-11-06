@@ -42,10 +42,19 @@
             RBTrueRiesgoLaboral = new RadioButton();
             label2 = new Label();
             lvCargos = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             label3 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            btnAgregarCargo = new Button();
+            btnEditarCargo = new Button();
+            btnEliminarCargo = new Button();
+            label4 = new Label();
+            txtBusqueda = new TextBox();
+            btnBuscar = new Button();
+            btnRegresar = new Button();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
@@ -56,7 +65,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(492, 77);
+            label1.Location = new Point(499, 76);
             label1.Name = "label1";
             label1.Size = new Size(151, 23);
             label1.TabIndex = 0;
@@ -78,7 +87,7 @@
             txtCargo.BorderStyle = BorderStyle.None;
             txtCargo.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtCargo.ForeColor = Color.Black;
-            txtCargo.Location = new Point(225, 162);
+            txtCargo.Location = new Point(174, 168);
             txtCargo.Name = "txtCargo";
             txtCargo.Size = new Size(168, 16);
             txtCargo.TabIndex = 4;
@@ -89,7 +98,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(194, 187);
+            pictureBox2.Location = new Point(143, 193);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(199, 22);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -101,7 +110,7 @@
             panel2.Controls.Add(RBFalseComisiones);
             panel2.Controls.Add(RBTrueComisiones);
             panel2.Controls.Add(label6);
-            panel2.Location = new Point(433, 136);
+            panel2.Location = new Point(382, 142);
             panel2.Name = "panel2";
             panel2.Size = new Size(223, 115);
             panel2.TabIndex = 43;
@@ -145,7 +154,7 @@
             panel1.Controls.Add(RBFalseRiesgoLaboral);
             panel1.Controls.Add(RBTrueRiesgoLaboral);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(689, 136);
+            panel1.Location = new Point(638, 142);
             panel1.Name = "panel1";
             panel1.Size = new Size(237, 115);
             panel1.TabIndex = 44;
@@ -186,58 +195,169 @@
             // 
             // lvCargos
             // 
-            lvCargos.Location = new Point(42, 385);
+            lvCargos.BackColor = Color.White;
+            lvCargos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            lvCargos.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lvCargos.FullRowSelect = true;
+            lvCargos.GridLines = true;
+            lvCargos.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            lvCargos.Location = new Point(255, 421);
+            lvCargos.MultiSelect = false;
             lvCargos.Name = "lvCargos";
-            lvCargos.Size = new Size(997, 205);
+            lvCargos.Size = new Size(636, 205);
             lvCargos.TabIndex = 45;
             lvCargos.UseCompatibleStateImageBehavior = false;
+            lvCargos.View = View.Details;
+            lvCargos.ItemSelectionChanged += lvCargos_ItemSelectionChanged;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Nombre";
+            columnHeader2.TextAlign = HorizontalAlignment.Center;
+            columnHeader2.Width = 190;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Aplica Comisiones";
+            columnHeader3.TextAlign = HorizontalAlignment.Center;
+            columnHeader3.Width = 190;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Aplica Riesgo Laboral";
+            columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = 190;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(492, 336);
+            label3.Location = new Point(515, 316);
             label3.Name = "label3";
             label3.Size = new Size(135, 23);
             label3.TabIndex = 46;
             label3.Text = "Editar Cargos";
             // 
-            // button1
+            // btnAgregarCargo
             // 
-            button1.Location = new Point(469, 274);
-            button1.Name = "button1";
-            button1.Size = new Size(148, 41);
-            button1.TabIndex = 47;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnAgregarCargo.FlatAppearance.BorderSize = 0;
+            btnAgregarCargo.FlatAppearance.MouseDownBackColor = Color.FromArgb(96, 60, 220);
+            btnAgregarCargo.FlatAppearance.MouseOverBackColor = Color.FromArgb(96, 60, 220);
+            btnAgregarCargo.FlatStyle = FlatStyle.Flat;
+            btnAgregarCargo.Image = (Image)resources.GetObject("btnAgregarCargo.Image");
+            btnAgregarCargo.Location = new Point(940, 187);
+            btnAgregarCargo.Name = "btnAgregarCargo";
+            btnAgregarCargo.Size = new Size(82, 49);
+            btnAgregarCargo.TabIndex = 47;
+            btnAgregarCargo.UseVisualStyleBackColor = true;
+            btnAgregarCargo.Click += btnAgregarCargo_Click;
             // 
-            // button2
+            // btnEditarCargo
             // 
-            button2.Location = new Point(176, 618);
-            button2.Name = "button2";
-            button2.Size = new Size(148, 29);
-            button2.TabIndex = 48;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnEditarCargo.FlatAppearance.BorderSize = 0;
+            btnEditarCargo.FlatAppearance.MouseDownBackColor = Color.FromArgb(96, 60, 220);
+            btnEditarCargo.FlatAppearance.MouseOverBackColor = Color.FromArgb(96, 60, 220);
+            btnEditarCargo.FlatStyle = FlatStyle.Flat;
+            btnEditarCargo.Image = Properties.Resources.editar__1___1_;
+            btnEditarCargo.Location = new Point(951, 459);
+            btnEditarCargo.Name = "btnEditarCargo";
+            btnEditarCargo.Size = new Size(63, 46);
+            btnEditarCargo.TabIndex = 48;
+            btnEditarCargo.UseVisualStyleBackColor = true;
+            btnEditarCargo.Click += btnEditarCargo_Click;
             // 
-            // button3
+            // btnEliminarCargo
             // 
-            button3.Location = new Point(369, 618);
-            button3.Name = "button3";
-            button3.Size = new Size(148, 29);
-            button3.TabIndex = 49;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            btnEliminarCargo.FlatAppearance.BorderSize = 0;
+            btnEliminarCargo.FlatAppearance.MouseDownBackColor = Color.FromArgb(96, 60, 220);
+            btnEliminarCargo.FlatAppearance.MouseOverBackColor = Color.FromArgb(96, 60, 220);
+            btnEliminarCargo.FlatStyle = FlatStyle.Flat;
+            btnEliminarCargo.Image = (Image)resources.GetObject("btnEliminarCargo.Image");
+            btnEliminarCargo.Location = new Point(951, 530);
+            btnEliminarCargo.Name = "btnEliminarCargo";
+            btnEliminarCargo.Size = new Size(63, 46);
+            btnEliminarCargo.TabIndex = 49;
+            btnEliminarCargo.UseVisualStyleBackColor = true;
+            btnEliminarCargo.Click += btnEliminarCargo_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(951, 168);
+            label4.Name = "label4";
+            label4.Size = new Size(62, 16);
+            label4.TabIndex = 50;
+            label4.Text = "Agregar";
+            // 
+            // txtBusqueda
+            // 
+            txtBusqueda.BackColor = Color.White;
+            txtBusqueda.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBusqueda.ForeColor = Color.Black;
+            txtBusqueda.Location = new Point(638, 389);
+            txtBusqueda.Name = "txtBusqueda";
+            txtBusqueda.Size = new Size(187, 23);
+            txtBusqueda.TabIndex = 52;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatAppearance.MouseDownBackColor = Color.FromArgb(96, 60, 220);
+            btnBuscar.FlatAppearance.MouseOverBackColor = Color.FromArgb(96, 60, 220);
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
+            btnBuscar.Location = new Point(831, 384);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(33, 28);
+            btnBuscar.TabIndex = 53;
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // btnRegresar
+            // 
+            btnRegresar.FlatAppearance.BorderSize = 0;
+            btnRegresar.FlatAppearance.MouseDownBackColor = Color.FromArgb(96, 60, 220);
+            btnRegresar.FlatAppearance.MouseOverBackColor = Color.FromArgb(96, 60, 220);
+            btnRegresar.FlatStyle = FlatStyle.Flat;
+            btnRegresar.Image = (Image)resources.GetObject("btnRegresar.Image");
+            btnRegresar.Location = new Point(870, 384);
+            btnRegresar.Name = "btnRegresar";
+            btnRegresar.Size = new Size(33, 28);
+            btnRegresar.TabIndex = 54;
+            btnRegresar.UseVisualStyleBackColor = true;
+            btnRegresar.Click += btnRegresar_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(635, 373);
+            label5.Name = "label5";
+            label5.Size = new Size(76, 16);
+            label5.TabIndex = 55;
+            label5.Text = "Busqueda:";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FrmAgregarCargo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.Disable;
             BackColor = Color.White;
             ClientSize = new Size(1115, 680);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(label5);
+            Controls.Add(btnRegresar);
+            Controls.Add(btnBuscar);
+            Controls.Add(txtBusqueda);
+            Controls.Add(label4);
+            Controls.Add(btnEliminarCargo);
+            Controls.Add(btnEditarCargo);
+            Controls.Add(btnAgregarCargo);
             Controls.Add(label3);
             Controls.Add(lvCargos);
             Controls.Add(panel1);
@@ -249,6 +369,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmAgregarCargo";
             Text = "FrmAgregarCargo";
+            Load += FrmAgregarCargo_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
@@ -276,9 +397,18 @@
         private RadioButton RBTrueRiesgoLaboral;
         private ListView lvCargos;
         private Label label3;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button btnAgregarCargo;
+        private Button btnEditarCargo;
         private RadioButton RBFalseComisiones;
+        private Button btnEliminarCargo;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private Label label4;
+        private TextBox txtBusqueda;
+        private Button btnBuscar;
+        private Button btnRegresar;
+        private Label label5;
     }
 }

@@ -30,20 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             panel1 = new Panel();
+            subMenuEmpleado = new Panel();
+            panel6 = new Panel();
+            btnEmpleadosNoActivos = new Button();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            btnAggCargo = new Button();
+            panel4 = new Panel();
+            btnAgregarEmp = new Button();
+            btnAdminEmp = new Button();
             panel5 = new Panel();
             lbRol = new Label();
             lbNombres = new Label();
             pictureBox2 = new PictureBox();
-            subMenuEmpleado = new Panel();
-            panel2 = new Panel();
-            panel4 = new Panel();
-            btnAggCargo = new Button();
-            panel3 = new Panel();
-            btnAdminEmp = new Button();
-            btnAgregarEmp = new Button();
-            button1 = new Button();
-            btnHome = new Button();
             btnPlanilla = new Button();
+            btnHome = new Button();
+            btnComisiones = new Button();
             btnEmpleados = new Button();
             btnConfig = new Button();
             btnLogOut = new Button();
@@ -54,9 +56,9 @@
             PBMinimizar = new PictureBox();
             PBCerrar = new PictureBox();
             panel1.SuspendLayout();
+            subMenuEmpleado.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            subMenuEmpleado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PBMinimizar).BeginInit();
@@ -66,12 +68,12 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(31, 38, 62);
+            panel1.Controls.Add(subMenuEmpleado);
             panel1.Controls.Add(panel5);
             panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(subMenuEmpleado);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(btnHome);
             panel1.Controls.Add(btnPlanilla);
+            panel1.Controls.Add(btnHome);
+            panel1.Controls.Add(btnComisiones);
             panel1.Controls.Add(btnEmpleados);
             panel1.Controls.Add(btnConfig);
             panel1.Controls.Add(btnLogOut);
@@ -85,11 +87,137 @@
             panel1.TabIndex = 0;
             panel1.MouseDown += panel1_MouseDown;
             // 
+            // subMenuEmpleado
+            // 
+            subMenuEmpleado.Controls.Add(panel6);
+            subMenuEmpleado.Controls.Add(btnEmpleadosNoActivos);
+            subMenuEmpleado.Controls.Add(panel2);
+            subMenuEmpleado.Controls.Add(panel3);
+            subMenuEmpleado.Controls.Add(btnAggCargo);
+            subMenuEmpleado.Controls.Add(panel4);
+            subMenuEmpleado.Controls.Add(btnAgregarEmp);
+            subMenuEmpleado.Controls.Add(btnAdminEmp);
+            subMenuEmpleado.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            subMenuEmpleado.ForeColor = Color.White;
+            subMenuEmpleado.Location = new Point(7, 396);
+            subMenuEmpleado.Name = "subMenuEmpleado";
+            subMenuEmpleado.Size = new Size(146, 155);
+            subMenuEmpleado.TabIndex = 9;
+            subMenuEmpleado.Visible = false;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.Blue;
+            panel6.Location = new Point(0, 119);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(8, 29);
+            panel6.TabIndex = 16;
+            // 
+            // btnEmpleadosNoActivos
+            // 
+            btnEmpleadosNoActivos.BackgroundImageLayout = ImageLayout.None;
+            btnEmpleadosNoActivos.FlatAppearance.BorderSize = 0;
+            btnEmpleadosNoActivos.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
+            btnEmpleadosNoActivos.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
+            btnEmpleadosNoActivos.FlatStyle = FlatStyle.Flat;
+            btnEmpleadosNoActivos.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEmpleadosNoActivos.ForeColor = Color.White;
+            btnEmpleadosNoActivos.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEmpleadosNoActivos.Location = new Point(8, 119);
+            btnEmpleadosNoActivos.Name = "btnEmpleadosNoActivos";
+            btnEmpleadosNoActivos.Padding = new Padding(1, 0, 1, 1);
+            btnEmpleadosNoActivos.Size = new Size(139, 30);
+            btnEmpleadosNoActivos.TabIndex = 16;
+            btnEmpleadosNoActivos.Text = "Empleados no activos";
+            btnEmpleadosNoActivos.UseVisualStyleBackColor = true;
+            btnEmpleadosNoActivos.Click += btnEmpleadosNoActivos_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.Blue;
+            panel2.Location = new Point(0, 45);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(8, 29);
+            panel2.TabIndex = 13;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Blue;
+            panel3.Location = new Point(0, 4);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(8, 29);
+            panel3.TabIndex = 16;
+            // 
+            // btnAggCargo
+            // 
+            btnAggCargo.BackgroundImageLayout = ImageLayout.None;
+            btnAggCargo.FlatAppearance.BorderSize = 0;
+            btnAggCargo.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
+            btnAggCargo.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
+            btnAggCargo.FlatStyle = FlatStyle.Flat;
+            btnAggCargo.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAggCargo.ForeColor = Color.White;
+            btnAggCargo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAggCargo.Location = new Point(8, 45);
+            btnAggCargo.Name = "btnAggCargo";
+            btnAggCargo.Padding = new Padding(1, 0, 1, 1);
+            btnAggCargo.Size = new Size(139, 30);
+            btnAggCargo.TabIndex = 14;
+            btnAggCargo.Text = "Agregar Cargo";
+            btnAggCargo.UseVisualStyleBackColor = true;
+            btnAggCargo.Click += btnAggCargo_Click;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Blue;
+            panel4.Location = new Point(0, 80);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(8, 29);
+            panel4.TabIndex = 15;
+            // 
+            // btnAgregarEmp
+            // 
+            btnAgregarEmp.BackgroundImageLayout = ImageLayout.None;
+            btnAgregarEmp.FlatAppearance.BorderSize = 0;
+            btnAgregarEmp.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
+            btnAgregarEmp.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
+            btnAgregarEmp.FlatStyle = FlatStyle.Flat;
+            btnAgregarEmp.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAgregarEmp.ForeColor = Color.White;
+            btnAgregarEmp.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAgregarEmp.Location = new Point(3, 3);
+            btnAgregarEmp.Name = "btnAgregarEmp";
+            btnAgregarEmp.Padding = new Padding(1, 0, 1, 1);
+            btnAgregarEmp.Size = new Size(139, 30);
+            btnAgregarEmp.TabIndex = 10;
+            btnAgregarEmp.Text = "Agregar Empleados";
+            btnAgregarEmp.UseVisualStyleBackColor = true;
+            btnAgregarEmp.Click += btnAgregarEmp_Click;
+            // 
+            // btnAdminEmp
+            // 
+            btnAdminEmp.BackgroundImageLayout = ImageLayout.None;
+            btnAdminEmp.FlatAppearance.BorderSize = 0;
+            btnAdminEmp.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
+            btnAdminEmp.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
+            btnAdminEmp.FlatStyle = FlatStyle.Flat;
+            btnAdminEmp.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAdminEmp.ForeColor = Color.White;
+            btnAdminEmp.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdminEmp.Location = new Point(8, 79);
+            btnAdminEmp.Name = "btnAdminEmp";
+            btnAdminEmp.Padding = new Padding(1, 0, 1, 1);
+            btnAdminEmp.Size = new Size(147, 30);
+            btnAdminEmp.TabIndex = 12;
+            btnAdminEmp.Text = "Administrar Empleados";
+            btnAdminEmp.UseVisualStyleBackColor = true;
+            btnAdminEmp.Click += btnAdminEmp_Click;
+            // 
             // panel5
             // 
             panel5.Controls.Add(lbRol);
             panel5.Controls.Add(lbNombres);
-            panel5.Location = new Point(14, 116);
+            panel5.Location = new Point(12, 96);
             panel5.Name = "panel5";
             panel5.Size = new Size(113, 56);
             panel5.TabIndex = 12;
@@ -119,128 +247,31 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.usuario__4_;
-            pictureBox2.Location = new Point(32, 67);
+            pictureBox2.Location = new Point(30, 47);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(64, 39);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
             // 
-            // subMenuEmpleado
+            // btnPlanilla
             // 
-            subMenuEmpleado.Controls.Add(panel2);
-            subMenuEmpleado.Controls.Add(panel4);
-            subMenuEmpleado.Controls.Add(btnAggCargo);
-            subMenuEmpleado.Controls.Add(panel3);
-            subMenuEmpleado.Controls.Add(btnAdminEmp);
-            subMenuEmpleado.Controls.Add(btnAgregarEmp);
-            subMenuEmpleado.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            subMenuEmpleado.ForeColor = Color.White;
-            subMenuEmpleado.Location = new Point(0, 429);
-            subMenuEmpleado.Name = "subMenuEmpleado";
-            subMenuEmpleado.Size = new Size(146, 108);
-            subMenuEmpleado.TabIndex = 9;
-            subMenuEmpleado.Visible = false;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.Blue;
-            panel2.Location = new Point(3, 75);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(8, 29);
-            panel2.TabIndex = 13;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.Blue;
-            panel4.Location = new Point(3, 39);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(8, 29);
-            panel4.TabIndex = 11;
-            // 
-            // btnAggCargo
-            // 
-            btnAggCargo.BackgroundImageLayout = ImageLayout.None;
-            btnAggCargo.FlatAppearance.BorderSize = 0;
-            btnAggCargo.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
-            btnAggCargo.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
-            btnAggCargo.FlatStyle = FlatStyle.Flat;
-            btnAggCargo.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAggCargo.ForeColor = Color.White;
-            btnAggCargo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAggCargo.Location = new Point(3, 75);
-            btnAggCargo.Name = "btnAggCargo";
-            btnAggCargo.Padding = new Padding(1, 0, 1, 1);
-            btnAggCargo.Size = new Size(139, 30);
-            btnAggCargo.TabIndex = 14;
-            btnAggCargo.Text = "Agregar Cargo";
-            btnAggCargo.UseVisualStyleBackColor = true;
-            btnAggCargo.Click += btnAggCargo_Click;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Blue;
-            panel3.Location = new Point(3, 3);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(8, 29);
-            panel3.TabIndex = 6;
-            // 
-            // btnAdminEmp
-            // 
-            btnAdminEmp.BackgroundImageLayout = ImageLayout.None;
-            btnAdminEmp.FlatAppearance.BorderSize = 0;
-            btnAdminEmp.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
-            btnAdminEmp.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
-            btnAdminEmp.FlatStyle = FlatStyle.Flat;
-            btnAdminEmp.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdminEmp.ForeColor = Color.White;
-            btnAdminEmp.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdminEmp.Location = new Point(3, 39);
-            btnAdminEmp.Name = "btnAdminEmp";
-            btnAdminEmp.Padding = new Padding(1, 0, 1, 1);
-            btnAdminEmp.Size = new Size(139, 30);
-            btnAdminEmp.TabIndex = 12;
-            btnAdminEmp.Text = "Administrar Empleados";
-            btnAdminEmp.UseVisualStyleBackColor = true;
-            btnAdminEmp.Click += btnAdminEmp_Click;
-            // 
-            // btnAgregarEmp
-            // 
-            btnAgregarEmp.BackgroundImageLayout = ImageLayout.None;
-            btnAgregarEmp.FlatAppearance.BorderSize = 0;
-            btnAgregarEmp.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
-            btnAgregarEmp.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
-            btnAgregarEmp.FlatStyle = FlatStyle.Flat;
-            btnAgregarEmp.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregarEmp.ForeColor = Color.White;
-            btnAgregarEmp.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregarEmp.Location = new Point(3, 3);
-            btnAgregarEmp.Name = "btnAgregarEmp";
-            btnAgregarEmp.Padding = new Padding(1, 0, 1, 1);
-            btnAgregarEmp.Size = new Size(139, 30);
-            btnAgregarEmp.TabIndex = 10;
-            btnAgregarEmp.Text = "Agregar Empleados";
-            btnAgregarEmp.UseVisualStyleBackColor = true;
-            btnAgregarEmp.Click += btnAgregarEmp_Click;
-            // 
-            // button1
-            // 
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Image = Properties.Resources.Vector__2_;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(0, 315);
-            button1.Name = "button1";
-            button1.Padding = new Padding(1, 0, 1, 1);
-            button1.Size = new Size(149, 37);
-            button1.TabIndex = 8;
-            button1.Text = "Planilla";
-            button1.UseVisualStyleBackColor = true;
+            btnPlanilla.BackgroundImageLayout = ImageLayout.None;
+            btnPlanilla.FlatAppearance.BorderSize = 0;
+            btnPlanilla.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
+            btnPlanilla.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
+            btnPlanilla.FlatStyle = FlatStyle.Flat;
+            btnPlanilla.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPlanilla.ForeColor = Color.White;
+            btnPlanilla.Image = Properties.Resources.Vector__2_;
+            btnPlanilla.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPlanilla.Location = new Point(-1, 284);
+            btnPlanilla.Name = "btnPlanilla";
+            btnPlanilla.Padding = new Padding(1, 0, 1, 1);
+            btnPlanilla.Size = new Size(149, 37);
+            btnPlanilla.TabIndex = 8;
+            btnPlanilla.Text = "Planilla";
+            btnPlanilla.UseVisualStyleBackColor = true;
             // 
             // btnHome
             // 
@@ -253,7 +284,7 @@
             btnHome.ForeColor = Color.White;
             btnHome.Image = Properties.Resources.Fill;
             btnHome.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHome.Location = new Point(0, 178);
+            btnHome.Location = new Point(0, 158);
             btnHome.Name = "btnHome";
             btnHome.Padding = new Padding(1, 0, 1, 1);
             btnHome.Size = new Size(149, 38);
@@ -262,24 +293,25 @@
             btnHome.UseVisualStyleBackColor = true;
             btnHome.Click += btnHome_Click;
             // 
-            // btnPlanilla
+            // btnComisiones
             // 
-            btnPlanilla.BackgroundImageLayout = ImageLayout.None;
-            btnPlanilla.FlatAppearance.BorderSize = 0;
-            btnPlanilla.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
-            btnPlanilla.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
-            btnPlanilla.FlatStyle = FlatStyle.Flat;
-            btnPlanilla.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPlanilla.ForeColor = Color.White;
-            btnPlanilla.Image = Properties.Resources.Transaction;
-            btnPlanilla.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPlanilla.Location = new Point(-3, 245);
-            btnPlanilla.Name = "btnPlanilla";
-            btnPlanilla.Padding = new Padding(1, 0, 1, 1);
-            btnPlanilla.Size = new Size(149, 37);
-            btnPlanilla.TabIndex = 6;
-            btnPlanilla.Text = "Comisiones";
-            btnPlanilla.UseVisualStyleBackColor = true;
+            btnComisiones.BackgroundImageLayout = ImageLayout.None;
+            btnComisiones.FlatAppearance.BorderSize = 0;
+            btnComisiones.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
+            btnComisiones.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
+            btnComisiones.FlatStyle = FlatStyle.Flat;
+            btnComisiones.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnComisiones.ForeColor = Color.White;
+            btnComisiones.Image = Properties.Resources.Transaction;
+            btnComisiones.ImageAlign = ContentAlignment.MiddleLeft;
+            btnComisiones.Location = new Point(3, 225);
+            btnComisiones.Name = "btnComisiones";
+            btnComisiones.Padding = new Padding(1, 0, 1, 1);
+            btnComisiones.Size = new Size(149, 37);
+            btnComisiones.TabIndex = 6;
+            btnComisiones.Text = "Comisiones";
+            btnComisiones.UseVisualStyleBackColor = true;
+            btnComisiones.Click += btnComisiones_Click;
             // 
             // btnEmpleados
             // 
@@ -292,7 +324,7 @@
             btnEmpleados.ForeColor = Color.White;
             btnEmpleados.Image = (Image)resources.GetObject("btnEmpleados.Image");
             btnEmpleados.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmpleados.Location = new Point(-3, 390);
+            btnEmpleados.Location = new Point(-3, 348);
             btnEmpleados.Name = "btnEmpleados";
             btnEmpleados.Padding = new Padding(1, 0, 1, 1);
             btnEmpleados.Size = new Size(149, 33);
@@ -353,7 +385,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Full_Colour;
-            pictureBox1.Location = new Point(14, 10);
+            pictureBox1.Location = new Point(7, 10);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(34, 31);
             pictureBox1.TabIndex = 1;
@@ -364,7 +396,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(54, 17);
+            label1.Location = new Point(47, 17);
             label1.Name = "label1";
             label1.Size = new Size(92, 22);
             label1.TabIndex = 0;
@@ -418,10 +450,10 @@
             MouseDown += FrmPrincipal_MouseDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            subMenuEmpleado.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            subMenuEmpleado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelContenedor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PBMinimizar).EndInit();
@@ -438,12 +470,10 @@
         private Button btnLogOut;
         private Button btnConfig;
         private Button btnEmpleados;
-        private Button btnPlanilla;
+        private Button btnComisiones;
         private Button btnHome;
-        private Button button1;
+        private Button btnPlanilla;
         private Panel subMenuEmpleado;
-        private Panel panel4;
-        private Panel panel3;
         private Button btnAdminEmp;
         private Button btnAgregarEmp;
         private Panel panel2;
@@ -456,5 +486,9 @@
         private Panel panelContenedor;
         private PictureBox PBMinimizar;
         private PictureBox PBCerrar;
+        private Panel panel3;
+        private Panel panel4;
+        private Panel panel6;
+        private Button btnEmpleadosNoActivos;
     }
 }
