@@ -158,7 +158,7 @@ namespace UINomina
                     if (result == DialogResult.Yes)
                     {
                         cargoController.EliminarCargo(cargoID);
-                        CargarListView(); 
+                        CargarListView();
                     }
                 }
             }
@@ -195,7 +195,7 @@ namespace UINomina
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            txtBusqueda.Text = ""; 
+            txtBusqueda.Text = "";
             CargarListView();
         }
     }

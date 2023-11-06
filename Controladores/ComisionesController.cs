@@ -81,5 +81,133 @@ namespace Controladores
                 }
             }
         }
+
+        public Comisiones ObtenerComisionPorID(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                connection.Open();
+
+                string query = "SELECT idCargo, porcentajeComision, MetaVentas FROM comisiones WHERE id = @ID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ID", id);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Comisiones comision = new Comisiones
+                            {
+                                ID = id,
+                                IDCargo = reader.GetInt32(0),
+                                PorcentajeComision = reader.GetDecimal(1),
+                                MetaVentas = reader.GetString(2)
+                            };
+
+                            return comision;
+                        }
+                    }
+
+                    return null; 
+                }
+            }
+        }
+
+        public void ActualizarComision(Comisiones comisiones)
+        {
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                
+                connection.Open();
+
+                string query = "UPDATE comisiones SET idCargo = @idCargo, porcentajeComision = @porcentajeComision, MetaVentas = @MetaVentas WHERE id = @id";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@idCargo", comisiones.IDCargo);
+                    command.Parameters.AddWithValue("@porcentajeComision", comisiones.PorcentajeComision);
+                    command.Parameters.AddWithValue("@MetaVentas", comisiones.MetaVentas);
+                    command.Parameters.AddWithValue("@id", comisiones.ID);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void EliminarCargo(int comisionID)
+        {
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM comisiones WHERE id = @ID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ID", comisionID);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected == 0)
+                    {
+                        throw new Exception("No se encontró ninguna comisión con el ID especificado.");
+                    }
+                }
+            }
+        }
+        public decimal ObtenerPorcentajeSegunMeta(string metaVentas)
+        {
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                connection.Open();
+                string query = "SELECT porcentajeComision FROM comisiones WHERE MetaVentas = @MetaVentas";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MetaVentas", metaVentas);
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToDecimal(result);
+                    }
+                }
+            }
+
+            // Si no se encuentra la meta o hay un error, puedes devolver un valor por defecto, como 0.
+            return 0;
+        }
+
+        public List<string> ObtenerMetaVentas(int idCargo)
+        {
+            List<string> valoresMeta = new List<string>();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                connection.Open();
+
+                string query = "SELECT MetaVentas FROM comisiones WHERE idCargo = @idCargo";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@idCargo", idCargo);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string metaVentas = reader.GetString(0);
+                            valoresMeta.Add(metaVentas);
+                        }
+                    }
+                }
+            }
+
+            return valoresMeta;
+        }
+
     }
 }

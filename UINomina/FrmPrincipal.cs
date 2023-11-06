@@ -136,7 +136,10 @@ namespace UINomina
 
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            subMenuEmpleado.Visible = true;
+            if (UsuarioAutentificado.id == (int)Rol.IdAdministrador || UsuarioAutentificado.id == (int)Rol.IdGerente || UsuarioAutentificado.id == (int)Rol.IdContadorGeneral)
+                subMenuEmpleado.Visible = true;
+            else
+                MessageBox.Show("No tiene suficiente permiso para administrar empleados", "Informacion",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void btnAgregarEmp_Click(object sender, EventArgs e)
@@ -185,10 +188,23 @@ namespace UINomina
 
         private void btnComisiones_Click(object sender, EventArgs e)
         {
-            FrmComisiones frmComisiones = new();
-            AbrirFormHija(frmComisiones);
+            if (UsuarioAutentificado.id == (int)Rol.IdAdministrador || UsuarioAutentificado.id == (int)Rol.IdGerente)
+            { 
+                FrmComisiones frmComisiones = new();
+                AbrirFormHija(frmComisiones);
+                PBCerrar.Visible = false;
+                PBMinimizar.Visible = false;
+            }
+            else
+                MessageBox.Show("No tiene suficiente permiso para administrar las comisiones", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnPlanilla_Click(object sender, EventArgs e)
+        {
+            FrmPlanilla frmPlanilla = new();
             PBCerrar.Visible = false;
             PBMinimizar.Visible = false;
+            AbrirFormHija(frmPlanilla);
         }
     }
 }

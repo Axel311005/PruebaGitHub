@@ -103,6 +103,16 @@ namespace UINomina.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calculadora {
+            get {
+                object obj = ResourceManager.GetObject("calculadora", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cerrar {
             get {
                 object obj = ResourceManager.GetObject("cerrar", resourceCulture);
@@ -176,6 +186,16 @@ namespace UINomina.Properties {
         internal static System.Drawing.Bitmap Group_39 {
             get {
                 object obj = ResourceManager.GetObject("Group 39", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap limpiar {
+            get {
+                object obj = ResourceManager.GetObject("limpiar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +286,16 @@ namespace UINomina.Properties {
         internal static System.Drawing.Bitmap salir_de_pantalla_completa {
             get {
                 object obj = ResourceManager.GetObject("salir-de-pantalla-completa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sobresalir {
+            get {
+                object obj = ResourceManager.GetObject("sobresalir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

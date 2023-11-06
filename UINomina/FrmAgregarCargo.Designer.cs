@@ -55,6 +55,7 @@
             btnBuscar = new Button();
             btnRegresar = new Button();
             label5 = new Label();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
@@ -410,5 +411,6 @@
         private Button btnBuscar;
         private Button btnRegresar;
         private Label label5;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

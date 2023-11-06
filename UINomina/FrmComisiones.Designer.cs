@@ -142,10 +142,10 @@
             lvComisiones.FullRowSelect = true;
             lvComisiones.GridLines = true;
             lvComisiones.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            lvComisiones.Location = new Point(194, 353);
+            lvComisiones.Location = new Point(169, 353);
             lvComisiones.MultiSelect = false;
             lvComisiones.Name = "lvComisiones";
-            lvComisiones.Size = new Size(637, 158);
+            lvComisiones.Size = new Size(671, 158);
             lvComisiones.TabIndex = 8;
             lvComisiones.UseCompatibleStateImageBehavior = false;
             lvComisiones.View = View.Details;
@@ -159,19 +159,19 @@
             // 
             columnHeader2.Text = "Cargo";
             columnHeader2.TextAlign = HorizontalAlignment.Center;
-            columnHeader2.Width = 180;
+            columnHeader2.Width = 200;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Meta de Ventas";
             columnHeader3.TextAlign = HorizontalAlignment.Center;
-            columnHeader3.Width = 185;
+            columnHeader3.Width = 190;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Porcentaje de comision";
             columnHeader4.TextAlign = HorizontalAlignment.Center;
-            columnHeader4.Width = 185;
+            columnHeader4.Width = 190;
             // 
             // btnAgregar
             // 
@@ -198,6 +198,7 @@
             btnEditar.Size = new Size(75, 44);
             btnEditar.TabIndex = 10;
             btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnEliminar
             // 
@@ -210,6 +211,7 @@
             btnEliminar.Size = new Size(75, 44);
             btnEliminar.TabIndex = 11;
             btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // FrmComisiones
             // 

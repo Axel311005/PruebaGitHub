@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             panel1 = new Panel();
             subMenuEmpleado = new Panel();
-            panel6 = new Panel();
-            btnEmpleadosNoActivos = new Button();
             panel2 = new Panel();
             panel3 = new Panel();
             btnAggCargo = new Button();
@@ -89,8 +87,6 @@
             // 
             // subMenuEmpleado
             // 
-            subMenuEmpleado.Controls.Add(panel6);
-            subMenuEmpleado.Controls.Add(btnEmpleadosNoActivos);
             subMenuEmpleado.Controls.Add(panel2);
             subMenuEmpleado.Controls.Add(panel3);
             subMenuEmpleado.Controls.Add(btnAggCargo);
@@ -101,36 +97,9 @@
             subMenuEmpleado.ForeColor = Color.White;
             subMenuEmpleado.Location = new Point(7, 396);
             subMenuEmpleado.Name = "subMenuEmpleado";
-            subMenuEmpleado.Size = new Size(146, 155);
+            subMenuEmpleado.Size = new Size(146, 121);
             subMenuEmpleado.TabIndex = 9;
             subMenuEmpleado.Visible = false;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.Blue;
-            panel6.Location = new Point(0, 119);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(8, 29);
-            panel6.TabIndex = 16;
-            // 
-            // btnEmpleadosNoActivos
-            // 
-            btnEmpleadosNoActivos.BackgroundImageLayout = ImageLayout.None;
-            btnEmpleadosNoActivos.FlatAppearance.BorderSize = 0;
-            btnEmpleadosNoActivos.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
-            btnEmpleadosNoActivos.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
-            btnEmpleadosNoActivos.FlatStyle = FlatStyle.Flat;
-            btnEmpleadosNoActivos.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEmpleadosNoActivos.ForeColor = Color.White;
-            btnEmpleadosNoActivos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmpleadosNoActivos.Location = new Point(8, 119);
-            btnEmpleadosNoActivos.Name = "btnEmpleadosNoActivos";
-            btnEmpleadosNoActivos.Padding = new Padding(1, 0, 1, 1);
-            btnEmpleadosNoActivos.Size = new Size(139, 30);
-            btnEmpleadosNoActivos.TabIndex = 16;
-            btnEmpleadosNoActivos.Text = "Empleados no activos";
-            btnEmpleadosNoActivos.UseVisualStyleBackColor = true;
-            btnEmpleadosNoActivos.Click += btnEmpleadosNoActivos_Click;
             // 
             // panel2
             // 
@@ -272,6 +241,7 @@
             btnPlanilla.TabIndex = 8;
             btnPlanilla.Text = "Planilla";
             btnPlanilla.UseVisualStyleBackColor = true;
+            btnPlanilla.Click += btnPlanilla_Click;
             // 
             // btnHome
             // 
@@ -488,7 +458,5 @@
         private PictureBox PBCerrar;
         private Panel panel3;
         private Panel panel4;
-        private Panel panel6;
-        private Button btnEmpleadosNoActivos;
     }
 }

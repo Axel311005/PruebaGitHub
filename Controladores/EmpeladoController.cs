@@ -19,7 +19,7 @@ namespace Controladores
             {
                 conection.Open();
 
-                string query = "INSERT INTO empleado (numeroCedula, numeroINSS, numeroRUC, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, sexo, estadoCivil, direccion, telefono, celular, fechaContratacion, salarioOridinario, activo, idCargo, idHorario)" +
+                string query = "INSERT INTO empleado (numeroCedula, numeroINSS, numeroRUC, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, sexo, estadoCivil, direccion, telefono, celular, fechaContratacion, salarioOrdinario, activo, idCargo, idHorario)" +
                     "VALUES (@numeroCedula, @numeroINSS, @numeroRUC, @primerNombre,@segundoNombre,@primerApellido, @segundoApellido, @fechaNacimiento,@sexo,@estadoCivil,@direccion,@telefono,@celular, @fechaContratacion, @salarioOrdinario, 1, @idCargo, @idHorario)";
 
                 using(SqlCommand comando = new SqlCommand(query, conection))
@@ -44,6 +44,52 @@ namespace Controladores
                     comando.ExecuteNonQuery();
                 }
             }
+        }
+
+        public List<Empleado> TraerEmpleados()
+        {
+            List<Empleado> empleados = new List<Empleado>();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                connection.Open();
+
+                string query = "SELECT id, numeroCedula, numeroINSS, numeroRUC, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, sexo, estadoCivil, direccion, telefono, celular, fechaContratacion, salarioOrdinario, activo, idCargo, idHorario FROM empleado";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Empleado empleado = new Empleado
+                            {
+                                IDEmpleado = reader.GetInt32(0),
+                                NumeroCedula = reader.GetString(1),
+                                NumeroINSS = reader.GetString(2),
+                                NumeroRUC = reader.GetString(3),
+                                PrimerNombre = reader.GetString(4),
+                                SegundoNombre = reader.GetString(5),
+                                PrimerApellido = reader.GetString(6),
+                                SegundoApellido = reader.GetString(7),
+                                FechaNacimiento = reader.GetDateTime(8),
+                                Sexo = reader.GetString(9),
+                                EstadoCivil = reader.GetString(10),
+                                Direccion = reader.GetString(11),
+                                Telefono = reader.GetString(12),
+                                Celular = reader.GetString(13),
+                                FechaContratacion = reader.GetDateTime(14),
+                                SalarioOrdinario = reader.GetDecimal(15),
+                                Activo = reader.GetBoolean(16),
+                                IDCargo = reader.GetInt32(17),
+                                IDHorario = reader.GetInt32(18)
+                            };
+                            empleados.Add(empleado);
+                        }
+                    }
+                }
+            }
+            return empleados;
         }
     }
 }

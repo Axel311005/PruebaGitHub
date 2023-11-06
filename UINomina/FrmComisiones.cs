@@ -14,7 +14,7 @@ namespace UINomina
 {
     public partial class FrmComisiones : Form
     {
-        ComisionesController comisionController = null;
+        ComisionesController comisionController = new ComisionesController();
         public FrmComisiones()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace UINomina
         private void FrmComisiones_Load(object sender, EventArgs e)
         {
             LlenarComboBoxs();
-            CargarComboCargo();       
+            CargarComboCargo();
             CargarListView();
         }
 
@@ -162,13 +162,11 @@ namespace UINomina
                 int idCargo = ObtenerIdCargoPorNombre(cargoSeleccionado);
 
                 string porcentajeString = ((string)cmbPorcentajeComisiones.SelectedItem);
-
-                // Elimina el símbolo de porcentaje y convierte la cadena a decimal
                 porcentajeString = porcentajeString.TrimEnd('%');
                 decimal porcentaje;
                 if (decimal.TryParse(porcentajeString, out porcentaje))
                 {
-                    porcentaje /= 100.0m; // Divide entre 100 para obtener el valor decimal
+                    porcentaje /= 100.0m;
                 }
 
                 comision.IDCargo = idCargo;
@@ -181,9 +179,47 @@ namespace UINomina
             }
 
             return comision;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (lvComisiones.SelectedItems.Count > 0)
+            {
+                if (int.TryParse(lvComisiones.SelectedItems[0].SubItems[0].Text, out int ID))
+                {
+                    FrmEditarComision frmEditarComision = new();
+                    frmEditarComision.idSQL = ID;
+                    frmEditarComision.ShowDialog();
+                }
+            }
+            else
+                MessageBox.Show("Por favor, selecciona una fila antes de editar.", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            ComisionesController comisionesController = new();
+            if (lvComisiones.SelectedItems.Count > 0)
+            {
+                if (int.TryParse(lvComisiones.SelectedItems[0].SubItems[0].Text, out int ComisionID))
+                {
+                    DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este comision?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        comisionesController.EliminarCargo(ComisionID);
+                        CargarListView();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una fila antes de eliminar.", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
+}
 
 
 
