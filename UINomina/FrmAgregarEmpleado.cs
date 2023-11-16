@@ -144,7 +144,7 @@ namespace UINomina
         {
             Empleado empleado = ObtenerDatosDeFormulario();
             EmpeladoController empleadoController = new();
-            List<string> errores = Validation.ValidarEmpleado(empleado);
+            List<string> errores = Validation.ValidarModelo(empleado);
             if (!RBHombre.Checked && !RBMujer.Checked && !RBOtro.Checked)
             {
                 MessageBox.Show("Debes seleccionar el sexo del empleado.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);

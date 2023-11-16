@@ -49,7 +49,7 @@ namespace UINomina
         {
             Cargo cargo = ObtenerDatosFormulario();
             cargoController = new();
-            List<string> errores = Validation.ValidarCargo(cargo);
+            List<string> errores = Validation.ValidarModelo(cargo);
 
             if (!RBTrueComisiones.Checked && !RBFalseComisiones.Checked)
             {

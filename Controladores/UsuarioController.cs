@@ -196,7 +196,6 @@ namespace Controladores
                     command.Parameters.AddWithValue("@nuevaFechaNacimiento", user.FechaNac);
                     command.Parameters.AddWithValue("@nuevoTelefono", user.Telefono);
                     command.Parameters.AddWithValue("@id", user.ID);
-
                     int rowsAffected = command.ExecuteNonQuery();
 
                     if (rowsAffected > 0)

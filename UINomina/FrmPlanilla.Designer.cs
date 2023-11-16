@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPlanilla));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            tabControl1 = new TabControl();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            tabNomina = new TabControl();
             tabPage1 = new TabPage();
+            panel2 = new Panel();
+            RBQuincenal = new RadioButton();
+            RBMensual = new RadioButton();
+            label14 = new Label();
             btnSeleccionEmp = new Button();
             btnRegresar = new Button();
             btnBuscar = new Button();
@@ -114,31 +118,28 @@
             label2 = new Label();
             label9 = new Label();
             panel1 = new Panel();
-            panel2 = new Panel();
-            RBQuincenal = new RadioButton();
-            RBMensual = new RadioButton();
-            label14 = new Label();
-            tabControl1.SuspendLayout();
+            label15 = new Label();
+            tabNomina.SuspendLayout();
             tabPage1.SuspendLayout();
+            panel2.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGVNomina).BeginInit();
             panelComisiones.SuspendLayout();
             panelHorasExtras.SuspendLayout();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControl1
+            // tabNomina
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(2, 47);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1113, 632);
-            tabControl1.TabIndex = 0;
-            tabControl1.Click += tabControl1_Click;
+            tabNomina.Controls.Add(tabPage1);
+            tabNomina.Controls.Add(tabPage2);
+            tabNomina.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tabNomina.Location = new Point(2, 47);
+            tabNomina.Name = "tabNomina";
+            tabNomina.SelectedIndex = 0;
+            tabNomina.Size = new Size(1113, 632);
+            tabNomina.TabIndex = 0;
+            tabNomina.Click += tabControl1_Click;
             // 
             // tabPage1
             // 
@@ -158,6 +159,50 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Empleado";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(RBQuincenal);
+            panel2.Controls.Add(RBMensual);
+            panel2.Controls.Add(label14);
+            panel2.Location = new Point(620, 38);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(237, 115);
+            panel2.TabIndex = 58;
+            // 
+            // RBQuincenal
+            // 
+            RBQuincenal.AutoSize = true;
+            RBQuincenal.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBQuincenal.Location = new Point(28, 75);
+            RBQuincenal.Name = "RBQuincenal";
+            RBQuincenal.Size = new Size(135, 20);
+            RBQuincenal.TabIndex = 36;
+            RBQuincenal.TabStop = true;
+            RBQuincenal.Text = "Nomina Quincenal";
+            RBQuincenal.UseVisualStyleBackColor = true;
+            // 
+            // RBMensual
+            // 
+            RBMensual.AutoSize = true;
+            RBMensual.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBMensual.Location = new Point(28, 46);
+            RBMensual.Name = "RBMensual";
+            RBMensual.Size = new Size(126, 20);
+            RBMensual.TabIndex = 35;
+            RBMensual.TabStop = true;
+            RBMensual.Text = "Nomina Mensual";
+            RBMensual.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(16, 9);
+            label14.Name = "label14";
+            label14.Size = new Size(200, 18);
+            label14.TabIndex = 32;
+            label14.Text = "¿Como calculara la Nomina?";
             // 
             // btnSeleccionEmp
             // 
@@ -337,6 +382,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(label15);
             tabPage2.Controls.Add(btnLimpiar);
             tabPage2.Controls.Add(btnCalcular);
             tabPage2.Controls.Add(btnExportar);
@@ -420,19 +466,19 @@
             // 
             // DGVNomina
             // 
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(244, 147, 166);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(244, 141, 30);
-            DGVNomina.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(244, 147, 166);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(244, 141, 30);
+            DGVNomina.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             DGVNomina.BackgroundColor = Color.FromArgb(243, 68, 100);
             DGVNomina.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(244, 141, 30);
-            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(244, 147, 166);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            DGVNomina.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 141, 30);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(244, 147, 166);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DGVNomina.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DGVNomina.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGVNomina.Columns.AddRange(new DataGridViewColumn[] { Fecha, FechaFin, SalarioBase, SalarioQuincenal, SalarioDia, SalarioHora, SalarioNeto, HorasExtras, Comisiones, ViaticoA, ViaticoT, DeprecV, RiesgoLaboral, Nocturnidad, IngresoVacaciones, Aguinaldo, Indemizacion, Antiguedad, ImpuestoRenta, INSS, Prestamos, Embargos, INATEC, INSSPatronal, IDEmpleado });
             DGVNomina.Location = new Point(8, 219);
@@ -444,8 +490,8 @@
             // Fecha
             // 
             Fecha.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            Fecha.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            Fecha.DefaultCellStyle = dataGridViewCellStyle3;
             Fecha.FillWeight = 120F;
             Fecha.HeaderText = "Fecha";
             Fecha.Name = "Fecha";
@@ -594,7 +640,7 @@
             // 
             // txtDeprecVehiculo
             // 
-            txtDeprecVehiculo.Location = new Point(508, 131);
+            txtDeprecVehiculo.Location = new Point(523, 130);
             txtDeprecVehiculo.Name = "txtDeprecVehiculo";
             txtDeprecVehiculo.Size = new Size(172, 21);
             txtDeprecVehiculo.TabIndex = 15;
@@ -602,7 +648,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(505, 102);
+            label12.Location = new Point(523, 107);
             label12.Name = "label12";
             label12.Size = new Size(169, 15);
             label12.TabIndex = 14;
@@ -674,13 +720,13 @@
             panelComisiones.Controls.Add(label4);
             panelComisiones.Location = new Point(6, 72);
             panelComisiones.Name = "panelComisiones";
-            panelComisiones.Size = new Size(468, 98);
+            panelComisiones.Size = new Size(485, 98);
             panelComisiones.TabIndex = 5;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(338, 30);
+            label7.Location = new Point(342, 35);
             label7.Name = "label7";
             label7.Size = new Size(138, 15);
             label7.TabIndex = 9;
@@ -715,7 +761,7 @@
             // 
             // txtPorcentaje
             // 
-            txtPorcentaje.Location = new Point(345, 49);
+            txtPorcentaje.Location = new Point(349, 54);
             txtPorcentaje.Name = "txtPorcentaje";
             txtPorcentaje.ReadOnly = true;
             txtPorcentaje.Size = new Size(120, 21);
@@ -797,49 +843,14 @@
             panel1.Size = new Size(1123, 41);
             panel1.TabIndex = 1;
             // 
-            // panel2
+            // label15
             // 
-            panel2.Controls.Add(RBQuincenal);
-            panel2.Controls.Add(RBMensual);
-            panel2.Controls.Add(label14);
-            panel2.Location = new Point(620, 38);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(237, 115);
-            panel2.TabIndex = 58;
-            // 
-            // RBQuincenal
-            // 
-            RBQuincenal.AutoSize = true;
-            RBQuincenal.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            RBQuincenal.Location = new Point(28, 75);
-            RBQuincenal.Name = "RBQuincenal";
-            RBQuincenal.Size = new Size(135, 20);
-            RBQuincenal.TabIndex = 36;
-            RBQuincenal.TabStop = true;
-            RBQuincenal.Text = "Nomina Quincenal";
-            RBQuincenal.UseVisualStyleBackColor = true;
-            // 
-            // RBMensual
-            // 
-            RBMensual.AutoSize = true;
-            RBMensual.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            RBMensual.Location = new Point(28, 46);
-            RBMensual.Name = "RBMensual";
-            RBMensual.Size = new Size(126, 20);
-            RBMensual.TabIndex = 35;
-            RBMensual.TabStop = true;
-            RBMensual.Text = "Nomina Mensual";
-            RBMensual.UseVisualStyleBackColor = true;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(16, 9);
-            label14.Name = "label14";
-            label14.Size = new Size(200, 18);
-            label14.TabIndex = 32;
-            label14.Text = "¿Como calculara la Nomina?";
+            label15.AutoSize = true;
+            label15.Location = new Point(602, 6);
+            label15.Name = "label15";
+            label15.Size = new Size(115, 15);
+            label15.TabIndex = 22;
+            label15.Text = "Viatico Trasporte";
             // 
             // FrmPlanilla
             // 
@@ -848,14 +859,16 @@
             BackColor = Color.White;
             ClientSize = new Size(1115, 680);
             Controls.Add(panel1);
-            Controls.Add(tabControl1);
+            Controls.Add(tabNomina);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmPlanilla";
             Text = "FrmPlanilla";
             Load += FrmPlanilla_Load;
-            tabControl1.ResumeLayout(false);
+            tabNomina.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGVNomina).EndInit();
@@ -865,14 +878,12 @@
             panelHorasExtras.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControl1;
+        private TabControl tabNomina;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private Panel panel1;
@@ -958,5 +969,6 @@
         private RadioButton RBQuincenal;
         private RadioButton RBMensual;
         private Label label14;
+        private Label label15;
     }
 }

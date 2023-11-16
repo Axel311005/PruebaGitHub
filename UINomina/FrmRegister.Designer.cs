@@ -93,11 +93,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
             label1.Location = new Point(327, 34);
             label1.Name = "label1";
-            label1.Size = new Size(200, 24);
+            label1.Size = new Size(202, 25);
             label1.TabIndex = 2;
             label1.Text = "Registro de Usuario";
             // 
@@ -117,11 +117,11 @@
             // 
             txtPrimerNombre.BackColor = Color.FromArgb(33, 72, 193);
             txtPrimerNombre.BorderStyle = BorderStyle.None;
-            txtPrimerNombre.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPrimerNombre.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtPrimerNombre.ForeColor = SystemColors.ButtonHighlight;
             txtPrimerNombre.Location = new Point(40, 114);
             txtPrimerNombre.Name = "txtPrimerNombre";
-            txtPrimerNombre.Size = new Size(147, 16);
+            txtPrimerNombre.Size = new Size(147, 15);
             txtPrimerNombre.TabIndex = 1;
             txtPrimerNombre.Text = "Primer nombre";
             txtPrimerNombre.Enter += txtPrimerNombre_Enter;
@@ -158,11 +158,11 @@
             // 
             txtSegundoNombre.BackColor = Color.FromArgb(33, 72, 193);
             txtSegundoNombre.BorderStyle = BorderStyle.None;
-            txtSegundoNombre.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSegundoNombre.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtSegundoNombre.ForeColor = SystemColors.ButtonHighlight;
             txtSegundoNombre.Location = new Point(238, 114);
             txtSegundoNombre.Name = "txtSegundoNombre";
-            txtSegundoNombre.Size = new Size(147, 16);
+            txtSegundoNombre.Size = new Size(147, 15);
             txtSegundoNombre.TabIndex = 2;
             txtSegundoNombre.Text = "Segundo nombre";
             txtSegundoNombre.Enter += txtSegundoNombre_Enter;
@@ -181,11 +181,11 @@
             // 
             txtPrimerApellido.BackColor = Color.FromArgb(33, 72, 193);
             txtPrimerApellido.BorderStyle = BorderStyle.None;
-            txtPrimerApellido.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPrimerApellido.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtPrimerApellido.ForeColor = SystemColors.ButtonHighlight;
             txtPrimerApellido.Location = new Point(429, 114);
             txtPrimerApellido.Name = "txtPrimerApellido";
-            txtPrimerApellido.Size = new Size(147, 16);
+            txtPrimerApellido.Size = new Size(147, 15);
             txtPrimerApellido.TabIndex = 3;
             txtPrimerApellido.Text = "Primer apellido";
             txtPrimerApellido.Enter += txtPrimerApellido_Enter;
@@ -204,11 +204,11 @@
             // 
             txtSegundoApellido.BackColor = Color.FromArgb(33, 72, 193);
             txtSegundoApellido.BorderStyle = BorderStyle.None;
-            txtSegundoApellido.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSegundoApellido.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtSegundoApellido.ForeColor = SystemColors.ButtonHighlight;
             txtSegundoApellido.Location = new Point(623, 114);
             txtSegundoApellido.Name = "txtSegundoApellido";
-            txtSegundoApellido.Size = new Size(147, 16);
+            txtSegundoApellido.Size = new Size(147, 15);
             txtSegundoApellido.TabIndex = 4;
             txtSegundoApellido.Text = "Segundo apellido";
             txtSegundoApellido.Enter += txtSegundoApellido_Enter;
@@ -221,7 +221,7 @@
             dtpFechaNac.Location = new Point(432, 280);
             dtpFechaNac.Name = "dtpFechaNac";
             dtpFechaNac.Size = new Size(170, 23);
-            dtpFechaNac.TabIndex = 19;
+            dtpFechaNac.TabIndex = 10;
             // 
             // pictureBox6
             // 
@@ -236,11 +236,11 @@
             // 
             txtCorreo.BackColor = Color.FromArgb(33, 72, 193);
             txtCorreo.BorderStyle = BorderStyle.None;
-            txtCorreo.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCorreo.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtCorreo.ForeColor = SystemColors.ButtonHighlight;
             txtCorreo.Location = new Point(40, 190);
             txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(147, 16);
+            txtCorreo.Size = new Size(147, 15);
             txtCorreo.TabIndex = 5;
             txtCorreo.Text = "Correo electronico";
             txtCorreo.Enter += txtCorreo_Enter;
@@ -259,12 +259,12 @@
             // 
             txtUserRegist.BackColor = Color.FromArgb(33, 72, 193);
             txtUserRegist.BorderStyle = BorderStyle.None;
-            txtUserRegist.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUserRegist.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtUserRegist.ForeColor = SystemColors.ButtonHighlight;
             txtUserRegist.Location = new Point(238, 190);
             txtUserRegist.Name = "txtUserRegist";
-            txtUserRegist.Size = new Size(147, 16);
-            txtUserRegist.TabIndex = 5;
+            txtUserRegist.Size = new Size(147, 15);
+            txtUserRegist.TabIndex = 6;
             txtUserRegist.Text = "Usuario";
             txtUserRegist.Enter += txtUserRegist_Enter;
             txtUserRegist.Leave += txtUserRegist_Leave;
@@ -282,12 +282,12 @@
             // 
             txtPass.BackColor = Color.FromArgb(33, 72, 193);
             txtPass.BorderStyle = BorderStyle.None;
-            txtPass.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPass.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtPass.ForeColor = SystemColors.ButtonHighlight;
             txtPass.Location = new Point(418, 190);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(147, 16);
-            txtPass.TabIndex = 6;
+            txtPass.Size = new Size(147, 15);
+            txtPass.TabIndex = 7;
             txtPass.Text = "Contraseña";
             txtPass.Enter += txtPass_Enter;
             txtPass.Leave += txtPass_Leave;
@@ -305,12 +305,12 @@
             // 
             txtConfirmPass.BackColor = Color.FromArgb(33, 72, 193);
             txtConfirmPass.BorderStyle = BorderStyle.None;
-            txtConfirmPass.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtConfirmPass.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtConfirmPass.ForeColor = SystemColors.ButtonHighlight;
             txtConfirmPass.Location = new Point(609, 190);
             txtConfirmPass.Name = "txtConfirmPass";
-            txtConfirmPass.Size = new Size(147, 16);
-            txtConfirmPass.TabIndex = 7;
+            txtConfirmPass.Size = new Size(147, 15);
+            txtConfirmPass.TabIndex = 8;
             txtConfirmPass.Text = "Repetir contraseña";
             txtConfirmPass.Enter += txtConfirmPass_Enter;
             txtConfirmPass.Leave += txtConfirmPass_Leave;
@@ -318,11 +318,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ButtonHighlight;
             label2.Location = new Point(429, 257);
             label2.Name = "label2";
-            label2.Size = new Size(135, 17);
+            label2.Size = new Size(122, 15);
             label2.TabIndex = 28;
             label2.Text = "Fecha de nacimiento";
             // 
@@ -339,12 +339,12 @@
             // 
             txtTelefono.BackColor = Color.FromArgb(33, 72, 193);
             txtTelefono.BorderStyle = BorderStyle.None;
-            txtTelefono.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTelefono.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtTelefono.ForeColor = SystemColors.ButtonHighlight;
             txtTelefono.Location = new Point(247, 258);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(147, 16);
-            txtTelefono.TabIndex = 29;
+            txtTelefono.Size = new Size(147, 15);
+            txtTelefono.TabIndex = 9;
             txtTelefono.Text = "Telefono";
             txtTelefono.Enter += txtTelefono_Enter;
             txtTelefono.Leave += txtTelefono_Leave;

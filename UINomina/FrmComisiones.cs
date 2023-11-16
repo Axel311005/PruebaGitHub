@@ -116,7 +116,7 @@ namespace UINomina
 
             Comisiones comisiones = obtenerDatosFormulario();
             ComisionesController comisionesController = new();
-            List<string> errores = Validation.ValidarComision(comisiones);
+            List<string> errores = Validation.ValidarModelo(comisiones);
 
             if (comisionesController.ComisionYaExiste(comisiones.IDCargo, (string)cmbMetaventas.SelectedItem))
             {

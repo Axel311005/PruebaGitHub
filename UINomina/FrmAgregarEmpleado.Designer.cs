@@ -73,6 +73,7 @@
             panel2 = new Panel();
             panel3 = new Panel();
             RBOtro = new RadioButton();
+            txtNumeroCedula = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -584,6 +585,20 @@
             RBOtro.Text = "Otro";
             RBOtro.UseVisualStyleBackColor = true;
             // 
+            // txtNumeroCedula
+            // 
+            txtNumeroCedula.BackColor = Color.White;
+            txtNumeroCedula.BorderStyle = BorderStyle.None;
+            txtNumeroCedula.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNumeroCedula.ForeColor = Color.Black;
+            txtNumeroCedula.Location = new Point(913, 220);
+            txtNumeroCedula.Name = "txtNumeroCedula";
+            txtNumeroCedula.Size = new Size(168, 15);
+            txtNumeroCedula.TabIndex = 10;
+            txtNumeroCedula.Text = "Numero de cedula";
+            txtNumeroCedula.Enter += txtNumeroCedula_Enter;
+            txtNumeroCedula.Leave += txtNumeroCedula_Leave;
+            // 
             // FrmAgregarEmpleado
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
@@ -612,6 +627,7 @@
             Controls.Add(dtpFechaNac);
             Controls.Add(txtNumeroINSS);
             Controls.Add(pictureBox10);
+            Controls.Add(txtNumeroCedula);
             Controls.Add(pictureBox5);
             Controls.Add(txtSegundoApellido);
             Controls.Add(pictureBox4);
@@ -696,5 +712,6 @@
         private Panel panel3;
         private RadioButton RBViudo;
         private RadioButton RBOtro;
+        private TextBox txtNumeroCedula;
     }
 }

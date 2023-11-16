@@ -31,7 +31,6 @@ namespace UINomina
         {
             ObtenerDatosListView();
             CargarComboBoxMeta();
-            tabControl1.Enabled = false;
         }
         private void CargarComboBoxMeta()
         {
@@ -272,6 +271,15 @@ namespace UINomina
                 if (decimal.TryParse(txtEmbargos.Text, out decimal embargos))
                     nomina.Embargos = embargos;
                 nomina.Antiguedad = nomina.calcularAntiguedad();
+
+                nomina.SalarioNeto = nomina.CalcularSalarioNeto();
+                nomina.SalarioPorDia = nomina.CalcularSalarioPorDia();
+                nomina.SalarioQuincenal = nomina.calcularSalarioQuincenal();
+                nomina.IngresoAguinaldo = nomina.MostrarAguinaldoAcmulado();
+                nomina.IngresoVacaciones = nomina.MostrarVacacionesAcumuladas();
+                nomina.Indemizacion = nomina.calcularPagoIndenmizacion();
+
+
             }
             return nomina;
         }
@@ -302,7 +310,8 @@ namespace UINomina
             DGVNomina.Rows[filaIndex].Cells["INATEC"].Value = nomina.CalcularINATEC().ToString("C2");
             DGVNomina.Rows[filaIndex].Cells["INSSPatronal"].Value = nomina.CalcularINSSPatronal().ToString("C2");
             DGVNomina.Rows[filaIndex].Cells["IDEmpleado"].Value = empleadoSeleccionado.IDEmpleado;
-            DGVNomina.Rows[filaIndex].Cells["Antiguedad"].Value = nomina.Antiguedad;
+            DGVNomina.Rows[filaIndex].Cells["Antiguedad"].Value = nomina.Antiguedad.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["RiesgoLaboral"].Value = nomina.RiesgoLaboral.ToString("C2");
         }
 
         private Nomina cargarNomina()
@@ -311,7 +320,6 @@ namespace UINomina
             nomina.Empleado = empleadoSeleccionado;
             nomina.Fecha = dtpFecha.Value;
             nomina.FechaFin = dtpFechaFin.Value;
-            nomina.SalarioPorDia = nomina.CalcularSalarioPorDia();
             if (int.TryParse(txtHora.Text, out int horaExtra))
                 nomina.HoraExtra = horaExtra;
 
@@ -368,7 +376,14 @@ namespace UINomina
                 nomina.INSS = nomina.CalcularINSS();
                 if (decimal.TryParse(txtEmbargos.Text, out decimal embargos))
                     nomina.Embargos = embargos;
+
                 nomina.Antiguedad = nomina.calcularAntiguedad();
+                nomina.SalarioNeto = nomina.CalcularSalarioNeto();
+                nomina.SalarioPorDia = nomina.CalcularSalarioPorDia();
+                nomina.SalarioQuincenal = nomina.calcularSalarioQuincenal();
+                nomina.IngresoAguinaldo = nomina.MostrarAguinaldoAcmulado();
+                nomina.IngresoVacaciones = nomina.MostrarVacacionesAcumuladas();
+                nomina.Indemizacion = nomina.calcularPagoIndenmizacion();
             }
             return nomina;
         }
@@ -388,6 +403,7 @@ namespace UINomina
                         List<string> valoresMeta = comisionesController.ObtenerMetaVentas(empleadoSeleccionado.IDCargo);
                         cmbMetaVenta.Items.Clear();
                         cmbMetaVenta.Items.AddRange(valoresMeta.ToArray());
+                        CargarComboBoxMeta();
                     }
                 }
             }
@@ -468,32 +484,31 @@ namespace UINomina
             txtPorcentaje.Clear();
             txtVenta.Clear();
             txtHora.Clear();
-            empleadoSeleccionado = null;
             txtViaticoAlimentacion.Clear();
             txtViaticoTransporte.Clear();
             txtDeprecVehiculo.Clear();
             txtPrestamos.Clear();
             txtEmbargos.Clear();
-            cmbMetaVenta.Items.Clear();
         }
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
             if (empleadoSeleccionado == null)
             {
-                tabControl1.Enabled = false;
+                tabNomina.Enabled = false;
                 MessageBox.Show("Seleccione un empleado ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                tabControl1.Enabled = true;
+                tabNomina.Enabled = true;
 
             if (RBMensual.Checked || RBQuincenal.Checked)
-                tabControl1.Enabled = true;
+                tabNomina.Enabled = true;
             else
             {
-                tabControl1.Enabled = false;
+                tabNomina.Enabled = false;
                 MessageBox.Show("Seleccione un modo de calculo de la nomina", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            CargarComboBoxMeta();
 
         }
     }

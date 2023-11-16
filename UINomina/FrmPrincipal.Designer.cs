@@ -34,9 +34,7 @@
             panel2 = new Panel();
             panel3 = new Panel();
             btnAggCargo = new Button();
-            panel4 = new Panel();
             btnAgregarEmp = new Button();
-            btnAdminEmp = new Button();
             panel5 = new Panel();
             lbRol = new Label();
             lbNombres = new Label();
@@ -78,7 +76,7 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
-            panel1.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            panel1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             panel1.Location = new Point(-2, -3);
             panel1.Name = "panel1";
             panel1.Size = new Size(152, 686);
@@ -90,14 +88,12 @@
             subMenuEmpleado.Controls.Add(panel2);
             subMenuEmpleado.Controls.Add(panel3);
             subMenuEmpleado.Controls.Add(btnAggCargo);
-            subMenuEmpleado.Controls.Add(panel4);
             subMenuEmpleado.Controls.Add(btnAgregarEmp);
-            subMenuEmpleado.Controls.Add(btnAdminEmp);
-            subMenuEmpleado.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            subMenuEmpleado.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             subMenuEmpleado.ForeColor = Color.White;
             subMenuEmpleado.Location = new Point(7, 396);
             subMenuEmpleado.Name = "subMenuEmpleado";
-            subMenuEmpleado.Size = new Size(146, 121);
+            subMenuEmpleado.Size = new Size(146, 91);
             subMenuEmpleado.TabIndex = 9;
             subMenuEmpleado.Visible = false;
             // 
@@ -136,14 +132,6 @@
             btnAggCargo.UseVisualStyleBackColor = true;
             btnAggCargo.Click += btnAggCargo_Click;
             // 
-            // panel4
-            // 
-            panel4.BackColor = Color.Blue;
-            panel4.Location = new Point(0, 80);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(8, 29);
-            panel4.TabIndex = 15;
-            // 
             // btnAgregarEmp
             // 
             btnAgregarEmp.BackgroundImageLayout = ImageLayout.None;
@@ -163,25 +151,6 @@
             btnAgregarEmp.UseVisualStyleBackColor = true;
             btnAgregarEmp.Click += btnAgregarEmp_Click;
             // 
-            // btnAdminEmp
-            // 
-            btnAdminEmp.BackgroundImageLayout = ImageLayout.None;
-            btnAdminEmp.FlatAppearance.BorderSize = 0;
-            btnAdminEmp.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
-            btnAdminEmp.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
-            btnAdminEmp.FlatStyle = FlatStyle.Flat;
-            btnAdminEmp.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdminEmp.ForeColor = Color.White;
-            btnAdminEmp.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdminEmp.Location = new Point(8, 79);
-            btnAdminEmp.Name = "btnAdminEmp";
-            btnAdminEmp.Padding = new Padding(1, 0, 1, 1);
-            btnAdminEmp.Size = new Size(147, 30);
-            btnAdminEmp.TabIndex = 12;
-            btnAdminEmp.Text = "Administrar Empleados";
-            btnAdminEmp.UseVisualStyleBackColor = true;
-            btnAdminEmp.Click += btnAdminEmp_Click;
-            // 
             // panel5
             // 
             panel5.Controls.Add(lbRol);
@@ -194,22 +163,22 @@
             // lbRol
             // 
             lbRol.AutoSize = true;
-            lbRol.Font = new Font("Century Gothic", 6.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbRol.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point);
             lbRol.ForeColor = Color.White;
             lbRol.Location = new Point(9, 29);
             lbRol.Name = "lbRol";
-            lbRol.Size = new Size(20, 13);
+            lbRol.Size = new Size(19, 12);
             lbRol.TabIndex = 11;
             lbRol.Text = "Rol";
             // 
             // lbNombres
             // 
             lbNombres.AutoSize = true;
-            lbNombres.Font = new Font("Century Gothic", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbNombres.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             lbNombres.ForeColor = Color.White;
             lbNombres.Location = new Point(9, 2);
             lbNombres.Name = "lbNombres";
-            lbNombres.Size = new Size(55, 15);
+            lbNombres.Size = new Size(56, 13);
             lbNombres.TabIndex = 10;
             lbNombres.Text = "Nombres";
             // 
@@ -230,7 +199,7 @@
             btnPlanilla.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
             btnPlanilla.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
             btnPlanilla.FlatStyle = FlatStyle.Flat;
-            btnPlanilla.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPlanilla.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnPlanilla.ForeColor = Color.White;
             btnPlanilla.Image = Properties.Resources.Vector__2_;
             btnPlanilla.ImageAlign = ContentAlignment.MiddleLeft;
@@ -250,7 +219,7 @@
             btnHome.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
             btnHome.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
             btnHome.FlatStyle = FlatStyle.Flat;
-            btnHome.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnHome.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnHome.ForeColor = Color.White;
             btnHome.Image = Properties.Resources.Fill;
             btnHome.ImageAlign = ContentAlignment.MiddleLeft;
@@ -270,7 +239,7 @@
             btnComisiones.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
             btnComisiones.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
             btnComisiones.FlatStyle = FlatStyle.Flat;
-            btnComisiones.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnComisiones.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnComisiones.ForeColor = Color.White;
             btnComisiones.Image = Properties.Resources.Transaction;
             btnComisiones.ImageAlign = ContentAlignment.MiddleLeft;
@@ -290,7 +259,7 @@
             btnEmpleados.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
             btnEmpleados.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
             btnEmpleados.FlatStyle = FlatStyle.Flat;
-            btnEmpleados.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEmpleados.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnEmpleados.ForeColor = Color.White;
             btnEmpleados.Image = (Image)resources.GetObject("btnEmpleados.Image");
             btnEmpleados.ImageAlign = ContentAlignment.MiddleLeft;
@@ -311,7 +280,7 @@
             btnConfig.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
             btnConfig.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
             btnConfig.FlatStyle = FlatStyle.Flat;
-            btnConfig.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnConfig.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnConfig.ForeColor = Color.White;
             btnConfig.Location = new Point(3, 609);
             btnConfig.Name = "btnConfig";
@@ -330,7 +299,7 @@
             btnLogOut.FlatAppearance.MouseDownBackColor = Color.FromArgb(48, 55, 80);
             btnLogOut.FlatAppearance.MouseOverBackColor = Color.FromArgb(48, 55, 80);
             btnLogOut.FlatStyle = FlatStyle.Flat;
-            btnLogOut.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogOut.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnLogOut.ForeColor = Color.White;
             btnLogOut.Location = new Point(3, 661);
             btnLogOut.Name = "btnLogOut";
@@ -344,11 +313,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
             label2.Location = new Point(30, 566);
             label2.Name = "label2";
-            label2.Size = new Size(66, 19);
+            label2.Size = new Size(67, 20);
             label2.TabIndex = 2;
             label2.Text = "Cuenta";
             // 
@@ -364,11 +333,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
             label1.Location = new Point(47, 17);
             label1.Name = "label1";
-            label1.Size = new Size(92, 22);
+            label1.Size = new Size(86, 24);
             label1.TabIndex = 0;
             label1.Text = "NOMINA";
             // 
@@ -444,7 +413,6 @@
         private Button btnHome;
         private Button btnPlanilla;
         private Panel subMenuEmpleado;
-        private Button btnAdminEmp;
         private Button btnAgregarEmp;
         private Panel panel2;
         private Button btnAggCargo;
@@ -457,6 +425,5 @@
         private PictureBox PBMinimizar;
         private PictureBox PBCerrar;
         private Panel panel3;
-        private Panel panel4;
     }
 }

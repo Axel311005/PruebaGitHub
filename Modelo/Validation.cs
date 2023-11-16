@@ -22,23 +22,6 @@ public class Validation
 
         return errores;
     } 
-    public static List<string> ValidarEmpleado(Empleado empleado)
-    {
-        var resultadosValidacion = new List<ValidationResult>();
-        var contexto = new ValidationContext(empleado, serviceProvider: null, items: null);
-        var errores = new List<string>();
-
-        if (!Validator.TryValidateObject(empleado, contexto, resultadosValidacion, validateAllProperties: true))
-        {
-            foreach (var resultado in resultadosValidacion)
-            {
-                errores.Add(resultado.ErrorMessage);
-            }
-        }
-
-        return errores;
-    }
-
     public static bool ContadorIntentos(int intentosFallidos)
     {
         if (intentosFallidos >= 10)
@@ -69,39 +52,5 @@ public class Validation
         }
 
         return numeroINSS;
-    }
-
-    public static List<string> ValidarCargo(Cargo cargo)
-    {
-        var resultadosValidacion = new List<ValidationResult>();
-        var contexto = new ValidationContext(cargo, serviceProvider: null, items: null);
-        var errores = new List<string>();
-
-        if (!Validator.TryValidateObject(cargo, contexto, resultadosValidacion, validateAllProperties: true))
-        {
-            foreach (var resultado in resultadosValidacion)
-            {
-                errores.Add(resultado.ErrorMessage);
-            }
-        }
-
-        return errores;
-    }
-
-    public static List<string> ValidarComision(Comisiones comisiones)
-    {
-        var resultadosValidacion = new List<ValidationResult>();
-        var contexto = new ValidationContext(comisiones , serviceProvider: null, items: null);
-        var errores = new List<string>();
-
-        if (!Validator.TryValidateObject(comisiones, contexto, resultadosValidacion, validateAllProperties: true))
-        {
-            foreach (var resultado in resultadosValidacion)
-            {
-                errores.Add(resultado.ErrorMessage);
-            }
-        }
-
-        return errores;
     }
 }

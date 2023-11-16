@@ -4,10 +4,14 @@ namespace Controladores
 {
     public static class Conexion
     {
+        static string name = "DESKTOP-IO3CIEI\\DYLANSQL";
+        static string user = "sa";
+        static string password = "dylanaraica123";
         //la primer conexion se usa para crear la base de datos, la segunda es cuando ya esta creada
-        public static string conexionInicial = "Data Source=DESKTOP-IO3CIEI\\DYLANSQL;Initial Catalog=master;User ID=sa;Password=dylanaraica123";
-        public static string conexion = "Data Source=DESKTOP-IO3CIEI\\DYLANSQL;Initial Catalog=nomina;User ID=sa;Password=dylanaraica123";
-
+        public static string conexionInicial = $"Data Source={name};Initial Catalog=master;User ID={user};Password={password}";
+        //Cambiar Conexion cuando se crea la base de datos
+        public static string conexion = $"Data Source={name};Initial Catalog=nomina;User ID={user};Password={password}";
+        
         public static void CrearBaseDeDatosYTablaSiNoExisten()
         {
             string nombreDataBase = "nomina";

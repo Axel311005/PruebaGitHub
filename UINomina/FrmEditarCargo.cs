@@ -111,7 +111,7 @@ namespace UINomina
             else if (RBFalseRiesgoLaboral.Checked)
                 cargo.AplicaRiesgoLaboral = false;
 
-            List<string> errores = Validation.ValidarCargo(cargo);
+            List<string> errores = Validation.ValidarModelo(cargo);
             if (errores.Count == 0)
             {
                 try
