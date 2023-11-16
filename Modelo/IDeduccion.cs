@@ -10,8 +10,6 @@ namespace Modelo
     {
         decimal CalcularINSS();
         decimal CalcularImpuestoRenta();
-        decimal CalcularPrestamos();
-        decimal CalcularEmbargos();
         decimal CalcularSalarioNeto();
 
         decimal CalcularTotalDeducciones();

@@ -9,7 +9,7 @@ namespace Controladores
 {
     public class CargoController
     {
-        private string conexion = "Data Source=DESKTOP-PBRTD4G\\DYLANSQL;Initial Catalog = nomina; User ID = sa; Password=dylanaraica123";
+        private string conexion = Conexion.conexion;
 
         public List<Cargo> ObtenerCargos()
         {

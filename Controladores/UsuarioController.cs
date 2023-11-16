@@ -12,7 +12,7 @@ namespace Controladores
 {
     public class UsuarioController
     {
-        private string conexion = "Data Source=DESKTOP-PBRTD4G\\DYLANSQL;Initial Catalog = nomina; User ID = sa; Password=dylanaraica123";
+        private string conexion = Conexion.conexion;
 
 
         public void InsertarUsuario(Usuario usuario)
@@ -83,20 +83,27 @@ namespace Controladores
 
         public bool UsuarioExiste(string nombreUser)
         {
-            using (SqlConnection conection = new SqlConnection(conexion))
+            using (SqlConnection connection = new SqlConnection(conexion))
             {
-                conection.Open();
-                string query = "SELECT COUNT(*) FROM usuario WHERE nombre_usuario = @nombre_usuario";
-
-                using (SqlCommand command = new SqlCommand(query, conection))
+                try
                 {
-                    command.Parameters.AddWithValue("@nombre_usuario", nombreUser);
-                    int count = (int)command.ExecuteScalar();
-                    return count > 0;
+                    connection.Open();
+                    string query = "SELECT COUNT(*) FROM usuario WHERE nombre_usuario = @nombre_usuario";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre_usuario", nombreUser);
+                        int count = (int)command.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Error de base de datos: " + ex.Message);
+                    return false;
                 }
             }
         }
-
         public Usuario SelectUserPorID(int ID)
         {
             using (SqlConnection conection = new SqlConnection(conexion))

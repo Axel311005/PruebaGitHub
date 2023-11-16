@@ -62,11 +62,11 @@
             // 
             txtUser.BackColor = Color.FromArgb(33, 72, 193);
             txtUser.BorderStyle = BorderStyle.None;
-            txtUser.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUser.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUser.ForeColor = Color.WhiteSmoke;
             txtUser.Location = new Point(203, 98);
             txtUser.Name = "txtUser";
-            txtUser.Size = new Size(342, 20);
+            txtUser.Size = new Size(342, 19);
             txtUser.TabIndex = 1;
             txtUser.Text = "Usuario";
             txtUser.Enter += txtUser_Enter;
@@ -87,11 +87,11 @@
             // 
             txtPass.BackColor = Color.FromArgb(33, 72, 193);
             txtPass.BorderStyle = BorderStyle.None;
-            txtPass.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPass.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPass.ForeColor = Color.WhiteSmoke;
             txtPass.Location = new Point(203, 156);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(342, 20);
+            txtPass.Size = new Size(342, 19);
             txtPass.TabIndex = 2;
             txtPass.Text = "Contraseña";
             txtPass.Enter += txtPass_Enter;
@@ -112,11 +112,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(33, 72, 193);
-            label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
             label1.Location = new Point(361, 58);
             label1.Name = "label1";
-            label1.Size = new Size(77, 24);
+            label1.Size = new Size(76, 25);
             label1.TabIndex = 5;
             label1.Text = "LOGIN";
             // 
@@ -127,7 +127,7 @@
             btnLogin.FlatAppearance.MouseDownBackColor = Color.FromArgb(28, 28, 28);
             btnLogin.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogin.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(203, 211);
             btnLogin.Name = "btnLogin";
@@ -204,6 +204,7 @@
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmLogin";
+            Load += FrmLogin_Load;
             MouseDown += FrmLogin_MouseDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

@@ -317,14 +317,12 @@ namespace UINomina
                 {
                     var worksheet = package.Workbook.Worksheets.Add("Planilla");
 
-                    // Agregar una cabecera con el texto "Planilla"
                     worksheet.Cells["A1"].Value = "Planilla";
                     worksheet.Cells["A1:H1"].Merge = true;
                     worksheet.Cells["A1:H1"].Style.Font.Size = 18;
                     worksheet.Cells["A1:H1"].Style.Font.Bold = true;
                     worksheet.Cells["A1:H1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                    // Agregar las cabeceras (encabezado)
                     for (int i = 1; i <= DGVNomina.Columns.Count; i++)
                     {
                         worksheet.Cells[2, i].Value = DGVNomina.Columns[i - 1].HeaderText;
@@ -332,8 +330,6 @@ namespace UINomina
                         worksheet.Cells[2, i].Style.Fill.PatternType = ExcelFillStyle.Solid;
                         worksheet.Cells[2, i].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
-
-                    // Agregar los datos
                     for (int i = 0; i < DGVNomina.Rows.Count; i++)
                     {
                         for (int j = 0; j < DGVNomina.Columns.Count; j++)

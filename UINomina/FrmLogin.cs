@@ -125,5 +125,17 @@ namespace UINomina
                 }
             }
         }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Conexion.CrearBaseDeDatosYTablaSiNoExisten();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear la base de datos y la tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

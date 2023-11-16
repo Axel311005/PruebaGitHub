@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Modelo
 {
@@ -9,7 +10,9 @@ namespace Modelo
         private DateTime fechaFin;
         private decimal ingresoOrdinario;
         private decimal salarioPorDia;
+        private decimal salarioQuincenal;
         private decimal horaExtra;
+        private decimal nocturnidad;
         private decimal totalIngresos;
         private decimal viaticoTransporte;
         private decimal viaticoAlimentacion;
@@ -17,6 +20,9 @@ namespace Modelo
         private decimal riesgoLaboral;
         private decimal comisiones;
         private decimal ingresoVacaciones;
+        private decimal ingresoAguinaldo;
+        private decimal indemizacion;
+        private decimal antiguedad;
         private decimal _INSS;
         private decimal impuestoRenta;
         private decimal prestamos;
@@ -24,6 +30,25 @@ namespace Modelo
         private decimal salarioNeto;
         private int idEmpleado;
 
+        [Required(ErrorMessage = "La nocturnidad es requerida.")]
+        [Range(0, Double.MaxValue, ErrorMessage = "La nocturnidad debe ser mayor o igual a 0")]
+        public decimal Nocturnidad { get => nocturnidad; set => nocturnidad = value; }  
+
+        [Required(ErrorMessage = "La indemizacion es requerida.")]
+        [Range(0, Double.MaxValue, ErrorMessage = "La indemizacion debe ser mayor o igual a 0")]
+        public decimal Indemizacion{ get => indemizacion; set => indemizacion= value; }   
+
+        [Required(ErrorMessage = "La antiguedad es requerida.")]
+        [Range(0, Double.MaxValue, ErrorMessage = "La antiguedad debe ser mayor o igual a 0")]
+        public decimal Antiguedad{ get => antiguedad; set => antiguedad= value; }
+
+        [Required(ErrorMessage = "El salario quincenal es requerida.")]
+        [Range(0, Double.MaxValue, ErrorMessage = "El salario quincenal debe ser mayor o igual a 0")]
+        public decimal SalarioQuincenal { get => salarioQuincenal; set => salarioQuincenal = value; }
+
+        [Required(ErrorMessage = "El ingreso del aguinaldo es requerida.")]
+        [Range(0, Double.MaxValue, ErrorMessage = "El ingreso del aguinaldo debe ser mayor o igual a 0")]
+        public decimal IngresoAguinaldo { get => ingresoAguinaldo; set => ingresoAguinaldo = value; }
 
         [Required(ErrorMessage = "Empleado requerido.")]
         public Empleado Empleado { get; set; }
@@ -85,7 +110,7 @@ namespace Modelo
         [Range(0, Double.MaxValue, ErrorMessage = "El impuesto sobre la renta debe ser mayor o igual a 0")]
         public decimal ImpuestoRenta { get => impuestoRenta; set => impuestoRenta = value; }
 
-        [Required(ErrorMessage = "El pago de préstamos es requerido")]
+        [Required(ErrorMessage = "Tiene que poner un valor en los prestamos")]
         [Range(0, Double.MaxValue, ErrorMessage = "El pago de préstamos debe ser mayor o igual a 0")]
         public decimal Prestamos { get => prestamos; set => prestamos = value; }
 
@@ -103,21 +128,6 @@ namespace Modelo
     
         public static int cantidadEmpleados { get; set; }
   
-
-        public decimal CalcularComisiones()
-        {
-            return Comisiones;
-        }
-
-        public decimal CalcularDepreciacionVehiculo()
-        {
-            return DepreciacionVehiculo;
-        }
-
-        public decimal CalcularEmbargos()
-        {
-            return Embargos;
-        }
         public decimal CalcularHoraExtra()
         {
             if (HoraExtra != 0)
@@ -168,11 +178,6 @@ namespace Modelo
            return CalcularTotalIngresos() * 0.07m;
         }
 
-        public decimal CalcularPrestamos()
-        {
-            return Prestamos;
-        }
-
         public decimal CalcularRiesgoLaboral()
         {        
             return (Empleado.SalarioOrdinario/2)*0.2M;
@@ -190,13 +195,8 @@ namespace Modelo
 
         public decimal CalcularTotalIngresos()
         {
-            return (Empleado.SalarioOrdinario/2) + CalcularHoraExtra() + CalcularViaticoAlimentacion() + CalcularViaticoTransporte() + CalcularComisiones() + CalcularRiesgoLaboral() + CalcularNocturnidad();
-        }
-
-        public decimal CalcularViaticoAlimentacion()
-        {
-            return ViaticoAlimentacion;
-        }
+            return calcularSalarioQuincenal() + CalcularHoraExtra() + ViaticoAlimentacion + ViaticoTransporte + Comisiones + CalcularRiesgoLaboral() + CalcularNocturnidad();
+        }     
 
         public decimal CalcularIngresoAnual()
         {
@@ -216,12 +216,7 @@ namespace Modelo
 
         public decimal CalcularTotalDeducciones()
         {
-            return CalcularINSS() + CalcularImpuestoRenta()  + CalcularPrestamos() + CalcularEmbargos();
-        }
-
-        public decimal CalcularViaticoTransporte()
-        {
-            return ViaticoTransporte;
+            return CalcularINSS() + CalcularImpuestoRenta()  + Prestamos + Embargos;
         }
 
         public decimal CalcularINATEC()
@@ -253,8 +248,46 @@ namespace Modelo
             return (Empleado.SalarioOrdinario / 2)*0.083M;
         }
 
+        public decimal calcularSalarioQuincenal()
+        {
+            return Empleado.SalarioOrdinario / 2;
+        }
 
-     
+        public decimal calcularAntiguedad()
+        {
+            int YearsTrabajados = calcularYearsTrabajados();
+            if (YearsTrabajados > 6)
+            {
+                return 0;
+            }
+            if (YearsTrabajados < 4)
+            {
+                decimal antiguedad1 = Empleado.SalarioOrdinario / 24;
+                return antiguedad1;
+            }
+            if (YearsTrabajados > 5 || YearsTrabajados < 6)
+            {
+                decimal antiguedad2 = (CalcularSalarioPorDia() * 20) / 24;
 
+                return antiguedad2;
+            }
+
+            else
+                return 0;
+        }
+
+        private int calcularYearsTrabajados()
+        {
+            DateTime fechaActual = DateTime.Now;
+            int yearsTrabajados = fechaActual.Year - Empleado.FechaContratacion.Year;
+
+            // si el empleado aún no ha cumplido un año completo de trabajo
+            if (fechaActual < Empleado.FechaContratacion.AddYears(yearsTrabajados))
+            {
+                yearsTrabajados--;
+            }
+
+            return yearsTrabajados;
+        }
     }
 }

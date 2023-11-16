@@ -10,16 +10,15 @@ namespace Modelo
     {     
 
         decimal CalcularSalarioPorDia();
+        decimal calcularSalarioQuincenal();
         decimal CalcularHoraExtra();
         decimal CalcularSalarioPorHora();
         decimal CalcularTotalIngresos();
-        decimal CalcularViaticoAlimentacion();
-        decimal CalcularViaticoTransporte();
-        decimal CalcularDepreciacionVehiculo();
         decimal CalcularRiesgoLaboral();
         decimal CalcularNocturnidad();
-        decimal CalcularComisiones();
         decimal CalcularIngresoAnual();
+
+        decimal calcularAntiguedad();
         
     }
 }
