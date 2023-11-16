@@ -219,7 +219,7 @@ namespace UINomina
         {
             Usuario nuevoUsuario = ObtenerDatosDeFormulario();
             UsuarioController usuarioController = new();
-            List<string> errores = Validation.ValidarUsuario(nuevoUsuario);
+            List<string> errores = Validation.ValidarModelo(nuevoUsuario);
             if (errores.Count == 0)
             {
                 if (usuarioController.UsuarioExiste(nuevoUsuario.NombreUsuario))

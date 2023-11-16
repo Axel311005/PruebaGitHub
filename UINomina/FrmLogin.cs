@@ -110,8 +110,8 @@ namespace UINomina
                 Usuario usuarioAutenticado = userControl.SelectUserPorNombreUsuario(user.NombreUsuario);
                 userControl.ActualizarUltimoAcceso(user);
                 FrmPrincipal frmMain = new FrmPrincipal(usuarioAutenticado.ID);
-                frmMain.Show();
                 UsuarioAutentificado.id = usuarioAutenticado.ID;
+                frmMain.Show();
                 this.Hide();
             }
             else

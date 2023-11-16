@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPlanilla));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             btnSeleccionEmp = new Button();
@@ -82,6 +82,7 @@
             IngresoVacaciones = new DataGridViewTextBoxColumn();
             Aguinaldo = new DataGridViewTextBoxColumn();
             Indemizacion = new DataGridViewTextBoxColumn();
+            Antiguedad = new DataGridViewTextBoxColumn();
             ImpuestoRenta = new DataGridViewTextBoxColumn();
             INSS = new DataGridViewTextBoxColumn();
             Prestamos = new DataGridViewTextBoxColumn();
@@ -96,7 +97,6 @@
             txtPrestamos = new TextBox();
             label10 = new Label();
             txtViaticoTransporte = new TextBox();
-            label9 = new Label();
             txtViaticoAlimentacion = new TextBox();
             label8 = new Label();
             panelComisiones = new Panel();
@@ -112,40 +112,49 @@
             label3 = new Label();
             dtpFecha = new DateTimePicker();
             label2 = new Label();
+            label9 = new Label();
             panel1 = new Panel();
+            panel2 = new Panel();
+            RBQuincenal = new RadioButton();
+            RBMensual = new RadioButton();
+            label14 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGVNomina).BeginInit();
             panelComisiones.SuspendLayout();
             panelHorasExtras.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tabControl1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabControl1.Location = new Point(2, 47);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1113, 632);
             tabControl1.TabIndex = 0;
+            tabControl1.Click += tabControl1_Click;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(panel2);
             tabPage1.Controls.Add(btnSeleccionEmp);
             tabPage1.Controls.Add(btnRegresar);
             tabPage1.Controls.Add(btnBuscar);
             tabPage1.Controls.Add(lvEmpleados);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(txtBusqueda);
-            tabPage1.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            tabPage1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             tabPage1.ForeColor = Color.Black;
-            tabPage1.Location = new Point(4, 26);
+            tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1105, 602);
+            tabPage1.Size = new Size(1105, 604);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Empleado";
             tabPage1.UseVisualStyleBackColor = true;
@@ -315,7 +324,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(6, 97);
             label1.Name = "label1";
-            label1.Size = new Size(76, 16);
+            label1.Size = new Size(81, 16);
             label1.TabIndex = 1;
             label1.Text = "Busqueda:";
             // 
@@ -323,7 +332,7 @@
             // 
             txtBusqueda.Location = new Point(6, 116);
             txtBusqueda.Name = "txtBusqueda";
-            txtBusqueda.Size = new Size(287, 23);
+            txtBusqueda.Size = new Size(287, 22);
             txtBusqueda.TabIndex = 0;
             // 
             // tabPage2
@@ -341,18 +350,17 @@
             tabPage2.Controls.Add(txtPrestamos);
             tabPage2.Controls.Add(label10);
             tabPage2.Controls.Add(txtViaticoTransporte);
-            tabPage2.Controls.Add(label9);
             tabPage2.Controls.Add(txtViaticoAlimentacion);
             tabPage2.Controls.Add(label8);
             tabPage2.Controls.Add(panelComisiones);
             tabPage2.Controls.Add(panelHorasExtras);
             tabPage2.Controls.Add(dtpFecha);
             tabPage2.Controls.Add(label2);
-            tabPage2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            tabPage2.Location = new Point(4, 26);
+            tabPage2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1105, 602);
+            tabPage2.Size = new Size(1105, 604);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Nomina";
             tabPage2.UseVisualStyleBackColor = true;
@@ -398,7 +406,7 @@
             dtpFechaFin.Format = DateTimePickerFormat.Custom;
             dtpFechaFin.Location = new Point(212, 38);
             dtpFechaFin.Name = "dtpFechaFin";
-            dtpFechaFin.Size = new Size(179, 22);
+            dtpFechaFin.Size = new Size(179, 21);
             dtpFechaFin.TabIndex = 18;
             // 
             // label13
@@ -406,27 +414,27 @@
             label13.AutoSize = true;
             label13.Location = new Point(212, 6);
             label13.Name = "label13";
-            label13.Size = new Size(63, 16);
+            label13.Size = new Size(70, 15);
             label13.TabIndex = 17;
             label13.Text = "Fecha fin:";
             // 
             // DGVNomina
             // 
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(244, 147, 166);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(244, 141, 30);
-            DGVNomina.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(244, 147, 166);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(244, 141, 30);
+            DGVNomina.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             DGVNomina.BackgroundColor = Color.FromArgb(243, 68, 100);
             DGVNomina.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 141, 30);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(244, 147, 166);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DGVNomina.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(244, 141, 30);
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(244, 147, 166);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            DGVNomina.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             DGVNomina.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVNomina.Columns.AddRange(new DataGridViewColumn[] { Fecha, FechaFin, SalarioBase, SalarioQuincenal, SalarioDia, SalarioHora, SalarioNeto, HorasExtras, Comisiones, ViaticoA, ViaticoT, DeprecV, RiesgoLaboral, Nocturnidad, IngresoVacaciones, Aguinaldo, Indemizacion, ImpuestoRenta, INSS, Prestamos, Embargos, INATEC, INSSPatronal, IDEmpleado });
+            DGVNomina.Columns.AddRange(new DataGridViewColumn[] { Fecha, FechaFin, SalarioBase, SalarioQuincenal, SalarioDia, SalarioHora, SalarioNeto, HorasExtras, Comisiones, ViaticoA, ViaticoT, DeprecV, RiesgoLaboral, Nocturnidad, IngresoVacaciones, Aguinaldo, Indemizacion, Antiguedad, ImpuestoRenta, INSS, Prestamos, Embargos, INATEC, INSSPatronal, IDEmpleado });
             DGVNomina.Location = new Point(8, 219);
             DGVNomina.Name = "DGVNomina";
             DGVNomina.RowTemplate.Height = 25;
@@ -436,8 +444,8 @@
             // Fecha
             // 
             Fecha.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            Fecha.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            Fecha.DefaultCellStyle = dataGridViewCellStyle6;
             Fecha.FillWeight = 120F;
             Fecha.HeaderText = "Fecha";
             Fecha.Name = "Fecha";
@@ -539,6 +547,11 @@
             Indemizacion.Name = "Indemizacion";
             Indemizacion.Width = 150;
             // 
+            // Antiguedad
+            // 
+            Antiguedad.HeaderText = "Antiguedad";
+            Antiguedad.Name = "Antiguedad";
+            // 
             // ImpuestoRenta
             // 
             ImpuestoRenta.HeaderText = "IR";
@@ -583,7 +596,7 @@
             // 
             txtDeprecVehiculo.Location = new Point(508, 131);
             txtDeprecVehiculo.Name = "txtDeprecVehiculo";
-            txtDeprecVehiculo.Size = new Size(172, 22);
+            txtDeprecVehiculo.Size = new Size(172, 21);
             txtDeprecVehiculo.TabIndex = 15;
             // 
             // label12
@@ -591,7 +604,7 @@
             label12.AutoSize = true;
             label12.Location = new Point(505, 102);
             label12.Name = "label12";
-            label12.Size = new Size(161, 16);
+            label12.Size = new Size(169, 15);
             label12.TabIndex = 14;
             label12.Text = "Depreciacion de vehiculo";
             // 
@@ -599,7 +612,7 @@
             // 
             txtEmbargos.Location = new Point(946, 35);
             txtEmbargos.Name = "txtEmbargos";
-            txtEmbargos.Size = new Size(153, 22);
+            txtEmbargos.Size = new Size(153, 21);
             txtEmbargos.TabIndex = 13;
             // 
             // label11
@@ -607,7 +620,7 @@
             label11.AutoSize = true;
             label11.Location = new Point(943, 6);
             label11.Name = "label11";
-            label11.Size = new Size(65, 16);
+            label11.Size = new Size(72, 15);
             label11.TabIndex = 12;
             label11.Text = "Embargos";
             // 
@@ -615,7 +628,7 @@
             // 
             txtPrestamos.Location = new Point(778, 35);
             txtPrestamos.Name = "txtPrestamos";
-            txtPrestamos.Size = new Size(153, 22);
+            txtPrestamos.Size = new Size(153, 21);
             txtPrestamos.TabIndex = 11;
             // 
             // label10
@@ -623,7 +636,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(778, 6);
             label10.Name = "label10";
-            label10.Size = new Size(66, 16);
+            label10.Size = new Size(75, 15);
             label10.TabIndex = 10;
             label10.Text = "Prestamos";
             // 
@@ -631,23 +644,14 @@
             // 
             txtViaticoTransporte.Location = new Point(602, 35);
             txtViaticoTransporte.Name = "txtViaticoTransporte";
-            txtViaticoTransporte.Size = new Size(153, 22);
+            txtViaticoTransporte.Size = new Size(153, 21);
             txtViaticoTransporte.TabIndex = 9;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(599, 6);
-            label9.Name = "label9";
-            label9.Size = new Size(109, 16);
-            label9.TabIndex = 8;
-            label9.Text = "Viatico transporte";
             // 
             // txtViaticoAlimentacion
             // 
             txtViaticoAlimentacion.Location = new Point(413, 35);
             txtViaticoAlimentacion.Name = "txtViaticoAlimentacion";
-            txtViaticoAlimentacion.Size = new Size(153, 22);
+            txtViaticoAlimentacion.Size = new Size(153, 21);
             txtViaticoAlimentacion.TabIndex = 7;
             // 
             // label8
@@ -655,7 +659,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(410, 6);
             label8.Name = "label8";
-            label8.Size = new Size(129, 16);
+            label8.Size = new Size(137, 15);
             label8.TabIndex = 6;
             label8.Text = "Viatico Alimentacion";
             // 
@@ -678,7 +682,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(338, 30);
             label7.Name = "label7";
-            label7.Size = new Size(127, 16);
+            label7.Size = new Size(138, 15);
             label7.TabIndex = 9;
             label7.Text = "Porcentaje comision";
             // 
@@ -687,7 +691,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(189, 33);
             label6.Name = "label6";
-            label6.Size = new Size(74, 16);
+            label6.Size = new Size(79, 15);
             label6.TabIndex = 8;
             label6.Text = "Meta Venta";
             // 
@@ -696,7 +700,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(20, 35);
             label5.Name = "label5";
-            label5.Size = new Size(44, 16);
+            label5.Size = new Size(47, 15);
             label5.TabIndex = 7;
             label5.Text = "Venta:";
             // 
@@ -705,7 +709,7 @@
             cmbMetaVenta.FormattingEnabled = true;
             cmbMetaVenta.Location = new Point(189, 52);
             cmbMetaVenta.Name = "cmbMetaVenta";
-            cmbMetaVenta.Size = new Size(140, 24);
+            cmbMetaVenta.Size = new Size(140, 23);
             cmbMetaVenta.TabIndex = 6;
             cmbMetaVenta.SelectedIndexChanged += cmbMetaVenta_SelectedIndexChanged;
             // 
@@ -714,14 +718,14 @@
             txtPorcentaje.Location = new Point(345, 49);
             txtPorcentaje.Name = "txtPorcentaje";
             txtPorcentaje.ReadOnly = true;
-            txtPorcentaje.Size = new Size(120, 22);
+            txtPorcentaje.Size = new Size(120, 21);
             txtPorcentaje.TabIndex = 5;
             // 
             // txtVenta
             // 
             txtVenta.Location = new Point(20, 54);
             txtVenta.Name = "txtVenta";
-            txtVenta.Size = new Size(153, 22);
+            txtVenta.Size = new Size(153, 21);
             txtVenta.TabIndex = 4;
             // 
             // label4
@@ -729,7 +733,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(196, 0);
             label4.Name = "label4";
-            label4.Size = new Size(74, 16);
+            label4.Size = new Size(82, 15);
             label4.TabIndex = 3;
             label4.Text = "Comisiones";
             // 
@@ -746,7 +750,7 @@
             // 
             txtHora.Location = new Point(4, 33);
             txtHora.Name = "txtHora";
-            txtHora.Size = new Size(153, 22);
+            txtHora.Size = new Size(153, 21);
             txtHora.TabIndex = 4;
             // 
             // label3
@@ -754,7 +758,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(0, 4);
             label3.Name = "label3";
-            label3.Size = new Size(79, 16);
+            label3.Size = new Size(93, 15);
             label3.TabIndex = 3;
             label3.Text = "Horas Extras:";
             // 
@@ -763,7 +767,7 @@
             dtpFecha.Format = DateTimePickerFormat.Custom;
             dtpFecha.Location = new Point(23, 38);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(160, 22);
+            dtpFecha.Size = new Size(160, 21);
             dtpFecha.TabIndex = 3;
             // 
             // label2
@@ -771,17 +775,71 @@
             label2.AutoSize = true;
             label2.Location = new Point(23, 6);
             label2.Name = "label2";
-            label2.Size = new Size(47, 16);
+            label2.Size = new Size(50, 15);
             label2.TabIndex = 2;
             label2.Text = "Fecha:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(514, 92);
+            label9.Name = "label9";
+            label9.Size = new Size(100, 15);
+            label9.TabIndex = 8;
+            label9.Text = "Viatico transporte";
             // 
             // panel1
             // 
             panel1.BackgroundImage = Properties.Resources.Group_39;
+            panel1.Controls.Add(label9);
             panel1.Location = new Point(-7, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1123, 41);
             panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(RBQuincenal);
+            panel2.Controls.Add(RBMensual);
+            panel2.Controls.Add(label14);
+            panel2.Location = new Point(620, 38);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(237, 115);
+            panel2.TabIndex = 58;
+            // 
+            // RBQuincenal
+            // 
+            RBQuincenal.AutoSize = true;
+            RBQuincenal.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBQuincenal.Location = new Point(28, 75);
+            RBQuincenal.Name = "RBQuincenal";
+            RBQuincenal.Size = new Size(135, 20);
+            RBQuincenal.TabIndex = 36;
+            RBQuincenal.TabStop = true;
+            RBQuincenal.Text = "Nomina Quincenal";
+            RBQuincenal.UseVisualStyleBackColor = true;
+            // 
+            // RBMensual
+            // 
+            RBMensual.AutoSize = true;
+            RBMensual.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBMensual.Location = new Point(28, 46);
+            RBMensual.Name = "RBMensual";
+            RBMensual.Size = new Size(126, 20);
+            RBMensual.TabIndex = 35;
+            RBMensual.TabStop = true;
+            RBMensual.Text = "Nomina Mensual";
+            RBMensual.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(16, 9);
+            label14.Name = "label14";
+            label14.Size = new Size(200, 18);
+            label14.TabIndex = 32;
+            label14.Text = "¿Como calculara la Nomina?";
             // 
             // FrmPlanilla
             // 
@@ -805,6 +863,10 @@
             panelComisiones.PerformLayout();
             panelHorasExtras.ResumeLayout(false);
             panelHorasExtras.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -866,6 +928,7 @@
         private Label label13;
         private Button btnCalcular;
         private Button btnExportar;
+        private Button btnLimpiar;
         private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn FechaFin;
         private DataGridViewTextBoxColumn SalarioBase;
@@ -883,6 +946,7 @@
         private DataGridViewTextBoxColumn IngresoVacaciones;
         private DataGridViewTextBoxColumn Aguinaldo;
         private DataGridViewTextBoxColumn Indemizacion;
+        private DataGridViewTextBoxColumn Antiguedad;
         private DataGridViewTextBoxColumn ImpuestoRenta;
         private DataGridViewTextBoxColumn INSS;
         private DataGridViewTextBoxColumn Prestamos;
@@ -890,6 +954,9 @@
         private DataGridViewTextBoxColumn INATEC;
         private DataGridViewTextBoxColumn INSSPatronal;
         private DataGridViewTextBoxColumn IDEmpleado;
-        private Button btnLimpiar;
+        private Panel panel2;
+        private RadioButton RBQuincenal;
+        private RadioButton RBMensual;
+        private Label label14;
     }
 }

@@ -94,7 +94,7 @@ namespace Controladores
 
         public void InsertarCargo(Cargo cargo)
         {
-            using(SqlConnection conection = new SqlConnection())
+            using(SqlConnection conection = new SqlConnection(conexion))
             {
                 conection.Open();
                 string query = "INSERT INTO cargo (nombre, aplicarComisiones, aplicarRiesgoLaboral) VALUES(@nombre, @aplicarComisiones, @aplicarRiesgoLaboral)";

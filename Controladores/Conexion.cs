@@ -4,8 +4,9 @@ namespace Controladores
 {
     public static class Conexion
     {
-        //Cambiar conexion
-        public static string conexion = "Data Source=DESKTOP-IO3CIEI\\DYLANSQL;Initial Catalog=master;User ID=sa;Password=dylanaraica123";
+        //la primer conexion se usa para crear la base de datos, la segunda es cuando ya esta creada
+        public static string conexionInicial = "Data Source=DESKTOP-IO3CIEI\\DYLANSQL;Initial Catalog=master;User ID=sa;Password=dylanaraica123";
+        public static string conexion = "Data Source=DESKTOP-IO3CIEI\\DYLANSQL;Initial Catalog=nomina;User ID=sa;Password=dylanaraica123";
 
         public static void CrearBaseDeDatosYTablaSiNoExisten()
         {
@@ -80,7 +81,7 @@ namespace Controladores
                 IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'empleado')
                 BEGIN
                     CREATE TABLE empleado (
-                       id INT PRIMARY KEY,
+                       id INT IDENTITY(1, 1) PRIMARY KEY,
                     numeroCedula VARCHAR(50),
                     numeroINSS VARCHAR(50),
                     numeroRUC VARCHAR(50),
@@ -141,7 +142,7 @@ namespace Controladores
                 END;
            ";
 
-            using (SqlConnection connection = new SqlConnection(conexion))
+            using (SqlConnection connection = new SqlConnection(conexionInicial))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(crearDataBase, connection);

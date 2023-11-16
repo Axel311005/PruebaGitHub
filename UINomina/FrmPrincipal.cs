@@ -10,17 +10,18 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Controladores;
 using Modelo;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace UINomina
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal(int userID)
+        public FrmPrincipal(int idUser2)
         {
             InitializeComponent();
             AbrirFormHija(new FrmHome());
             UsuarioController userController = new UsuarioController();
-            Usuario user = userController.SelectUserPorID(userID);
+            Usuario user = userController.SelectUserPorID(idUser2);
 
             if (user != null)
             {
@@ -48,7 +49,6 @@ namespace UINomina
         private static extern int SendMessage(IntPtr hwnd, int msg, int wParam, int lParam);
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
-
 
         private void PBCerrar_Click(object sender, EventArgs e)
         {
@@ -107,7 +107,6 @@ namespace UINomina
             this.panelContenedor.Controls.Add(fh);
             this.panelContenedor.Tag = fh;
             fh.Show();
-
         }
         protected override void OnMouseDown(MouseEventArgs e)
         {
@@ -119,7 +118,6 @@ namespace UINomina
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
@@ -136,7 +134,10 @@ namespace UINomina
 
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
-            if (UsuarioAutentificado.id == (int)Rol.IdAdministrador || UsuarioAutentificado.id == (int)Rol.IdGerente || UsuarioAutentificado.id == (int)Rol.IdContadorGeneral)
+            UsuarioController US = new();
+            Usuario user = new();
+            user = US.SelectUserPorID(UsuarioAutentificado.id);
+            if (user.IdRol == (int)Rol.IdAdministrador || user.IdRol == (int)Rol.IdGerente || user.IdRol == (int)Rol.IdContadorGeneral)
                 subMenuEmpleado.Visible = true;
             else
                 MessageBox.Show("No tiene suficiente permiso para administrar empleados", "Informacion",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -188,7 +189,10 @@ namespace UINomina
 
         private void btnComisiones_Click(object sender, EventArgs e)
         {
-            if (UsuarioAutentificado.id == (int)Rol.IdAdministrador || UsuarioAutentificado.id == (int)Rol.IdGerente)
+            UsuarioController US = new();
+            Usuario user = new();
+            user = US.SelectUserPorID(UsuarioAutentificado.id);
+            if (user.IdRol== (int)Rol.IdAdministrador || user.IdRol == (int)Rol.IdGerente)
             { 
                 FrmComisiones frmComisiones = new();
                 AbrirFormHija(frmComisiones);

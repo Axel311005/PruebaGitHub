@@ -38,7 +38,6 @@
             pictureBox3 = new PictureBox();
             txtSegundoApellido = new TextBox();
             pictureBox4 = new PictureBox();
-            txtNumeroCedula = new TextBox();
             pictureBox5 = new PictureBox();
             txtNumeroINSS = new TextBox();
             pictureBox10 = new PictureBox();
@@ -95,10 +94,10 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.White;
-            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(439, 100);
             label1.Name = "label1";
-            label1.Size = new Size(196, 23);
+            label1.Size = new Size(196, 24);
             label1.TabIndex = 0;
             label1.Text = "Agregar Empleados";
             // 
@@ -116,11 +115,11 @@
             // 
             txtPrimerNombre.BackColor = Color.White;
             txtPrimerNombre.BorderStyle = BorderStyle.None;
-            txtPrimerNombre.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPrimerNombre.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtPrimerNombre.ForeColor = Color.Black;
             txtPrimerNombre.Location = new Point(41, 217);
             txtPrimerNombre.Name = "txtPrimerNombre";
-            txtPrimerNombre.Size = new Size(168, 16);
+            txtPrimerNombre.Size = new Size(168, 15);
             txtPrimerNombre.TabIndex = 2;
             txtPrimerNombre.Text = "Primer nombre";
             txtPrimerNombre.Enter += txtPrimerNombre_Enter;
@@ -130,11 +129,11 @@
             // 
             txtSegundoNombre.BackColor = Color.White;
             txtSegundoNombre.BorderStyle = BorderStyle.None;
-            txtSegundoNombre.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSegundoNombre.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtSegundoNombre.ForeColor = Color.Black;
             txtSegundoNombre.Location = new Point(243, 217);
             txtSegundoNombre.Name = "txtSegundoNombre";
-            txtSegundoNombre.Size = new Size(168, 16);
+            txtSegundoNombre.Size = new Size(168, 15);
             txtSegundoNombre.TabIndex = 4;
             txtSegundoNombre.Text = "Segundo nombre";
             txtSegundoNombre.Enter += txtSegundoNombre_Enter;
@@ -154,11 +153,11 @@
             // 
             txtPrimerApellido.BackColor = Color.White;
             txtPrimerApellido.BorderStyle = BorderStyle.None;
-            txtPrimerApellido.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPrimerApellido.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtPrimerApellido.ForeColor = Color.Black;
             txtPrimerApellido.Location = new Point(469, 217);
             txtPrimerApellido.Name = "txtPrimerApellido";
-            txtPrimerApellido.Size = new Size(168, 16);
+            txtPrimerApellido.Size = new Size(168, 15);
             txtPrimerApellido.TabIndex = 6;
             txtPrimerApellido.Text = "Primer apellido";
             txtPrimerApellido.Enter += txtPrimerApellido_Enter;
@@ -178,11 +177,11 @@
             // 
             txtSegundoApellido.BackColor = Color.White;
             txtSegundoApellido.BorderStyle = BorderStyle.None;
-            txtSegundoApellido.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSegundoApellido.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtSegundoApellido.ForeColor = Color.Black;
             txtSegundoApellido.Location = new Point(697, 217);
             txtSegundoApellido.Name = "txtSegundoApellido";
-            txtSegundoApellido.Size = new Size(168, 16);
+            txtSegundoApellido.Size = new Size(168, 15);
             txtSegundoApellido.TabIndex = 8;
             txtSegundoApellido.Text = "Segundo apellido";
             txtSegundoApellido.Enter += txtSegundoApellido_Enter;
@@ -198,20 +197,6 @@
             pictureBox4.TabIndex = 7;
             pictureBox4.TabStop = false;
             // 
-            // txtNumeroCedula
-            // 
-            txtNumeroCedula.BackColor = Color.White;
-            txtNumeroCedula.BorderStyle = BorderStyle.None;
-            txtNumeroCedula.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNumeroCedula.ForeColor = Color.Black;
-            txtNumeroCedula.Location = new Point(913, 220);
-            txtNumeroCedula.Name = "txtNumeroCedula";
-            txtNumeroCedula.Size = new Size(168, 16);
-            txtNumeroCedula.TabIndex = 10;
-            txtNumeroCedula.Text = "Numero de cedula";
-            txtNumeroCedula.Enter += txtNumeroCedula_Enter;
-            txtNumeroCedula.Leave += txtNumeroCedula_Leave;
-            // 
             // pictureBox5
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
@@ -226,11 +211,11 @@
             // 
             txtNumeroINSS.BackColor = Color.White;
             txtNumeroINSS.BorderStyle = BorderStyle.None;
-            txtNumeroINSS.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNumeroINSS.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtNumeroINSS.ForeColor = Color.Black;
             txtNumeroINSS.Location = new Point(41, 329);
             txtNumeroINSS.Name = "txtNumeroINSS";
-            txtNumeroINSS.Size = new Size(168, 16);
+            txtNumeroINSS.Size = new Size(168, 15);
             txtNumeroINSS.TabIndex = 12;
             txtNumeroINSS.Text = "Numero INSS";
             txtNumeroINSS.Enter += txtNumeroINSS_Enter;
@@ -251,36 +236,36 @@
             dtpFechaNac.Format = DateTimePickerFormat.Short;
             dtpFechaNac.Location = new Point(243, 353);
             dtpFechaNac.Name = "dtpFechaNac";
-            dtpFechaNac.Size = new Size(211, 23);
+            dtpFechaNac.Size = new Size(211, 22);
             dtpFechaNac.TabIndex = 14;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(243, 328);
             label2.Name = "label2";
-            label2.Size = new Size(127, 17);
+            label2.Size = new Size(116, 16);
             label2.TabIndex = 15;
             label2.Text = "Fecha Nacimiento";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(36, 10);
             label3.Name = "label3";
-            label3.Size = new Size(66, 20);
+            label3.Size = new Size(58, 18);
             label3.TabIndex = 16;
             label3.Text = "Genero";
             // 
             // RBHombre
             // 
             RBHombre.AutoSize = true;
-            RBHombre.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBHombre.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBHombre.Location = new Point(42, 37);
             RBHombre.Name = "RBHombre";
-            RBHombre.Size = new Size(78, 21);
+            RBHombre.Size = new Size(74, 20);
             RBHombre.TabIndex = 17;
             RBHombre.TabStop = true;
             RBHombre.Text = "Hombre";
@@ -289,10 +274,10 @@
             // RBMujer
             // 
             RBMujer.AutoSize = true;
-            RBMujer.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBMujer.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBMujer.Location = new Point(42, 65);
             RBMujer.Name = "RBMujer";
-            RBMujer.Size = new Size(60, 21);
+            RBMujer.Size = new Size(58, 20);
             RBMujer.TabIndex = 18;
             RBMujer.TabStop = true;
             RBMujer.Text = "Mujer";
@@ -301,10 +286,10 @@
             // RBSoltero
             // 
             RBSoltero.AutoSize = true;
-            RBSoltero.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBSoltero.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBSoltero.Location = new Point(24, 82);
             RBSoltero.Name = "RBSoltero";
-            RBSoltero.Size = new Size(70, 21);
+            RBSoltero.Size = new Size(68, 20);
             RBSoltero.TabIndex = 21;
             RBSoltero.TabStop = true;
             RBSoltero.Text = "Soltero";
@@ -313,10 +298,10 @@
             // RBCasado
             // 
             RBCasado.AutoSize = true;
-            RBCasado.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBCasado.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBCasado.Location = new Point(24, 53);
             RBCasado.Name = "RBCasado";
-            RBCasado.Size = new Size(78, 21);
+            RBCasado.Size = new Size(73, 20);
             RBCasado.TabIndex = 20;
             RBCasado.TabStop = true;
             RBCasado.Text = "Casado";
@@ -325,10 +310,10 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(24, 17);
             label4.Name = "label4";
-            label4.Size = new Size(93, 20);
+            label4.Size = new Size(86, 18);
             label4.TabIndex = 19;
             label4.Text = "Estado Civil";
             // 
@@ -336,11 +321,11 @@
             // 
             txtDireccion.BackColor = Color.White;
             txtDireccion.BorderStyle = BorderStyle.None;
-            txtDireccion.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDireccion.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtDireccion.ForeColor = Color.Black;
             txtDireccion.Location = new Point(500, 323);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(168, 16);
+            txtDireccion.Size = new Size(168, 15);
             txtDireccion.TabIndex = 23;
             txtDireccion.Text = "Dirección";
             txtDireccion.Enter += txtDireccion_Enter;
@@ -360,11 +345,11 @@
             // 
             txtTelefono.BackColor = Color.White;
             txtTelefono.BorderStyle = BorderStyle.None;
-            txtTelefono.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTelefono.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtTelefono.ForeColor = Color.Black;
             txtTelefono.Location = new Point(697, 328);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(168, 16);
+            txtTelefono.Size = new Size(168, 15);
             txtTelefono.TabIndex = 25;
             txtTelefono.Text = "Telefono";
             txtTelefono.Enter += txtTelefono_Enter;
@@ -384,11 +369,11 @@
             // 
             txtCelular.BackColor = Color.White;
             txtCelular.BorderStyle = BorderStyle.None;
-            txtCelular.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCelular.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtCelular.ForeColor = Color.Black;
             txtCelular.Location = new Point(927, 328);
             txtCelular.Name = "txtCelular";
-            txtCelular.Size = new Size(168, 16);
+            txtCelular.Size = new Size(168, 15);
             txtCelular.TabIndex = 27;
             txtCelular.Text = "Celular";
             txtCelular.Enter += txtCelular_Enter;
@@ -407,10 +392,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(329, 472);
             label5.Name = "label5";
-            label5.Size = new Size(181, 20);
+            label5.Size = new Size(158, 18);
             label5.TabIndex = 29;
             label5.Text = "Fecha de Contratación";
             // 
@@ -419,18 +404,18 @@
             dtpFechaContratacion.Format = DateTimePickerFormat.Short;
             dtpFechaContratacion.Location = new Point(329, 495);
             dtpFechaContratacion.Name = "dtpFechaContratacion";
-            dtpFechaContratacion.Size = new Size(211, 23);
+            dtpFechaContratacion.Size = new Size(211, 22);
             dtpFechaContratacion.TabIndex = 28;
             // 
             // txtSalarioBase
             // 
             txtSalarioBase.BackColor = Color.White;
             txtSalarioBase.BorderStyle = BorderStyle.None;
-            txtSalarioBase.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSalarioBase.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtSalarioBase.ForeColor = Color.Black;
             txtSalarioBase.Location = new Point(584, 474);
             txtSalarioBase.Name = "txtSalarioBase";
-            txtSalarioBase.Size = new Size(168, 19);
+            txtSalarioBase.Size = new Size(168, 17);
             txtSalarioBase.TabIndex = 31;
             txtSalarioBase.Text = "Salario Base";
             txtSalarioBase.Enter += txtSalarioBase_Enter;
@@ -449,10 +434,10 @@
             // RBNocturno
             // 
             RBNocturno.AutoSize = true;
-            RBNocturno.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBNocturno.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBNocturno.Location = new Point(22, 75);
             RBNocturno.Name = "RBNocturno";
-            RBNocturno.Size = new Size(87, 21);
+            RBNocturno.Size = new Size(79, 20);
             RBNocturno.TabIndex = 34;
             RBNocturno.TabStop = true;
             RBNocturno.Text = "Nocturno";
@@ -461,10 +446,10 @@
             // RBDiurno
             // 
             RBDiurno.AutoSize = true;
-            RBDiurno.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBDiurno.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBDiurno.Location = new Point(22, 46);
             RBDiurno.Name = "RBDiurno";
-            RBDiurno.Size = new Size(68, 21);
+            RBDiurno.Size = new Size(64, 20);
             RBDiurno.TabIndex = 33;
             RBDiurno.TabStop = true;
             RBDiurno.Text = "Diurno";
@@ -473,20 +458,20 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label6.Location = new Point(22, 19);
             label6.Name = "label6";
-            label6.Size = new Size(62, 20);
+            label6.Size = new Size(58, 18);
             label6.TabIndex = 32;
             label6.Text = "Horario";
             // 
             // RBMixto
             // 
             RBMixto.AutoSize = true;
-            RBMixto.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBMixto.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBMixto.Location = new Point(22, 105);
             RBMixto.Name = "RBMixto";
-            RBMixto.Size = new Size(60, 21);
+            RBMixto.Size = new Size(56, 20);
             RBMixto.TabIndex = 35;
             RBMixto.TabStop = true;
             RBMixto.Text = "Mixto";
@@ -495,10 +480,10 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label7.Location = new Point(952, 438);
             label7.Name = "label7";
-            label7.Size = new Size(56, 20);
+            label7.Size = new Size(49, 18);
             label7.TabIndex = 36;
             label7.Text = "Cargo";
             // 
@@ -509,7 +494,7 @@
             cmbCargo.FormattingEnabled = true;
             cmbCargo.Location = new Point(931, 475);
             cmbCargo.Name = "cmbCargo";
-            cmbCargo.Size = new Size(176, 25);
+            cmbCargo.Size = new Size(176, 24);
             cmbCargo.TabIndex = 37;
             // 
             // pictureBox11
@@ -556,10 +541,10 @@
             // RBViudo
             // 
             RBViudo.AutoSize = true;
-            RBViudo.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBViudo.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBViudo.Location = new Point(24, 110);
             RBViudo.Name = "RBViudo";
-            RBViudo.Size = new Size(64, 21);
+            RBViudo.Size = new Size(60, 20);
             RBViudo.TabIndex = 22;
             RBViudo.TabStop = true;
             RBViudo.Text = "Viudo";
@@ -590,10 +575,10 @@
             // RBOtro
             // 
             RBOtro.AutoSize = true;
-            RBOtro.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RBOtro.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             RBOtro.Location = new Point(42, 93);
             RBOtro.Name = "RBOtro";
-            RBOtro.Size = new Size(55, 21);
+            RBOtro.Size = new Size(50, 20);
             RBOtro.TabIndex = 19;
             RBOtro.TabStop = true;
             RBOtro.Text = "Otro";
@@ -601,7 +586,7 @@
             // 
             // FrmAgregarEmpleado
             // 
-            AutoScaleDimensions = new SizeF(8F, 17F);
+            AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1115, 680);
@@ -627,7 +612,6 @@
             Controls.Add(dtpFechaNac);
             Controls.Add(txtNumeroINSS);
             Controls.Add(pictureBox10);
-            Controls.Add(txtNumeroCedula);
             Controls.Add(pictureBox5);
             Controls.Add(txtSegundoApellido);
             Controls.Add(pictureBox4);
@@ -638,7 +622,7 @@
             Controls.Add(txtPrimerNombre);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
-            Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmAgregarEmpleado";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
@@ -677,7 +661,6 @@
         private PictureBox pictureBox3;
         private TextBox txtSegundoApellido;
         private PictureBox pictureBox4;
-        private TextBox txtNumeroCedula;
         private PictureBox pictureBox5;
         private TextBox txtNumeroINSS;
         private PictureBox pictureBox10;

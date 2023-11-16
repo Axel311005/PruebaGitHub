@@ -33,8 +33,6 @@ namespace UINomina
         private void FrmEditarUsuario_Load(object sender, EventArgs e)
         {
             Usuario user = new();
-            Usuario user2 = new();
-            user2.IdRol = UsuarioAutentificado.id;
             UsuarioController US = new();
             dtFecha.Format = DateTimePickerFormat.Custom;
             dtFecha.CustomFormat = "dd/MM/yyyy";
@@ -75,14 +73,16 @@ namespace UINomina
                     txtRol.Text = "Asistente Contable";
                 }
 
-                if (user2.IdRol == (int)Rol.IdAdministrador || user2.IdRol == (int)Rol.IdGerente)
+                if (user.IdRol == (int)Rol.IdAdministrador || user.IdRol == (int)Rol.IdGerente)
                 {
                     cmbRol.Visible = true;
                     txtRol.Visible = false;
                 }
             }
             else
+            {
                 MessageBox.Show("Usuario nulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void PBCerrar_Click(object sender, EventArgs e)
@@ -99,7 +99,7 @@ namespace UINomina
         {
             UsuarioController usuarioController = new();
             Usuario nuevoUsuario = ObtenerDatosEditados();
-            List<string> errores = Validation.ValidarUsuario(nuevoUsuario);
+            List<string> errores = Validation.ValidarModelo(nuevoUsuario);
             if (errores.Count == 0)
             {
                 try
@@ -136,15 +136,23 @@ namespace UINomina
             usuario.FechaNac = dtFecha.Value;
             usuario.Telefono = txtTelefono.Text;
             usuario.CorreoElectronico = txtCorreo.Text;
-      
-            if (cmbRol.SelectedItem == "Administrador")
+            string rolSeleccionado = cmbRol.SelectedItem.ToString();
+            if (rolSeleccionado == "Administrador")
+            {
                 usuario.IdRol = (int)Rol.IdAdministrador;
-            else if (cmbRol.SelectedItem == "Gerente")
+            }
+            else if (rolSeleccionado == "Gerente")
+            {
                 usuario.IdRol = (int)Rol.IdGerente;
-            else if (cmbRol.SelectedItem == "Contador General")
+            }
+            else if (rolSeleccionado == "Contador General")
+            {
                 usuario.IdRol = (int)Rol.IdContadorGeneral;
-            else if (cmbRol.SelectedItem == "Asistente Contable")
+            }
+            else if (rolSeleccionado == "Asistente Contable")
+            {
                 usuario.IdRol = (int)Rol.IdAsistenteContable;
+            }
 
             return usuario;
         }
@@ -164,7 +172,7 @@ namespace UINomina
             UsuarioController US = new();
             user = US.SelectUserPorID(ID);
 
-            if (user.IdRol != (int)Rol.IdAdministrador || user.IdRol != (int)Rol.IdGerente)
+            if (user.IdRol != (int)Rol.IdAdministrador && user.IdRol != (int)Rol.IdGerente)
                 MessageBox.Show("Para editar el rol, debe tener mayor rango", "No puede editar rol", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

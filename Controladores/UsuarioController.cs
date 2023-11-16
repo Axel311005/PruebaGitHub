@@ -176,16 +176,19 @@ namespace Controladores
 
         public void ActualizarUsuario(Usuario user)
         {
-            string query = "UPDATE usuario SET nombre = @nuevoNombre,  segundoNombre = @nuevoSegundoNombre, primerApellido = @nuevoPrimerApellido, " +
-                "segundoApellido = @nuevoSegundoApellido, password = @nuevapassword, correo_electronico = @nuevoCorreoElectronico, fecha_nac = @nuevaFechaNacimiento, telefono = @nuevoTelefono WHERE id = @id;";
-            using (SqlConnection conecction = new SqlConnection(conexion))
-            {
-                conecction.Open();
+            string query = "UPDATE usuario SET nombre = @nuevoNombre, segundoNombre = @nuevoSegundoN, " +
+                           "primerApellido = @nuevoPrimerApellido, segundoApellido = @nuevoSegundoApellido, " +
+                           "password = @nuevapassword, correo_electronico = @nuevoCorreoElectronico, " +
+                           "fecha_nac = @nuevaFechaNacimiento, telefono = @nuevoTelefono WHERE id = @id";
 
-                using (SqlCommand command = new SqlCommand(query, conecction))
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@nuevoNombre", user.Nombre);
-                    command.Parameters.AddWithValue("@nuevoSegundoNombre",user.SegundoNombre);
+                    command.Parameters.AddWithValue("@nuevoSegundoN", user.SegundoNombre);
                     command.Parameters.AddWithValue("@nuevoPrimerApellido", user.PrimerApellido);
                     command.Parameters.AddWithValue("@nuevoSegundoApellido", user.SegundoApellido);
                     command.Parameters.AddWithValue("@nuevapassword", user.Password);
@@ -194,11 +197,20 @@ namespace Controladores
                     command.Parameters.AddWithValue("@nuevoTelefono", user.Telefono);
                     command.Parameters.AddWithValue("@id", user.ID);
 
-                    command.ExecuteNonQuery();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("El usuario se ha actualizado correctamente.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se pudo actualizar el usuario.");
+                    }
                 }
             }
         }
-
+        
         public IEnumerable<Usuario> TraerUsuarios()
         {
             using (SqlConnection connection = new SqlConnection(conexion))

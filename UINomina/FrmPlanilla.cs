@@ -22,17 +22,16 @@ namespace UINomina
     {
         private List<Empleado> listaEmpleados;
         private Empleado empleadoSeleccionado;
-        private Nomina nomina;
         public FrmPlanilla()
         {
             InitializeComponent();
-            nomina = new Nomina();
         }
 
         private void FrmPlanilla_Load(object sender, EventArgs e)
         {
             ObtenerDatosListView();
             CargarComboBoxMeta();
+            tabControl1.Enabled = false;
         }
         private void CargarComboBoxMeta()
         {
@@ -100,8 +99,6 @@ namespace UINomina
                 lvEmpleados.Items.Add(item);
             }
         }
-
-
         private string ObtenerNombreCargoPorId(int idCargo)
         {
             CargoController cargoController = new CargoController();
@@ -165,96 +162,218 @@ namespace UINomina
         {
             if (empleadoSeleccionado != null)
             {
-                int filaIndex = DGVNomina.Rows.Add();
-                nomina.Empleado = empleadoSeleccionado;
-                nomina.Fecha = dtpFecha.Value;
-                nomina.FechaFin = dtpFechaFin.Value;
-                nomina.SalarioPorDia = nomina.CalcularSalarioPorDia();
-
-                if (int.TryParse(txtHora.Text, out int horaExtra))
-                    nomina.HoraExtra = horaExtra;
-
-                DGVNomina.Rows[filaIndex].Cells["Fecha"].Value = nomina.Fecha.ToShortDateString();
-                DGVNomina.Rows[filaIndex].Cells["FechaFin"].Value = nomina.FechaFin.ToShortDateString();
-                DGVNomina.Rows[filaIndex].Cells["SalarioBase"].Value = empleadoSeleccionado.SalarioOrdinario.ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["SalarioDia"].Value = nomina.SalarioPorDia.ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["SalarioHora"].Value = nomina.CalcularSalarioPorHora().ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["SalarioQuincenal"].Value = (empleadoSeleccionado.SalarioOrdinario) / 2;
-                DGVNomina.Rows[filaIndex].Cells["SalarioNeto"].Value = nomina.CalcularSalarioNeto().ToString("C2");
-
-                if (empleadoSeleccionado.IDHorario == (int)Horario.idNocturno || empleadoSeleccionado.IDHorario == (int)Horario.idMixto)
-                    DGVNomina.Rows[filaIndex].Cells["Nocturnidad"].Value = nomina.CalcularNocturnidad().ToString("C2");
-                else
+                if (RBQuincenal.Checked)
                 {
-                    MessageBox.Show("No se le aplica nocturnidad", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DGVNomina.Rows[filaIndex].Cells["Nocturnidad"].Value = 0;
-                }
-
-                DGVNomina.Rows[filaIndex].Cells["HorasExtras"].Value = nomina.CalcularHoraExtra().ToString("C2");
-                if (empleadoSeleccionado.IDCargo != null)
-                {
-                    CargoController cargoController = new CargoController();
-                    Cargo cargo = cargoController.ObtenerCargoPorId(empleadoSeleccionado.IDCargo);
-
-                    if (cargo != null)
+                    Nomina nomina = cargarNomina();
+                    List<string> errores = Validation.ValidarModelo(nomina);
+                    if (errores.Count == 0)
                     {
-                        if (cargo.AplicaComisiones)
+                        try
                         {
-                            decimal porcentajeComision = 0;
-                            decimal venta = 0;
-
-                            if (decimal.TryParse(txtPorcentaje.Text, out porcentajeComision) &&
-                                decimal.TryParse(txtVenta.Text, out venta))
-                            {
-                                decimal porcentajeComi = venta * porcentajeComision;
-                                nomina.Comisiones = porcentajeComi;
-                            }
-
-                            DGVNomina.Rows[filaIndex].Cells["Comisiones"].Value = nomina.Comisiones;
+                            cargarDataGridView(nomina);
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            DGVNomina.Rows[filaIndex].Cells["Comisiones"].Value = 0;
-                            MessageBox.Show("No se le aplica comisiones", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Error en el ingreso de la nomina: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
-                        if (cargo.AplicaRiesgoLaboral)
+                    }
+                    else
+                    {
+                        string mensajeErrores = string.Join(Environment.NewLine, errores);
+                        MessageBox.Show("Errores de validación:" + Environment.NewLine + mensajeErrores, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if(RBMensual.Checked)
+                { 
+                    NominaMensual nominaMensual = cargarNominaMensual();
+                    List<string> erroresMensual = Validation.ValidarModelo(nominaMensual);
+                    if (erroresMensual.Count == 0)
+                    {
+                        try
                         {
-                            DGVNomina.Rows[filaIndex].Cells["RiesgoLaboral"].Value = nomina.CalcularRiesgoLaboral().ToString("C2");
+                            cargarDataGridView(nominaMensual);
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            DGVNomina.Rows[filaIndex].Cells["RiesgoLaboral"].Value = 0;
-                            MessageBox.Show("No se le aplica Riesgo laboral", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Error en el ingreso de la nomina: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                    }
+                    else
+                    {
+                        string mensajeErrores = string.Join(Environment.NewLine, erroresMensual);
+                        MessageBox.Show("Errores de validación:" + Environment.NewLine + mensajeErrores, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
-                decimal.TryParse(txtViaticoAlimentacion.Text, out decimal ViaticoAliementacion);
-                nomina.ViaticoAlimentacion = ViaticoAliementacion;
-                DGVNomina.Rows[filaIndex].Cells["ViaticoA"].Value = nomina.ViaticoAlimentacion.ToString("C2");
-                decimal.TryParse(txtViaticoTransporte.Text, out decimal ViaticoTransporte);
-                nomina.ViaticoTransporte = ViaticoTransporte;
-                DGVNomina.Rows[filaIndex].Cells["ViaticoT"].Value = nomina.ViaticoTransporte.ToString("C2");
-                decimal.TryParse(txtDeprecVehiculo.Text, out decimal deprecV);
-                nomina.DepreciacionVehiculo = deprecV;
-                DGVNomina.Rows[filaIndex].Cells["DeprecV"].Value = nomina.DepreciacionVehiculo;
-                DGVNomina.Rows[filaIndex].Cells["IngresoVacaciones"].Value = nomina.MostrarVacacionesAcumuladas().ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["Aguinaldo"].Value = nomina.MostrarAguinaldoAcmulado().ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["Indemizacion"].Value = nomina.calcularPagoIndenmizacion().ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["ImpuestoRenta"].Value = nomina.CalcularImpuestoRenta().ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["INSS"].Value = nomina.CalcularINSS().ToString("C2");
-                decimal.TryParse(txtPrestamos.Text, out decimal prestamos);
-                nomina.Prestamos = prestamos;
-                DGVNomina.Rows[filaIndex].Cells["Prestamos"].Value = nomina.Prestamos.ToString("C2");
-                decimal.TryParse(txtEmbargos.Text, out decimal embargos);
-                nomina.Embargos = embargos;
-                DGVNomina.Rows[filaIndex].Cells["Embargos"].Value = nomina.Embargos.ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["INATEC"].Value = nomina.CalcularINATEC().ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["INSSPatronal"].Value = nomina.CalcularINSSPatronal().ToString("C2");
-                DGVNomina.Rows[filaIndex].Cells["IDEmpleado"].Value = empleadoSeleccionado.IDEmpleado;
             }
         }
+
+        private NominaMensual cargarNominaMensual()
+        {
+            NominaMensual nomina = new();
+            nomina.Empleado = empleadoSeleccionado;
+            nomina.Fecha = dtpFecha.Value;
+            nomina.FechaFin = dtpFechaFin.Value;
+            nomina.SalarioPorDia = nomina.CalcularSalarioPorDia();
+            if (int.TryParse(txtHora.Text, out int horaExtra))
+                nomina.HoraExtra = horaExtra;
+
+            if (empleadoSeleccionado.IDHorario == (int)Horario.idNocturno || empleadoSeleccionado.IDHorario == (int)Horario.idMixto)
+                nomina.Nocturnidad = nomina.CalcularNocturnidad();
+            else
+            {
+                MessageBox.Show("No se le aplica nocturnidad", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                nomina.Nocturnidad = 0;
+            }
+            if (empleadoSeleccionado.IDCargo != null)
+            {
+                CargoController cargoController = new CargoController();
+                Cargo cargo = cargoController.ObtenerCargoPorId(empleadoSeleccionado.IDCargo);
+
+                if (cargo != null)
+                {
+                    if (cargo.AplicaComisiones)
+                    {
+                        decimal porcentajeComision = 0;
+                        decimal venta = 0;
+
+                        if (decimal.TryParse(txtPorcentaje.Text, out porcentajeComision) &&
+                            decimal.TryParse(txtVenta.Text, out venta))
+                        {
+                            decimal porcentajeComi = venta * porcentajeComision;
+                            nomina.Comisiones = porcentajeComi;
+                        }
+                    }
+                    else
+                    {
+                        nomina.Comisiones = 0;
+                        MessageBox.Show("No se le aplica comisiones", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    if (cargo.AplicaRiesgoLaboral)
+                    {
+                        nomina.RiesgoLaboral = nomina.CalcularRiesgoLaboral();
+                    }
+                    else
+                    {
+                        nomina.RiesgoLaboral = 0;
+                        MessageBox.Show("No se le aplica Riesgo laboral", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                if (decimal.TryParse(txtViaticoAlimentacion.Text, out decimal ViaticoAliementacion))
+                    nomina.ViaticoAlimentacion = ViaticoAliementacion;
+                if (decimal.TryParse(txtViaticoTransporte.Text, out decimal ViaticoTransporte))
+                    nomina.ViaticoTransporte = ViaticoTransporte;
+                if (decimal.TryParse(txtDeprecVehiculo.Text, out decimal deprecV))
+                    nomina.DepreciacionVehiculo = deprecV;
+                if (decimal.TryParse(txtPrestamos.Text, out decimal prestamos))
+                    nomina.Prestamos = prestamos;
+                nomina.INSS = nomina.CalcularINSS();
+                if (decimal.TryParse(txtEmbargos.Text, out decimal embargos))
+                    nomina.Embargos = embargos;
+                nomina.Antiguedad = nomina.calcularAntiguedad();
+            }
+            return nomina;
+        }
+
+        private void cargarDataGridView(Nomina nomina)
+        {
+            int filaIndex = DGVNomina.Rows.Add();
+            DGVNomina.Rows[filaIndex].Cells["Fecha"].Value = nomina.Fecha.ToShortDateString();
+            DGVNomina.Rows[filaIndex].Cells["FechaFin"].Value = nomina.FechaFin.ToShortDateString();
+            DGVNomina.Rows[filaIndex].Cells["SalarioBase"].Value = empleadoSeleccionado.SalarioOrdinario.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["SalarioDia"].Value = nomina.SalarioPorDia.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["SalarioHora"].Value = nomina.CalcularSalarioPorHora().ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["SalarioQuincenal"].Value = (empleadoSeleccionado.SalarioOrdinario) / 2;
+            DGVNomina.Rows[filaIndex].Cells["SalarioNeto"].Value = nomina.CalcularSalarioNeto().ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["Nocturnidad"].Value = nomina.Nocturnidad.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["HorasExtras"].Value = nomina.CalcularHoraExtra().ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["Comisiones"].Value = nomina.Comisiones;
+            DGVNomina.Rows[filaIndex].Cells["ViaticoA"].Value = nomina.ViaticoAlimentacion.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["ViaticoT"].Value = nomina.ViaticoTransporte.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["DeprecV"].Value = nomina.DepreciacionVehiculo;
+            DGVNomina.Rows[filaIndex].Cells["IngresoVacaciones"].Value = nomina.IngresoVacaciones.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["Aguinaldo"].Value = nomina.IngresoAguinaldo.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["Indemizacion"].Value = nomina.Indemizacion.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["ImpuestoRenta"].Value = nomina.ImpuestoRenta.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["INSS"].Value = nomina.INSS.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["Prestamos"].Value = nomina.Prestamos.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["Embargos"].Value = nomina.Embargos.ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["INATEC"].Value = nomina.CalcularINATEC().ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["INSSPatronal"].Value = nomina.CalcularINSSPatronal().ToString("C2");
+            DGVNomina.Rows[filaIndex].Cells["IDEmpleado"].Value = empleadoSeleccionado.IDEmpleado;
+            DGVNomina.Rows[filaIndex].Cells["Antiguedad"].Value = nomina.Antiguedad;
+        }
+
+        private Nomina cargarNomina()
+        {
+            Nomina nomina = new();
+            nomina.Empleado = empleadoSeleccionado;
+            nomina.Fecha = dtpFecha.Value;
+            nomina.FechaFin = dtpFechaFin.Value;
+            nomina.SalarioPorDia = nomina.CalcularSalarioPorDia();
+            if (int.TryParse(txtHora.Text, out int horaExtra))
+                nomina.HoraExtra = horaExtra;
+
+            if (empleadoSeleccionado.IDHorario == (int)Horario.idNocturno || empleadoSeleccionado.IDHorario == (int)Horario.idMixto)
+                nomina.Nocturnidad = nomina.CalcularNocturnidad();
+            else
+            {
+                MessageBox.Show("No se le aplica nocturnidad", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                nomina.Nocturnidad = 0;
+            }
+            if (empleadoSeleccionado.IDCargo != null)
+            {
+                CargoController cargoController = new CargoController();
+                Cargo cargo = cargoController.ObtenerCargoPorId(empleadoSeleccionado.IDCargo);
+
+                if (cargo != null)
+                {
+                    if (cargo.AplicaComisiones)
+                    {
+                        decimal porcentajeComision = 0;
+                        decimal venta = 0;
+
+                        if (decimal.TryParse(txtPorcentaje.Text, out porcentajeComision) &&
+                            decimal.TryParse(txtVenta.Text, out venta))
+                        {
+                            decimal porcentajeComi = venta * porcentajeComision;
+                            nomina.Comisiones = porcentajeComi;
+                        }
+                    }
+                    else
+                    {
+                        nomina.Comisiones = 0;
+                        MessageBox.Show("No se le aplica comisiones", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    if (cargo.AplicaRiesgoLaboral)
+                    {
+                        nomina.RiesgoLaboral = nomina.CalcularRiesgoLaboral();
+                    }
+                    else
+                    {
+                        nomina.RiesgoLaboral = 0;
+                        MessageBox.Show("No se le aplica Riesgo laboral", "No se aplica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                if (decimal.TryParse(txtViaticoAlimentacion.Text, out decimal ViaticoAliementacion))
+                    nomina.ViaticoAlimentacion = ViaticoAliementacion;
+                if (decimal.TryParse(txtViaticoTransporte.Text, out decimal ViaticoTransporte))
+                    nomina.ViaticoTransporte = ViaticoTransporte;
+                if (decimal.TryParse(txtDeprecVehiculo.Text, out decimal deprecV))
+                    nomina.DepreciacionVehiculo = deprecV;
+                if (decimal.TryParse(txtPrestamos.Text, out decimal prestamos))
+                    nomina.Prestamos = prestamos;
+                nomina.INSS = nomina.CalcularINSS();
+                if (decimal.TryParse(txtEmbargos.Text, out decimal embargos))
+                    nomina.Embargos = embargos;
+                nomina.Antiguedad = nomina.calcularAntiguedad();
+            }
+            return nomina;
+        }
+
+
         private void btnSeleccionEmp_Click(object sender, EventArgs e)
         {
             if (lvEmpleados.SelectedItems.Count > 0)
@@ -356,6 +475,26 @@ namespace UINomina
             txtPrestamos.Clear();
             txtEmbargos.Clear();
             cmbMetaVenta.Items.Clear();
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            if (empleadoSeleccionado == null)
+            {
+                tabControl1.Enabled = false;
+                MessageBox.Show("Seleccione un empleado ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                tabControl1.Enabled = true;
+
+            if (RBMensual.Checked || RBQuincenal.Checked)
+                tabControl1.Enabled = true;
+            else
+            {
+                tabControl1.Enabled = false;
+                MessageBox.Show("Seleccione un modo de calculo de la nomina", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

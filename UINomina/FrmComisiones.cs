@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UINomina
 {
@@ -54,7 +55,10 @@ namespace UINomina
             }
 
             cmbCargo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbCargo.SelectedIndex = 0;
+            if (cmbCargo.Items.Count > 0)
+            {
+                cmbCargo.SelectedIndex = 0;  
+            }
         }
         private void CargarListView()
         {
